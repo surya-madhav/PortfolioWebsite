@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div class="font-sans">
+    <!-- Home Page Layout -->
+    <div class="h-screen flex flex-col" id="home">
+      <!-- Profile Section -->
+      <div
+        class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex-grow flex flex-col justify-center items-center p-8">
+        <img src="profile.jpg" alt="Profile Photo" class="rounded-full w-32 h-32 mb-4">
+        <h1 class="text-4xl font-bold mb-4">John Doe</h1>
+        <p class="text-lg mb-8">Software Engineer</p>
+        <p class="mb-8 text-center">I'm a passionate software engineer with experience in web development, mobile
+          applications, and cloud technologies.</p>
+        <div class="flex space-x-4">
+          <a href="#"
+            class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-indigo-600 hover:text-white transition-colors">Contact
+            Me</a>
+          <a href="#"
+            class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-indigo-600 hover:text-white transition-colors">Download
+            Resume</a>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="bg-gray-100 py-16" id="skills">
+        <h2 class="text-3xl font-bold mb-8 text-center text-indigo-600">My Skills</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-4 text-indigo-600">Programming Languages</h3>
+            <ul class="space-y-2">
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>C</li>
+              <li>C++</li>
+              <li>Python</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-4 text-indigo-600">Database Technologies</h3>
+            <ul class="space-y-2">
+              <li>MySQL</li>
+              <li>MongoDB</li>
+              <li>Database Design</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-4 text-indigo-600">Web Technologies</h3>
+            <ul class="space-y-2">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>SCSS</li>
+              <li>Angular</li>
+              <li>Flask</li>
+              <li>Spring Boot</li>
+              <li>ReactJS</li>
+              <li>NodeJS</li>
+              <li>ExpressJS</li>
+              <li>Microservices</li>
+              <li>Kafka</li>
+              <li>Django</li>
+              <li>Webpack</li>
+              <li>Mocha</li>
+              <li>JUnit</li>
+              <li>Tailwind CSS</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-4 text-indigo-600">Data Science and Analytics</h3>
+            <ul class="space-y-2">
+              <li>NumPy</li>
+              <li>SciPy</li>
+              <li>Pandas</li>
+              <li>scikit-learn</li>
+              <li>Seaborn</li>
+              <li>Matplotlib</li>
+              <li>Machine Learning</li>
+              <li>Time Series Analysis</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-4 text-indigo-600">DevOps</h3>
+            <ul class="space-y-2">
+              <li>Azure</li>
+              <li>Linux</li>
+              <li>Docker</li>
+              <li>Git</li>
+              <li>CI/CD</li>
+              <li>Jenkins</li>
+              <li>Github Actions</li>
+              <li>Terraform</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-4 text-indigo-600">Miscellaneous</h3>
+            <ul class="space-y-2">
+              <li>Figma</li>
+              <li>Jira</li>
+              <li>Postman</li>
+              <li>Firebase</li>
+              <li>Agile</li>
+              <li>Software Development Life Cycle (SDLC)</li>
+              <li>Scrum</li>
+              <li>Sharepoint</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Section -->
+      <div class="bg-gray-100 py-16" id="projects">
+        <h2 class="text-3xl font-bold mb-8 text-center text-indigo-600">My Projects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto" id="project-list">
+          <div class="bg-white rounded-lg shadow-md p-6 cursor-pointer"
+            onclick="showProjectPage('Project 1', 'This is a description of Project 1.', ['JavaScript', 'React', 'Node.js'], 'The main goals of this project were to...', ['https://github.com/example/project1', 'https://example.com/project1'])">
+            <img src="project1-thumbnail.jpg" alt="Project 1" class="mb-4 rounded-md">
+            <h3 class="text-xl font-bold mb-2 text-indigo-600">Project 1</h3>
+            <p class="mb-4">This is a description of Project 1.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-indigo-600 text-white px-2 py-1 rounded-md text-sm">JavaScript</span>
+              <span class="bg-indigo-600 text-white px-2 py-1 rounded-md text-sm">React</span>
+              <span class="bg-indigo-600 text-white px-2 py-1 rounded-md text-sm">Node.js</span>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6 cursor-pointer"
+            onclick="showProjectPage('Project 2', 'This is a description of Project 2.', ['Python', 'Django', 'AWS'], 'The main goals of this project were to...', ['https://github.com/example/project2', 'https://example.com/project2'])">
+            <img src="project2-thumbnail.jpg" alt="Project 2" class="mb-4 rounded-md">
+            <h3 class="text-xl font-bold mb-2 text-indigo-600">Project 2</h3>
+            <p class="mb-4">This is a description of Project 2.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-indigo-600 text-white px-2 py-1 rounded-md text-sm">Python</span>
+              <span class="bg-indigo-600 text-white px-2 py-1 rounded-md text-sm">Django</span>
+              <span class="bg-indigo-600 text-white px-2 py-1 rounded-md text-sm">AWS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden h-screen flex flex-col" id="project-page">
+      <div
+        class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex-grow flex flex-col justify-center items-center p-8">
+        <h1 class="text-4xl font-bold mb-4" id="project-title">Project Title</h1>
+        <p class="text-lg mb-8" id="project-description">Project Description</p>
+      </div>
+      <div class="bg-white py-16">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold mb-8 text-indigo-600">Project Details</h2>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-indigo-600">Technologies Used</h3>
+              <p id="project-technologies">List of technologies used</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-indigo-600">Project Goals</h3>
+              <p id="project-goals">Project goals and objectives</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-indigo-600">Relevant Links</h3>
+              <div id="project-links">
+                <!-- Links will be dynamically added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
