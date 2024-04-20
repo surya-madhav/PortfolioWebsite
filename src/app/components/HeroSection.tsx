@@ -8,7 +8,7 @@ const HeroSection = () => {
         <section>
             <div className="grid grid-cols-1 lg:grid-cols-12">
                 <div className="col-span-7 place-self-center flex flex-col">
-                    <h1 className='text-4xl lg:text-5xl mb-4 text-white font-extrabold text-center lg:text-start'>Hello, I'm
+                    <h1 className='text-4xl lg:text-5xl mb-4 text-white font-extrabold text-center lg:text-start'>Hello, I&apos;m
                         <span> </span>
                         <TypeAnimation className='text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-600'
                             sequence={[
