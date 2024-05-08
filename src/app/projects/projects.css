@@ -1,0 +1,14 @@
+.image-height{
+    height: 24rem;
+}
+@media (min-width: 768px) {
+    .image-height{
+        height: 46rem;
+    }
+}
+
+.image-container{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 263/164;
+}
