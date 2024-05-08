@@ -4,7 +4,8 @@ import "./globals.css";
 import React from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return ( 
     <html lang="en">
-      <GoogleAnalytics />
+      <GoogleAnalytics gaId="G-XYZ" />
       <body className={inter.className}>{children}</body>
     </html>
   );
