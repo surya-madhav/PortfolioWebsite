@@ -47,7 +47,7 @@ const gcpInfraAutomation = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-8">
+    <div className="p-8">
       <div className="container mx-auto">
         <header className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{projectData.title}</h1>
@@ -78,7 +78,7 @@ const gcpInfraAutomation = () => {
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Technologies Used</h2>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
             {projectData.technologies.map(tech => (
-              <div key={tech.name} className={`p-2 flex items-center justify-center flex-col shadow-sm $ text-white border border-yellow-300 shadow-yellow-600 rounded-md hover:shadow hover:shadow-yellow-400`}>
+              <div key={tech.name} className={`p-2 flex items-center justify-center flex-col shadow-sm $ text-white border border-orange-300 shadow-yellow-600 rounded-md hover:shadow hover:shadow-yellow-400`}>
                 <div className="mb-2"><Image src={tech.icon} alt='icon' width={20} height={20} /></div>
                 <div className='text-sm font-me text-center'>{tech.name}</div>
               </div>

@@ -16,7 +16,7 @@ const ProjectsListData:{
         title: 'GCP Infrastructure Automation',
         categories: ['Terraform', 'Google Cloud Platform', 'Packer', 'Github CI/CD', 'Serverless', 'NodeJS'],
         show: true,
-        description: 'Utilized Terraform for infrastructure provisioning and Packer for GCP machine image creation, enhancing system reliability. Implemented DNS management and serverless functions for automated user verification emails.',
+        description: 'Utilized Terraform for infrastructure provisioning and Packer for GCP machine image creation, enhancing system reliability.',
         href: 'projects/gcpInfraAutomation'
     },
     {

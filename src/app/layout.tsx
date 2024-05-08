@@ -5,6 +5,7 @@ import React from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Navbar } from "./components/Navbar";
 
 
 
@@ -18,12 +19,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return ( 
+  return (
     <html lang="en">
-      
-      <body className={inter.className}>{children}</body>
+
+      <body className={inter.className}>
+      <main className="flex min-h-screen flex-col items-center container mx-auto bg-gray-900">
+      <div className="mb-12">
+        <Navbar />
+      </div>
+      <div>{children}</div>  
+      </main>
+        
+      </body>
       <SpeedInsights />
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||"G-XYZ"} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XYZ"} />
     </html>
   );
 }

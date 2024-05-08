@@ -4,7 +4,7 @@ import ProjectsListData from '../data/projects'
 const Projects = () => {
   return (
     <section>
-      <h1 className='text-4xl font-bold text-center lg:text-left mt-12 mb-12'>Projects</h1>
+      <h1 className='text-4xl font-bold text-center lg:text-left mt-12 mb-6'>Projects</h1>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6'>
         {
           ProjectsListData.map((project, index) => {

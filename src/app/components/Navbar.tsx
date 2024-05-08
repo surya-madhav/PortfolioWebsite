@@ -8,7 +8,7 @@ const links:{title:string,href:string}[] = [{ href: '#projects', title: 'Project
 export const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     return (
-        <nav className='w-full fixed top-0 left-0 right-0 z-10 bg-opacity-100 bg-black container mx-auto'>
+        <nav className='w-full fixed top-0 left-0 right-0 z-10 bg-opacity-100 bg-gray-900 container mx-auto'>
             <div className='flex flex-wrap items-center justify-between mx-auto p-4'>
                 <Link href={"/"} className='text-sm text-orange-400  opacity-80 font-medium shadow-sm  font-mono'>rssmv.</Link>
                 <div className='mobile-menu block md:hidden'>
