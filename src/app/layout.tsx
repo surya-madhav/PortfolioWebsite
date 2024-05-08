@@ -20,8 +20,10 @@ export default function RootLayout({
 }>) {
   return ( 
     <html lang="en">
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||"G-XYZ"} />
+      
       <body className={inter.className}>{children}</body>
+      <SpeedInsights />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||"G-XYZ"} />
     </html>
   );
 }
