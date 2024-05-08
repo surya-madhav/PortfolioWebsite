@@ -27,7 +27,7 @@ const gcpInfraAutomation = () => {
 
     title: "GCP Infrastructure Automation",
     summary: "A comprehensive showcase of my work and skills, built using Next.js.",
-    imageUrl: "/images/GCp.jpg",
+    imageUrl: "/images/GCP.svg",
     githubUrl: "https://github.com/yourusername/yourproject",
     technologies: [
       { name: "Node.js", icon: "/icons/nodejs.svg", category: "Programming Language" },
