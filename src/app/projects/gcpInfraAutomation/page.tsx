@@ -42,7 +42,7 @@ const gcpInfraAutomation = () => {
       { name: "CMEK", icon: "/icons/kms.svg", category: "Security & Compliance" },
       { name: "Load Balancing", icon: "/icons/load_bal.svg", category: "Networking" },
       { name: "Autoscaling", icon: "/icons/autoscale.svg", category: "Cloud Infrastructure" },
-      { name: "Continuous Deployment", icon: "/icons/", category: "DevOps" }
+      { name: "Continuous Deployment", icon: "/icons/cicd.svg", category: "DevOps" }
     ]
   };
 
