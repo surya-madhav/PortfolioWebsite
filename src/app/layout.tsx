@@ -22,14 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={inter.className}>
-      <main className="flex min-h-screen flex-col items-center container mx-auto bg-gray-900">
-      <div className="mb-12">
-        <Navbar />
-      </div>
-      <div>{children}</div>  
-      </main>
-        
+      <body className="bg-gray-900 text-yellow-50">
+        <main className="flex min-h-screen flex-col items-center container mx-auto bg-gray-900">
+          <div className="mb-12">
+            <Navbar />
+          </div>
+          <div>{children}</div>
+        </main>
+
       </body>
       <SpeedInsights />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XYZ"} />
