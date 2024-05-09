@@ -5,7 +5,7 @@ import NavLink from './NavLink'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import MenuOverlay from './MenuOverlay';
 import ContactMeDialog from './ContactDialog';
-const links:{title:string,href:string}[] = [{ href: '#projects', title: 'Projects' }, { href: '#contact', title: 'Contact' }]
+const links:{title:string,href:string}[] = []
 export const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     return (

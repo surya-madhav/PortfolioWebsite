@@ -11,7 +11,7 @@ const ProjectsListData:{
 }[] = [
     
     {
-        image: '/images/GCp.jpg',
+        image: '/images/GCP.svg',
         alt: 'GCP Infrastructure Automation',
         title: 'GCP Infrastructure Automation',
         categories: ['Terraform', 'Google Cloud Platform', 'Packer', 'Github CI/CD', 'Serverless', 'NodeJS'],
@@ -20,12 +20,13 @@ const ProjectsListData:{
         href: 'projects/gcpInfraAutomation'
     },
     {
-        image: '/images/bikeSharing.jpg',
+        image: '/images/bikeSharing.webp',
         alt: 'Predictive Analytics for Bike Sharing Demand',
         title: 'Predictive Analytics for Bike Sharing Demand',
         categories: ['Python', 'scikit-learn', 'Seaborn', 'Pandas', 'NumPy'],
         description: 'Developed a predictive model on Bike Sharing dataset, achieving 90% accuracy in demand prediction with Random Forest. Streamlined model selection and feature engineering with AutoML, reducing development time by 30%.',
-        href: 'http://bikesharing.rssmv.in'
+        show: true,
+        href: 'projects/bikeSharing'
     },
     {
         image: '/images/docSearchAI.jpg',
@@ -33,15 +34,16 @@ const ProjectsListData:{
         title: 'DocSearchAI',
         categories: ['ReactJS', 'NodeJS', 'GPT-3.5 API', 'MongoDB', 'ElasticSearch', 'AWS'],
         description: 'Built an AI-powered documentation chat application for conversational search and context-aware responses. Implemented ReactJS\'s hooks and context for efficient state management.',
-        href: 'http://docsearch.rssmv.in'
+        href: 'projects/docSearchAI'
     },
     {
         image: '/images/gmapsSafety.jpg',
         alt: 'Safety In Google Maps',
         title: 'Safety In Google Maps',
+        show: true,
         categories: ['User Research', 'Design Thinking', 'Figma', 'Competitive Analysis'],
         description: 'Employed design thinking and user research to develop low-fidelity and high-fidelity prototypes in Figma for safety feature enhancements in Google Maps.',
-        href: 'http://gmaps.rssmv.in'
+        href: 'projects/safetyInGoogleMaps'
     },
     {
         image: '/images/linuxFileWatcher.jpg',
@@ -64,8 +66,9 @@ const ProjectsListData:{
         alt: 'YouTube Playlist to Interactive Course Converter',
         title: 'YouTube Playlist to Interactive Course Converter',
         categories: ['React', 'Redux', 'Jest', 'Notion API'],
+        show: true,
         description: 'Collaborated on a React app integrating Notion as CMS for content management. Optimized Redux for state handling and implemented Storybook and Jest for UI reliability.',
-        href: 'http://ytnotes.rssmv.in'
+        href: 'projects/ytnotes'
     }
 ];
 

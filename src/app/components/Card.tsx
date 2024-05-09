@@ -10,7 +10,7 @@ const Card = ({ props }: { props: { image: string, alt: string, title: string, c
   return (
   <div className='flex group flex-col border bg-gray-800 hover:border-orange-500 cursor-pointer' onClick={()=>{router.push(props.href)}}>
     <div className='w-fulls bg-gray-800 flex items-center justify-center'>
-      <Image src={props.image} alt={props.alt} className='w-full h-full object-cover' width={250} height={250} />
+      {/* <Image src={props.image} alt={props.alt} className='w-full h-full object-cover' width={250} height={250} /> */}
     </div>
     <div className='p-4'>
       <h1 className='text-xl group-hover:text-orange-400 font-bold mb-2'>{props.title}</h1>

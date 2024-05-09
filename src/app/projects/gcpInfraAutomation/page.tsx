@@ -66,8 +66,7 @@ const gcpInfraAutomation = () => {
         <div className="my-6 image-container">
           <Image src={projectData.imageUrl} alt={`Image of ${projectData.title}`} layout="fill" objectFit="contain" />
         </div>
-        <section className="my-4">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Project Details</h2>
+        <section className="my-4">          
           <p className="mt-2">
             This project demonstrates the implementation of a comprehensive cloud-based architecture using Google Cloud Platform (GCP) to automate and manage a scalable cloud infrastructure. It features a cloud-native application developed as a RESTful API using Node.js and Prisma, which includes endpoints for user management and health checks. <br></br>The infrastructure automation is accomplished using Terraform for resource provisioning and Packer for creating custom machine images tailored for the application. Key components of the system include event-driven architecture utilizing Google Pub/Sub for messaging and user notification services, and robust monitoring and logging facilitated by GCP&apos;s Operations Suite. <br></br>The project also emphasizes security with the implementation of customer-managed encryption keys (CMEK) to enhance data protection. Load balancing and autoscaling are integral to maintaining application performance and availability, while continuous deployment practices ensure seamless updates through rolling updates in the managed instance groups. This architecture not only supports high availability and fault tolerance but also adheres to best practices in security and data management.
           </p>
