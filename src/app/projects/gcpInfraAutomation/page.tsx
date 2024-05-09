@@ -47,12 +47,9 @@ const gcpInfraAutomation = () => {
   };
 
   return (
-    <div className="p-8">
-      <div className="container mx-auto">
+    <div className="py-8">      
         <header className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{projectData.title}</h1>
-          <p className="text-gray-700 dark:text-gray-300">{projectData.summary}</p>
-          
+          <h1 className="text-3xl font-bold">{projectData.title}</h1>          
           <a href={projectData.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="bg-gradient-to-tr from-purple-500 to-blue-400 rounded-full border-orange-400 hover:shadow-2xl hover:shadow-orange-300 hover:border-orange-200 border inline-block mt-4 h-12 w-12">
           {animationData?(
             <LottiePlayer            
@@ -70,7 +67,7 @@ const gcpInfraAutomation = () => {
         </div>
         <section className="my-4">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Project Details</h2>
-          <p className="text-gray-700 dark:text-gray-300 mt-2">
+          <p className="mt-2">
             This project demonstrates the implementation of a comprehensive cloud-based architecture using Google Cloud Platform (GCP) to automate and manage a scalable cloud infrastructure. It features a cloud-native application developed as a RESTful API using Node.js and Prisma, which includes endpoints for user management and health checks. <br></br>The infrastructure automation is accomplished using Terraform for resource provisioning and Packer for creating custom machine images tailored for the application. Key components of the system include event-driven architecture utilizing Google Pub/Sub for messaging and user notification services, and robust monitoring and logging facilitated by GCP&apos;s Operations Suite. <br></br>The project also emphasizes security with the implementation of customer-managed encryption keys (CMEK) to enhance data protection. Load balancing and autoscaling are integral to maintaining application performance and availability, while continuous deployment practices ensure seamless updates through rolling updates in the managed instance groups. This architecture not only supports high availability and fault tolerance but also adheres to best practices in security and data management.
           </p>
         </section>
@@ -86,7 +83,6 @@ const gcpInfraAutomation = () => {
           </div>
         </section>
       </div>
-    </div>
   );
 };
 export default gcpInfraAutomation;

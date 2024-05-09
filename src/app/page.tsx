@@ -1,7 +1,6 @@
-import Image from "next/image";
+`use client`
 import HeroSection from "./components/HeroSection";
 import React from "react";
-import { Navbar } from "./components/Navbar";
 import Projects from "./components/Projects";
 export default function Home() {
   return (

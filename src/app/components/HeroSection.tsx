@@ -1,6 +1,8 @@
 "use client"
 import React from 'react'
 import Image from "next/image";
+import ContactMeDialog from './ContactDialog';
+import { Button } from '@/components/ui/button';
 // import { TypeAnimation } from 'react-type-animation';
 
 const HeroSection = () => {
@@ -37,10 +39,9 @@ const HeroSection = () => {
                         I&apos;m a full-stack developer with 3 years working experience at high velocity fintech startups. I specialize in building robust, scalable web applications and websites. I have a deep passion for product design and development, and I consistently use a user-centric approach to drive innovation and streamline user experiences. I am currently looking for new opportunities to work on exciting projects.
                     </p>
                     <div className='flex flex-col mt-4 w-full lg:text-left flex-1 sm:justify-center sm:flex-row lg:justify-start md:flex-row px-8 sm:px-0'>
-                        <button className='px-6 py-3 rounded-md bg-gradient-to-r from-orange-400 to-orange-600 hover:bg-orange-600 sm:w-fit hover:border hover:border-white'>Contact Me</button>
-                        <button className='sm:w-fit px-6 py-3 rounded-md border border-orange-400 hover:text-orange-400 mt-4 sm:mt-0 md:ml-4'>
-                            Download Resume
-                        </button>
+                        
+                        <ContactMeDialog />
+                        <Button className="sm:w-fit px-6 py-3 rounded-md border border-orange-400 hover:text-orange-400 mt-4 sm:mt-0 md:ml-4">Download Resume</Button>                        
                     </div>
                 </div>
                 <div className="col-span-5">
