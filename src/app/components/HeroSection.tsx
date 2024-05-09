@@ -4,8 +4,13 @@ import Image from "next/image";
 import ContactMeDialog from './ContactDialog';
 import { Button } from '@/components/ui/button';
 // import { TypeAnimation } from 'react-type-animation';
-
+// https://drive.google.com/file/d/1cSTrv4pRKz422xSHxzgzRgvBfjXldQME/view?usp=sharing
 const HeroSection = () => {
+    const handleDownloadResume = () => {
+        const googleDriveLink = 'https://drive.google.com/uc?export=download&id=1cSTrv4pRKz422xSHxzgzRgvBfjXldQME'; // Replace with your file ID
+        window.location.href = googleDriveLink;
+      };
+    
     return (
         <section>
             <div className="grid grid-cols-1 lg:grid-cols-12">
@@ -15,7 +20,7 @@ const HeroSection = () => {
                         <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-600'>Sai Surya Rebbapragada</span>
                         <div className="text-center lg:text-start mb-1">
                             <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Full Stack Web Developer</span>
-                            <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Product Design Advocate</span>
+                            {/* <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Product Design Advocate</span> */}
                             <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Backend Systems Architect</span>
                             <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">DevOps Engineer</span>
                         </div>
@@ -39,9 +44,9 @@ const HeroSection = () => {
                         I&apos;m a full-stack developer with 3 years working experience at high velocity fintech startups. I specialize in building robust, scalable web applications and websites. I have a deep passion for product design and development, and I consistently use a user-centric approach to drive innovation and streamline user experiences. I am currently looking for new opportunities to work on exciting projects.
                     </p>
                     <div className='flex flex-col mt-4 w-full lg:text-left flex-1 sm:justify-center sm:flex-row lg:justify-start md:flex-row px-8 sm:px-0'>
-                        
+
                         <ContactMeDialog />
-                        <Button className="sm:w-fit px-6 py-3 rounded-md border border-orange-400 hover:text-orange-400 mt-4 sm:mt-0 md:ml-4">Download Resume</Button>                        
+                        <Button className="sm:w-fit px-6 py-3 rounded-md border border-orange-400 hover:text-orange-400 mt-4 sm:mt-0 md:ml-4" onClick={handleDownloadResume}>Download Resume</Button>
                     </div>
                 </div>
                 <div className="col-span-5">
