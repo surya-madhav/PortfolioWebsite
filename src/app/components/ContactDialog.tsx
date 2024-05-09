@@ -4,7 +4,7 @@ import { DialogTrigger, DialogTitle, DialogDescription, DialogHeader, DialogFoot
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Link from "next/link"
-import { JSX, SVGProps } from "react"
+import { JSX, SVGProps, useEffect } from "react"
 import * as z from "zod";
 import { Form, FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -48,6 +48,9 @@ export default function ContactMeDialog() {
             message: "",
         },
     })
+    useEffect(() => {
+        console.log('Form initialized:', form.getValues());
+      }, [form]);
     return (
         <Dialog>
             <DialogTrigger asChild>

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import "../projects.css"
 import LottiePlayer from "react-lottie-player";
+import Link from 'next/link';
 const gcpInfraAutomation = () => {
   // Filler data for the project
 
@@ -50,7 +51,7 @@ const gcpInfraAutomation = () => {
     <div className="py-8">      
         <header className="text-center">
           <h1 className="text-3xl font-bold">{projectData.title}</h1>          
-          <a href={projectData.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="bg-gradient-to-tr from-purple-500 to-blue-400 rounded-full border-orange-400 hover:shadow-2xl hover:shadow-orange-300 hover:border-orange-200 border inline-block mt-4 h-12 w-12">
+          <Link href={projectData.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="bg-gradient-to-tr from-purple-500 to-blue-400 rounded-full border-orange-400 hover:shadow-2xl hover:shadow-orange-300 hover:border-orange-200 border inline-block mt-4 h-12 w-12">
           {animationData?(
             <LottiePlayer            
                 animationData={animationData}
@@ -60,7 +61,7 @@ const gcpInfraAutomation = () => {
                 speed={0.5}
               />
           ):null}
-          </a>
+          </Link>
         </header>
         <div className="my-6 image-container">
           <Image src={projectData.imageUrl} alt={`Image of ${projectData.title}`} layout="fill" objectFit="contain" />
