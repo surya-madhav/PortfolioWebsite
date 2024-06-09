@@ -29,14 +29,6 @@ const ProjectsListData:{
         href: 'projects/bikeSharing'
     },
     {
-        image: '/images/docSearchAI.jpg',
-        alt: 'DocSearchAI',
-        title: 'DocSearchAI',
-        categories: ['ReactJS', 'NodeJS', 'GPT-3.5 API', 'MongoDB', 'ElasticSearch', 'AWS'],
-        description: 'Built an AI-powered documentation chat application for conversational search and context-aware responses. Implemented ReactJS\'s hooks and context for efficient state management.',
-        href: 'projects/docSearchAI'
-    },
-    {
         image: '/images/gmapsSafety.jpg',
         alt: 'Safety In Google Maps',
         title: 'Safety In Google Maps',
@@ -62,14 +54,15 @@ const ProjectsListData:{
         href: 'http://mediaserver.rssmv.in'
     },
     {
-        image: '/images/ytnotes.jpg',
-        alt: 'YouTube Playlist to Interactive Course Converter',
-        title: 'YouTube Playlist to Interactive Course Converter',
-        categories: ['React', 'Redux', 'Jest', 'Notion API'],
+        image: '/images/quill-logo.svg',  // Use your project logo
+        alt: 'Quill - Chat with your PDFs',
+        title: 'Quill',
+        categories: ['Next.js', 'TypeScript', 'OpenAI', 'LangChain', 'Pinecone'],
         show: true,
-        description: 'Collaborated on a React app integrating Notion as CMS for content management. Optimized Redux for state handling and implemented Storybook and Jest for UI reliability.',
-        href: 'projects/ytnotes'
-    }
+        description: 'Conversational AI for PDFs, powered by OpenAI and semantic search.',
+        href: 'projects/chatWithPdf'  // Adjust the path if needed
+      }
+      
 ];
 
 export default ProjectsListData;

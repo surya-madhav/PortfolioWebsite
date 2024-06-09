@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Set radius variable */
 :root {
-  --rounded: 1rem;
+  --radius: 0.5rem;
 }
 /* 
 @media (prefers-color-scheme: dark) {

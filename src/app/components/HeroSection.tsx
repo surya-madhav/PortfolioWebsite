@@ -55,7 +55,6 @@ const HeroSection = () => {
                         <Image
                             className='rounded-full w-72 h-72 bg-gray-800 shadow-lg border border-orange-200' src="/images/ProfileRedJacket.png" style={{ objectFit: "contain" }} width={500} alt="Hero Image" height={500} />
                     </div>
-
                 </div>
             </div>
         </section>
