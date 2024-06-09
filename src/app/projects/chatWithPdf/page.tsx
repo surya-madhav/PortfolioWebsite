@@ -78,7 +78,7 @@ const ChatWithPDF = () => {
 
         <h3 className="text-lg font-semibold text-gray-400 dark:text-white mt-4 mb-2">Core Functionality</h3>
         <p className="mt-2">
-          The platform's core functionality revolves around the seamless interaction between users and their PDF documents. By leveraging advanced language models, the platform can understand and respond to user queries, providing accurate and contextually relevant answers. This interaction is facilitated by integrating Pinecone for efficient semantic search, LangChain for orchestrating the retrieval of relevant document chunks, and OpenAI's GPT-3.5 Turbo for generating precise answers. Users can effortlessly upload their PDFs, pose questions, and receive immediate responses, making document analysis and information retrieval intuitive and efficient.
+          The platform&apos;s core functionality revolves around the seamless interaction between users and their PDF documents. By leveraging advanced language models, the platform can understand and respond to user queries, providing accurate and contextually relevant answers. This interaction is facilitated by integrating Pinecone for efficient semantic search, LangChain for orchestrating the retrieval of relevant document chunks, and OpenAI&apos;s GPT-3.5 Turbo for generating precise answers. Users can effortlessly upload their PDFs, pose questions, and receive immediate responses, making document analysis and information retrieval intuitive and efficient.
         </p>
 
         <h3 className="text-lg font-semibold text-gray-400 dark:text-white mt-4 mb-2">Technical Architecture</h3>

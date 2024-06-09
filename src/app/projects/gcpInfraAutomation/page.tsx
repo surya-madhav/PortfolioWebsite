@@ -74,7 +74,7 @@ const GCPInfraAutomation = () => {
           The application is developed as a RESTful API using Node.js and Prisma, featuring endpoints for user management and health checks. Prisma, acting as an ORM, ensures efficient database interactions. This setup provides a robust backend capable of handling high loads while maintaining performance and security.
         </p>
         <p className="mt-2">
-          Node.js enables asynchronous operations, enhancing the API's responsiveness. The API design adheres to best practices, ensuring scalability and maintainability, crucial for cloud-native applications.
+          Node.js enables asynchronous operations, enhancing the API&apos;s responsiveness. The API design adheres to best practices, ensuring scalability and maintainability, crucial for cloud-native applications.
         </p>
 
         <h3 className="text-lg font-semibold text-gray-400 dark:text-white mt-4 mb-2">Infrastructure Automation</h3>
@@ -95,7 +95,7 @@ const GCPInfraAutomation = () => {
 
         <h3 className="text-lg font-semibold text-gray-400 dark:text-white mt-4 mb-2">Monitoring and Logging</h3>
         <p className="mt-2">
-          GCP's Operations Suite provides robust monitoring and logging, offering insights and alerts to maintain system health and performance. Cloud Monitoring tracks metrics and sends alerts for unusual activity.
+          GCP&apos;s Operations Suite provides robust monitoring and logging, offering insights and alerts to maintain system health and performance. Cloud Monitoring tracks metrics and sends alerts for unusual activity.
         </p>
         <p className="mt-2">
           Cloud Logging collects and analyzes logs, aiding in troubleshooting and performance optimization. This comprehensive visibility ensures proactive maintenance and swift issue resolution.
@@ -111,7 +111,7 @@ const GCPInfraAutomation = () => {
 
         <h3 className="text-lg font-semibold text-gray-400 dark:text-white mt-4 mb-2">Scalability and Performance</h3>
         <p className="mt-2">
-          Load balancing and autoscaling maintain application performance and availability. GCP's Load Balancing service distributes traffic across instances, preventing bottlenecks.
+          Load balancing and autoscaling maintain application performance and availability. GCP&apos;s Load Balancing service distributes traffic across instances, preventing bottlenecks.
         </p>
         <p className="mt-2">
           Autoscaling dynamically adjusts the number of instances based on demand, optimizing resource utilization and cost efficiency. This ensures the application remains responsive under varying loads.
