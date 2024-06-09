@@ -55,8 +55,8 @@ const ProjectsListData:{
     },
     {
         image: '/images/quill-logo.svg',  // Use your project logo
-        alt: 'Quill - Chat with your PDFs',
-        title: 'Quill',
+        alt: 'Chat With PDF',
+        title: 'Chat With PDF',
         categories: ['Next.js', 'TypeScript', 'OpenAI', 'LangChain', 'Pinecone'],
         show: true,
         description: 'Conversational AI for PDFs, powered by OpenAI and semantic search.',
