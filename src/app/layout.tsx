@@ -28,7 +28,7 @@ export default function RootLayout({
           <div className="mb-12">
             <Navbar />
           </div>
-          <div>{children}</div>
+          <div className="w-full">{children}</div>
         </main>
 
       </body>
