@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Navbar } from "./components/Navbar";
-
+import { Analytics } from "@vercel/analytics/react"
 
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export default function RootLayout({
             <Navbar />
           </div>
           <div className="w-full">{children}</div>
+          <Analytics />
         </main>
 
       </body>
