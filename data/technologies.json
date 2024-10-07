@@ -1,0 +1,93 @@
+{
+    "Node.js": {
+        "name": "Node.js",
+        "icon": "/icons/nodejs.svg",
+        "category": "Programming Language"
+    },
+    "Express": {
+        "name": "Express",
+        "icon": "/icons/express.svg",
+        "category": "Framework"
+    },
+    "MySQL": {
+        "name": "MySQL",
+        "icon": "/icons/cloud_sql.svg",
+        "category": "Database"
+    },
+    "Terraform": {
+        "name": "Terraform",
+        "icon": "/icons/terraform.svg",
+        "category": "Infrastructure as Code"
+    },
+    "Packer": {
+        "name": "Packer",
+        "icon": "/icons/packer.svg",
+        "category": "Infrastructure Automation"
+    },
+    "Google Cloud Platform": {
+        "name": "Google Cloud Platform",
+        "icon": "/icons/my_cloud.svg",
+        "category": "Cloud Provider"
+    },
+    "Pub/Sub": {
+        "name": "Pub/Sub",
+        "icon": "/icons/pubsub.svg",
+        "category": "Messaging Service"
+    },
+    "Cloud Functions": {
+        "name": "Cloud Functions",
+        "icon": "/icons/cloud_functions.svg",
+        "category": "Serverless"
+    },
+    "Compute Engine": {
+        "name": "Compute Engine",
+        "icon": "/icons/compute_engine.svg",
+        "category": "Cloud Infrastructure"
+    },
+    "CMEK": {
+        "name": "CMEK",
+        "icon": "/icons/kms.svg",
+        "category": "Security & Compliance"
+    },
+    "Load Balancing": {
+        "name": "Load Balancing",
+        "icon": "/icons/load_bal.svg",
+        "category": "Networking"
+    },
+    "Autoscaling": {
+        "name": "Autoscaling",
+        "icon": "/icons/autoscale.svg",
+        "category": "Cloud Infrastructure"
+    },
+    "Continuous Deployment": {
+        "name": "Continuous Deployment",
+        "icon": "/icons/cicd.svg",
+        "category": "DevOps"
+    },
+    "Python": {
+        "name": "Python",
+        "icon": "/icons/python.svg",
+        "category": "Programming Language"
+    },
+    "scikit-learn": {
+        "name": "scikit-learn",
+        "icon": "/icons/scikit-learn.svg",
+        "category": "Machine Learning"
+    },
+    "AutoML": {
+        "name": "AutoML",
+        "icon": "/icons/H2O-Logo.svg",
+        "category": "Machine Learning"
+    },
+    "Pandas": {
+        "name": "Pandas",
+        "icon": "/icons/pandas.svg",
+        "category": "Data Analysis"
+    },
+    "NumPy": {
+        "name": "NumPy",
+        "icon": "/icons/numpy.svg",
+        "category": "Data Analysis"
+    }
+
+}

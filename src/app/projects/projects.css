@@ -6,9 +6,111 @@
         height: 46rem;
     }
 }
+.prose{
+    width: 100%;
+    max-width: none;
+}
 
 .image-container{
     position: relative;
     width: 100%;
     aspect-ratio: 263/164;
+}
+/* General container */
+.prose-container {
+    display: block;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: none; /* Avoid width restrictions */
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.prose :where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    color: #f6ad55; /* Bright orange for strong text */
+}
+/* Styling for prose (markdown content) */
+.prose-container .prose {
+    color: #e2e8f0; /* Light gray text for dark background */
+    line-height: 1.8;
+    width: 100%;
+}
+
+/* Headings */
+.prose-container .prose h1 {
+    color: #f6ad55; /* Bright orange for contrast */
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.prose-lg :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    margin-bottom: 0.25rem;
+}
+.prose-container .prose h2, .prose h3 {
+    color: #63b3ed; /* Lighter blue */
+    margin-top: 1.2rem;
+}
+
+/* Paragraph styling */
+.prose-container .prose p {
+    margin-bottom: 1.5rem;
+    color: #cbd5e0; /* Slightly lighter gray for text */
+}
+
+/* Links */
+.prose-container .prose a {
+    color: #81e6d9; /* Soft cyan for links */
+    text-decoration: underline;
+}
+
+.prose-container .prose a:hover {
+    color: #4fd1c5; /* Slightly darker cyan on hover */
+}
+
+/* Lists */
+.prose-container .prose ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    color: #cbd5e0; /* Light gray for list items */
+}
+
+.prose-container .prose ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    color: #cbd5e0;
+}
+
+/* Blockquote styling */
+.prose-container .prose blockquote {
+    background-color: #2d3748; /* Slightly lighter dark background */
+    border-left: 4px solid #63b3ed; /* Blue border */
+    padding: 1rem;
+    font-style: italic;
+    color: #a0aec0; /* Lighter gray for quote text */
+    margin: 1.5rem 0;
+}
+
+/* Code block styling */
+.prose-container .prose code {
+    background-color: #2d3748;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    color: #fbd38d; /* Soft yellow for code */
+}
+
+.prose-container .prose pre {
+    background-color: #2d3748;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    overflow-x: auto;
+    color: #fbd38d;
+}
+
+/* Image styling */
+.prose-container .prose img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border: 2px solid #4fd1c5; /* Border around images */
 }

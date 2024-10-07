@@ -12,7 +12,7 @@ const Card = ({ project }: { project: Project }) => {
     <div
       className='flex group flex-col rounded-xl border bg-gray-800 hover:border-orange-500 cursor-pointer group-hover:shadow-lg'
       onClick={() => {
-        router.push(project.href);
+        router.push("/projects/" + project.slug);
       }}
     >
       <div className='w-full bg-gray-800 flex items-center justify-center'>
