@@ -58,7 +58,66 @@
     "show": true,
     "description": "Developed a predictive model on Bike Sharing dataset, achieving 90% accuracy in demand prediction with Random Forest.",
     "href": "projects/bikeSharing",
-      "markdownContent": "## Bike Sharing Demand Prediction\n\nThis project utilizes **H2O AutoML** to predict daily bike rental counts, focusing on model accuracy and feature interpretability. Excluding ensemble models, the analysis uses **SHAP** and **LIME** to understand key drivers of bike rentals.\n\n### AutoML Process\n- **H2O AutoML** was employed to automatically train multiple models such as **Random Forest**, **Linear Regression**, and **XGBoost**.\n- The goal was to predict the total daily bike rentals based on features like **temperature**, **humidity**, and **seasonality**.\n\n### Feature Engineering and Data Preprocessing\n- The dataset was preprocessed with **one-hot encoding** applied to categorical variables, while numerical features were already normalized.\n- Features include **season**, **year**, **month**, **holiday status**, **weather conditions**, and normalized **temperature**, **humidity**, and **windspeed**.\n\n### Results and Metrics\n- The **Random Forest** model outperformed other models with the following metrics:\n  - **R²**: 0.87\n  - **MAE**: 471\n  - **RMSE**: 716\n- **Linear Regression** achieved:\n  - **R²**: 0.84\n  - **MAE**: 583\n  - **RMSE**: 722\n- **Temperature**, **year**, and **humidity** were identified as the most important factors influencing bike rental demand.\n\n### Model Interpretability\n- **SHAP (SHapley Additive exPlanations)** analysis revealed:\n  - **Year (yr_1)**, **temperature (temp)**, and **feeling temperature (atemp)** had the highest impact on rental counts.\n  - **SHAP values** were used to explain how individual predictions were made, providing insights into how feature values contributed to the overall rental predictions.\n\n### Data Visualization\n- Histograms and count plots were used to explore the distribution of bike rentals and feature values.\n  - **Temperature** and **working days** were found to significantly influence the number of rentals, with moderate temperatures correlating with higher rentals.\n\n### Limitations\n- **H2O AutoML's** inability to compute SHAP values for ensemble models led to the exclusion of these models to maintain interpretability.\n- The focus remained on simpler models like **Random Forest** and **Linear Regression** for transparent analysis.\n\nFor more information, visit the [Github Repository](https://github.com/surya-madhav/BikeSharingDataScience)."
-
+    "markdownContent": "## Bike Sharing Demand Prediction\n\nThis project utilizes **H2O AutoML** to predict daily bike rental counts, focusing on model accuracy and feature interpretability. Excluding ensemble models, the analysis uses **SHAP** and **LIME** to understand key drivers of bike rentals.\n\n### AutoML Process\n- **H2O AutoML** was employed to automatically train multiple models such as **Random Forest**, **Linear Regression**, and **XGBoost**.\n- The goal was to predict the total daily bike rentals based on features like **temperature**, **humidity**, and **seasonality**.\n\n### Feature Engineering and Data Preprocessing\n- The dataset was preprocessed with **one-hot encoding** applied to categorical variables, while numerical features were already normalized.\n- Features include **season**, **year**, **month**, **holiday status**, **weather conditions**, and normalized **temperature**, **humidity**, and **windspeed**.\n\n### Results and Metrics\n- The **Random Forest** model outperformed other models with the following metrics:\n  - **R²**: 0.87\n  - **MAE**: 471\n  - **RMSE**: 716\n- **Linear Regression** achieved:\n  - **R²**: 0.84\n  - **MAE**: 583\n  - **RMSE**: 722\n- **Temperature**, **year**, and **humidity** were identified as the most important factors influencing bike rental demand.\n\n### Model Interpretability\n- **SHAP (SHapley Additive exPlanations)** analysis revealed:\n  - **Year (yr_1)**, **temperature (temp)**, and **feeling temperature (atemp)** had the highest impact on rental counts.\n  - **SHAP values** were used to explain how individual predictions were made, providing insights into how feature values contributed to the overall rental predictions.\n\n### Data Visualization\n- Histograms and count plots were used to explore the distribution of bike rentals and feature values.\n  - **Temperature** and **working days** were found to significantly influence the number of rentals, with moderate temperatures correlating with higher rentals.\n\n### Limitations\n- **H2O AutoML's** inability to compute SHAP values for ensemble models led to the exclusion of these models to maintain interpretability.\n- The focus remained on simpler models like **Random Forest** and **Linear Regression** for transparent analysis.\n\nFor more information, visit the [Github Repository](https://github.com/surya-madhav/BikeSharingDataScience)."
+  },
+  {
+    "id": 5,
+    "slug": "SmartDMS",
+    "image": "/images/smds.png",
+    "alt": "Smart Document Management System (SDMS)",
+    "title": "Smart Document Management System",
+    "categories": [
+      "React",
+      "Next.js",
+      "FastAPI",
+      "Elasticsearch",
+      "LLMs",
+      "AWS"
+    ],
+    "githubUrl": "https://github.com/surya-madhav/sdms",
+    "techStack": [
+      "React",
+      "Next.js",
+      "FastAPI",
+      "Elasticsearch",
+      "Python",
+      "RabbitMQ",
+      "PostgreSQL",
+      "Amazon S3",
+      "Redis",
+      "Docker",
+      "Kubernetes"
+    ],
+    "show": true,
+    "description": "A full-stack Smart Document Management System (SDMS) featuring AI-powered document processing and scalable microservices architecture for robust, efficient document storage, retrieval, and analysis.",
+    "href": "projects/smartDocumentManagementSystem",
+    "markdownContent": "## Smart Document Management System (SDMS)\n\nThis project is a **Smart Document Management System (SDMS)** designed with scalability, performance, and AI-powered document analysis in mind. It features a **microservices architecture** with various components that provide reliable and efficient document handling.\n\n### System Components\n- **Frontend**: Built using **React** and **Next.js** for a responsive and SEO-friendly user interface.\n- **Backend**: Powered by **FastAPI**, a fast Python web framework that offers RESTful API services.\n- **Database**: **Elasticsearch** is used for document storage and full-text search capabilities. **PostgreSQL** is used for user data and system metadata.\n- **Machine Learning**: Leveraging **LLM (Large Language Model)** for tasks such as document classification, keyword extraction, and semantic search.\n- **Orchestration**: **Apache Airflow** is utilized for managing document processing workflows and scheduling tasks.\n- **Object Storage**: **Amazon S3** is used for scalable document storage.\n- **Message Queue**: **RabbitMQ** for asynchronous task processing and communication between services.\n\n### Key Features\n1. **Document Upload & Storage**: Drag-and-drop file upload with automatic versioning and metadata extraction.\n2. **AI-Powered Document Analysis**: Automatic keyword extraction, document classification, and named entity recognition (NER).\n3. **Full-Text Search & Semantic Search**: Search capabilities based on document content and semantic vector embeddings.\n4. **Scalable Microservices Architecture**: Each service can scale independently, ensuring efficient handling of increasing workloads.\n5. **Role-Based Access Control (RBAC)**: Fine-grained access control with audit logging for document access and modifications.\n6. **Integration with AWS**: S3 for storage, Redis for caching, and RabbitMQ for asynchronous processing.\n\n### Performance Optimizations\n- **Horizontal Scaling**: The system is containerized with **Kubernetes** for orchestrating microservices and managing scaling.\n- **Caching**: **Redis** is used for caching frequently accessed data, and a **CDN** is employed for fast content delivery.\n- **Database Optimization**: Elasticsearch sharding and PostgreSQL partitioning improve performance for large datasets.\n\n### Monitoring & Security\n- Centralized logging with **ELK stack** for monitoring and **Prometheus/Grafana** for metrics collection.\n- **JWT-based authentication** and **OAuth 2.0** for secure access. All data is encrypted using **AES-256** for at-rest and **TLS 1.3** for in-transit encryption.\n\nFor more information, visit the [GitHub Repository](https://github.com/surya-madhav/sdms)."
+  },
+  {
+    "id": 6,
+    "slug": "objectDetection",
+    "image": "/images/yolov8.webp",
+    "alt": "Traffic Sign Detection Using YOLOv8",
+    "title": "Traffic Sign Detection System",
+    "categories": [
+      "Python",
+      "PyTorch",
+      "YOLOv8",
+      "Computer Vision",
+      "Deep Learning"
+    ],
+    "githubUrl": "https://github.com/surya-madhav/traffic-sign-detection",
+    "techStack": [
+      "Python",
+      "PyTorch",
+      "YOLOv8",
+      "OpenCV",
+      "CUDA"
+    ],
+    "show": true,
+    "description": "A real-time traffic sign detection system utilizing YOLOv8 for accurate detection and classification of traffic signs in images and video streams.",
+    "href": "projects/objectDetection",
+    "markdownContent": "## Traffic Sign Detection Using YOLOv8\n\nThis project is a **real-time Traffic Sign Detection System** built using **YOLOv8**, aimed at identifying and classifying traffic signs for autonomous driving and smart traffic systems. The system is designed for real-time performance, enabling quick and accurate traffic sign detection in images and video feeds.\n\n### System Components\n- **Model**: Utilizes **YOLOv8**, a state-of-the-art object detection model, for recognizing traffic signs across 15 classes.\n- **Preprocessing**: Image augmentation techniques such as flipping and scaling improve model robustness.\n- **Performance Optimization**: Hyperparameter tuning for optimal performance, including learning rate, batch size, and number of epochs.\n- **Real-time Inference**: Capable of processing video frames in real-time, with an average inference time of 7.9 ms per frame.\n- **Visualization**: Uses **OpenCV** for image processing and **Matplotlib** for visualizing the model's training and validation results.\n\n### Key Features\n1. **Real-time Traffic Sign Detection**: Achieves an \textbf{mAP50} of 95.7% and \textbf{mAP50-95} of 83.0% across 15 traffic sign classes.\n2. **Hyperparameter Optimization**: Experimented with \textbf{AdamW}, \textbf{SGD}, and auto-optimizer to enhance convergence and detection accuracy.\n3. **Video Stream Integration**: Processes video streams with a fast inference speed, enabling real-time detection of traffic signs.\n4. **Fine-tuning for Traffic Sign Classes**: Trained and fine-tuned for detecting specific signs such as stop signs, speed limits, and traffic lights.\n\n### Performance Optimizations\n- **Real-time Processing**: Achieves an average inference time of \textbf{7.9 ms} per frame, ensuring low-latency performance on live video.\n- **Precision & Recall**: High precision and recall metrics, ensuring robust performance even in complex environments.\n\n### Monitoring & Tracking\n- Training progress tracked and visualized using **Weights & Biases** for better model optimization insights.\n- **Metrics Tracking**: Detailed analysis of precision, recall, and loss curves for model evaluation and improvement.\n\nFor more information, visit the [GitHub Repository](https://github.com/surya-madhav/traffic-sign-detection)."
   }
+  
 ]

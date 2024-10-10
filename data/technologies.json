@@ -1,4 +1,59 @@
 {
+    "React": {
+        "name": "React",
+        "icon": "/icons/react-javascript-js-framework-facebook-svgrepo-com.svg",
+        "category": "Frontend Framework"
+    },
+    "Next.js": {
+        "name": "Next.js",
+        "icon": "/icons/nextjs-icon.svg",
+        "category": "Frontend Framework"
+    },
+    "FastAPI": {
+        "name": "FastAPI",
+        "icon": "/icons/fastapi-svgrepo-com.svg",
+        "category": "Backend Framework"
+    },
+    "Elasticsearch": {
+        "name": "Elasticsearch",
+        "icon": "/icons/elasticsearch-logo-svgrepo-com.svg",
+        "category": "Database"
+    },
+    "Python": {
+        "name": "Python",
+        "icon": "/icons/python.svg",
+        "category": "Programming Language"
+    },
+    "RabbitMQ": {
+        "name": "RabbitMQ",
+        "icon": "/icons/rabbitmq-logo-svgrepo-com.svg",
+        "category": "Messaging Service"
+    },
+    "PostgreSQL": {
+        "name": "PostgreSQL",
+        "icon": "/icons/postgresql-svgrepo-com.svg",
+        "category": "Database"
+    },
+    "Amazon S3": {
+        "name": "Amazon S3",
+        "icon": "/icons/amazonaws-svgrepo-com.svg",
+        "category": "Cloud Storage"
+    },
+    "Redis": {
+        "name": "Redis",
+        "icon": "/icons/redis-svgrepo-com.svg",
+        "category": "In-Memory Database"
+    },
+    "Docker": {
+        "name": "Docker",
+        "icon": "/icons/docker-svgrepo-com.svg",
+        "category": "Containerization"
+    },
+    "Kubernetes": {
+        "name": "Kubernetes",
+        "icon": "/icons/kubernetes-svgrepo-com.svg",
+        "category": "Orchestration"
+    },
     "Node.js": {
         "name": "Node.js",
         "icon": "/icons/nodejs.svg",
@@ -64,11 +119,6 @@
         "icon": "/icons/cicd.svg",
         "category": "DevOps"
     },
-    "Python": {
-        "name": "Python",
-        "icon": "/icons/python.svg",
-        "category": "Programming Language"
-    },
     "scikit-learn": {
         "name": "scikit-learn",
         "icon": "/icons/scikit-learn.svg",
@@ -88,6 +138,25 @@
         "name": "NumPy",
         "icon": "/icons/numpy.svg",
         "category": "Data Analysis"
+    },
+    "CUDA": {
+        "name": "CUDA",
+        "icon": "/icons/cuda-svgrepo-com.svg",
+        "category": "Parallel Computing"
+    },
+    "PyTorch": {
+        "name": "PyTorch",
+        "icon": "/icons/pytorch-svgrepo-com.svg",
+        "category": "Machine Learning"
+    },
+    "YOLOv8": {
+        "name": "YOLOv8",
+        "icon": "/icons/facebook-color-svgrepo-com.svg",
+        "category": "Computer Vision"
+    },
+    "OpenCV": {
+        "name": "OpenCV",
+        "icon": "/icons/opencv-svgrepo-com.svg",
+        "category": "Computer Vision"
     }
-
 }
