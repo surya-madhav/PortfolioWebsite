@@ -38,7 +38,7 @@ export async function generateStaticParams() {
     for (let project of projects) {
       project.techStack = project.techStack.map((tech) => techStack[tech]);
     }
-    console.log("Generated static params for projects.", projects[0].techStack);
+    
 
     return projects.map((project) => ({
       slug: project.slug,
@@ -49,11 +49,37 @@ export async function generateStaticParams() {
   }
 }
 
+async function validateTechStack(project: Project, techStack: TechStack): Promise<string[]> {
+  const missingTech: string[] = [];
+  for (const tech of project.techStack) {
+    if (!techStack[tech]) {
+      missingTech.push(tech);
+    }
+  }
+  return missingTech;
+}
+
 async function getProjectsData(): Promise<Project[]> {
   try {
     const filePath = path.join(process.cwd(), 'data', 'projects.json');
+    const techStackPath = path.join(process.cwd(), 'data', 'technologies.json');
+    
     const jsonData = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(jsonData);
+    const techStackData = JSON.parse(fs.readFileSync(techStackPath, 'utf8'));
+    
+    const projects: Project[] = JSON.parse(jsonData);
+    
+    // Validate tech stack for each project
+    for (const project of projects) {
+      const missingTech = await validateTechStack(project, techStackData);
+      if (missingTech.length > 0) {
+        console.warn(`Project ${project.title} is missing tech stack definitions for: ${missingTech.join(', ')}`);
+        // Filter out missing tech stack items
+        project.techStack = project.techStack.filter(tech => !missingTech.includes(tech));
+      }
+    }
+    
+    return projects;
   } catch (error) {
     console.error("Error reading projects data: ", error);
     return [];
@@ -90,7 +116,7 @@ export default async function ProjectPage({ params }: Props) {
 
   // Convert markdownContent to HTML
   const contentHtml = await markdownToHtml(project.markdownContent || '');
-  console.log("Converted markdown to HTML: ", contentHtml);
+  
 
   return (
     <div className="py-8 w-full">

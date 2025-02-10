@@ -20,6 +20,8 @@ const HeroSection = () => {
                         <span className='text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-600'>Sai Surya Rebbapragada</span>
                         <div className="text-center lg:text-start mb-1">
                             <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Full Stack Web Developer</span>
+                            <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Front End Developer </span>
+                            <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Generative AI Engineer</span>
                             {/* <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Product Design Advocate</span> */}
                             <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">Backend Systems Architect</span>
                             <span className="inline-block border border-orange-400 text-white px-3 py-1 rounded-full text-sm mr-2">DevOps Engineer</span>

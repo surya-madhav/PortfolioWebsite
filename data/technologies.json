@@ -158,5 +158,35 @@
         "name": "OpenCV",
         "icon": "/icons/opencv-svgrepo-com.svg",
         "category": "Computer Vision"
+    },
+    "LangChain": {
+        "name": "LangChain",
+        "icon": "/icons/langchain.png",
+        "category": "AI Framework"
+    },
+    "LangGraph": {
+        "name": "LangGraph",
+        "icon": "/icons/langraph.png",
+        "category": "AI Framework"
+    },
+    "Pinecone": {
+        "name": "Pinecone",
+        "icon": "/icons/pinecone.svg",
+        "category": "Vector Database"
+    },
+    "ElevenLabs": {
+        "name": "ElevenLabs",
+        "icon": "/icons/elevenlabs.svg",
+        "category": "Text-to-Speech"
+    },
+    "Apache Airflow": {
+        "name": "Apache Airflow",
+        "icon": "/icons/airflow.svg",
+        "category": "Workflow Orchestration"
+    },
+    "Tailwind CSS": {
+        "name": "Tailwind CSS",
+        "icon": "/icons/tailwind.png",
+        "category": "Frontend Styling"
     }
 }
