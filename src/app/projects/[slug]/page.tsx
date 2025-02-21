@@ -1,7 +1,7 @@
 // app/projects/[slug]/page.tsx
 
 import { notFound } from 'next/navigation';
-import fs from 'fs';
+import fs from "fs"
 import path from 'path';
 import Image from 'next/image';
 import "../projects.css";
