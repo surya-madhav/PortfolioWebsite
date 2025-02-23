@@ -1,10 +1,10 @@
 import { Project } from '@/types/project';
 import Card from './Card';
-import { getAllProjects } from '@/lib/utils';
+import { getAllProjects } from '@/data';
 
-const Projects = async () => {
-  // Fetch both JSON projects and route-based projects
-  const projects = await getAllProjects();
+const Projects = () => {
+  // Get projects directly from the data module
+  const projects = getAllProjects();
 
   return (
     <section>

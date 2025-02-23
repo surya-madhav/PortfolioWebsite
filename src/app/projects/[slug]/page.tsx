@@ -1,18 +1,15 @@
-// app/projects/[slug]/page.tsx
-
 import { notFound } from 'next/navigation';
-import fs from "fs"
-import path from 'path';
 import Image from 'next/image';
 import "../projects.css";
 import { Project } from '@/types/project';
 import Link from 'next/link';
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { TechStack } from '@/types/techstack';
 import React from 'react';
 
 import { remark } from 'remark';
 import html from 'remark-html';
+// Import from data module instead of server utils
+import { getProjectsWithTechStack, getProjectBySlug } from '@/data';
 
 /**
  * Converts a markdown string to HTML.
@@ -33,13 +30,8 @@ interface Props {
 
 export async function generateStaticParams() {
   try {
-    const projects: Project[] = await getProjectsData();
-    const techStack: TechStack = await getTechStack();
-    for (let project of projects) {
-      project.techStack = project.techStack.map((tech) => techStack[tech]);
-    }
+    const projects = await getProjectsWithTechStack();
     
-
     return projects.map((project) => ({
       slug: project.slug,
     }));
@@ -49,58 +41,10 @@ export async function generateStaticParams() {
   }
 }
 
-async function validateTechStack(project: Project, techStack: TechStack): Promise<string[]> {
-  const missingTech: string[] = [];
-  for (const tech of project.techStack) {
-    if (!techStack[tech]) {
-      missingTech.push(tech);
-    }
-  }
-  return missingTech;
-}
-
-async function getProjectsData(): Promise<Project[]> {
-  try {
-    const filePath = path.join(process.cwd(), 'data', 'projects.json');
-    const techStackPath = path.join(process.cwd(), 'data', 'technologies.json');
-    
-    const jsonData = fs.readFileSync(filePath, 'utf8');
-    const techStackData = JSON.parse(fs.readFileSync(techStackPath, 'utf8'));
-    
-    const projects: Project[] = JSON.parse(jsonData);
-    
-    // Validate tech stack for each project
-    for (const project of projects) {
-      const missingTech = await validateTechStack(project, techStackData);
-      if (missingTech.length > 0) {
-        console.warn(`Project ${project.title} is missing tech stack definitions for: ${missingTech.join(', ')}`);
-        // Filter out missing tech stack items
-        project.techStack = project.techStack.filter(tech => !missingTech.includes(tech));
-      }
-    }
-    
-    return projects;
-  } catch (error) {
-    console.error("Error reading projects data: ", error);
-    return [];
-  }
-}
-
-async function getTechStack(): Promise<TechStack> {
-  try {
-    const techStackPath = path.join(process.cwd(), 'data', 'technologies.json');
-    const techStack = JSON.parse(fs.readFileSync(techStackPath, 'utf8'));
-    return techStack;
-  } catch (error) {
-    console.error("Error reading tech stack data: ", error);
-    return {} as TechStack;
-  }
-}
-
 export default async function ProjectPage({ params }: Props) {
   let project: Project | undefined;
   try {
-    const projects = await getProjectsData();
+    const projects = await getProjectsWithTechStack();
     project = projects.find((p) => p.slug === params.slug);
   } catch (error) {
     console.error("Error fetching project data: ", error);
@@ -110,9 +54,6 @@ export default async function ProjectPage({ params }: Props) {
     console.error("Project not found for slug: ", params.slug);
     notFound(); // Show 404 if project is not found
   }
-
-  const techStack = await getTechStack();
-  project.techStack = project.techStack.map((tech) => techStack[tech]);
 
   // Convert markdownContent to HTML
   const contentHtml = await markdownToHtml(project.markdownContent || '');
