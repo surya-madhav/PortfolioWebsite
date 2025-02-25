@@ -11,6 +11,7 @@ export interface Project {
     show: boolean;
     description: string;
     href: string;
-    markdownContent: string;
+    markdownContent?: string;
+    markdownPath?: string;
     githubUrl: string;
   }

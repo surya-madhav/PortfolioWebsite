@@ -114,3 +114,73 @@
     margin: 1rem 0;
     border: 2px solid #4fd1c5; /* Border around images */
 }
+
+/* Table styling */
+.prose-container .prose table {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+}
+
+.prose-container .prose table th {
+    background-color: #2d3748;
+    color: #63b3ed;
+    font-weight: bold;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border: 1px solid #4a5568;
+}
+
+.prose-container .prose table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #4a5568;
+    color: #cbd5e0;
+}
+
+.prose-container .prose table tr:nth-child(even) {
+    background-color: #2d3748;
+}
+
+.prose-container .prose table tr:hover {
+    background-color: #2c3344;
+}
+
+/* Mermaid diagram styling */
+.prose-container .prose .mermaid {
+    margin: 1.5rem 0;
+    text-align: center;
+    background-color: #2d3748;
+    padding: 1rem;
+    border-radius: 0.375rem;
+}
+
+/* Make mermaid diagrams more visible on dark backgrounds */
+.prose-container .prose .mermaid .label {
+    color: #cbd5e0 !important;
+    font-family: inherit !important;
+}
+
+.prose-container .prose .mermaid .node rect,
+.prose-container .prose .mermaid .node circle,
+.prose-container .prose .mermaid .node ellipse,
+.prose-container .prose .mermaid .node polygon,
+.prose-container .prose .mermaid .node path {
+    fill: #4a5568 !important;
+    stroke: #63b3ed !important;
+}
+
+.prose-container .prose .mermaid .edgePath .path {
+    stroke: #63b3ed !important;
+}
+
+.prose-container .prose .mermaid .arrowheadPath {
+    fill: #63b3ed !important;
+    stroke: #63b3ed !important;
+}
+
+.prose-container .prose .mermaid .cluster rect {
+    fill: #2d3748 !important;
+    stroke: #4a5568 !important;
+}

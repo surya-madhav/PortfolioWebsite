@@ -31,7 +31,7 @@
     "show": true,
     "description": "Utilized Terraform for infrastructure provisioning and Packer for GCP machine image creation, enhancing system reliability.",
     "href": "projects/gcpInfraAutomation",
-    "markdownContent": "## Cloud-Native Application\n\nThe application is developed as a **RESTful API** using **Node.js** and **Prisma**, featuring endpoints for user management and health checks. Prisma, acting as an ORM, ensures efficient database interactions. This setup provides a robust backend capable of handling high loads while maintaining performance and security.\n\n- **Node.js** enables asynchronous operations, enhancing the API's responsiveness.\n- The API design adheres to best practices, ensuring **scalability** and **maintainability**, crucial for cloud-native applications.\n\n\n\n## Infrastructure Automation\n\n**Terraform** automates resource provisioning, ensuring consistency and version control across the infrastructure. **Packer** creates custom machine images, incorporating all necessary configurations and dependencies.\n\n- This automation reduces manual intervention, minimizes errors, and accelerates deployment processes.\n- By defining **infrastructure as code**, the project achieves repeatability and scalability, essential for managing complex cloud environments.\n\n\n\n## Event-Driven Architecture\n\nUtilizing **Google Pub/Sub** for messaging and user notifications allows the application to handle real-time events efficiently. This decouples system components, enhancing scalability and fault tolerance.\n\n- **Pub/Sub** supports asynchronous communication, ensuring the application can manage high-throughput scenarios and provide timely updates to users.\n- This architecture is vital for maintaining responsiveness under varying load conditions.\n\n\n\n## Monitoring and Logging\n\n**GCP's Operations Suite** provides robust monitoring and logging, offering insights and alerts to maintain system health and performance.\n\n- **Cloud Monitoring** tracks metrics and sends alerts for unusual activity.\n- **Cloud Logging** collects and analyzes logs, aiding in troubleshooting and performance optimization.\n\nThis comprehensive visibility ensures **proactive maintenance** and swift issue resolution.\n\n\n\n## Security\n\nSecurity is a priority, with **customer-managed encryption keys (CMEK)** enhancing data protection.\n\n- CMEK allows precise control over encryption keys, ensuring data security and compliance with regulatory standards.\n- This approach safeguards data at rest and in transit, aligning with best practices in cloud security.\n\nRegular **key rotations** and strict **access controls** further enhance security measures.\n\n\n\n## Scalability and Performance\n\n**Load balancing** and **autoscaling** maintain application performance and availability.\n\n- **GCP's Load Balancing** service distributes traffic across instances, preventing bottlenecks.\n- **Autoscaling** dynamically adjusts the number of instances based on demand, optimizing resource utilization and cost efficiency.\n\nThis ensures the application remains responsive under varying loads.\n\n\n\n## Continuous Deployment\n\n**Continuous deployment** practices ensure seamless updates through rolling updates in managed instance groups. **CI/CD pipelines** automate build, test, and deployment processes, enabling frequent, reliable releases.\n\n- Rolling updates minimize downtime by incrementally deploying new versions.\n- This approach maintains application integrity and user experience during updates.\n\n\n\nFor more detailed information on this project, please visit the [Github Code](https://github.com/surya-madhav/InfraAutomation).",
+    "markdownPath": "/assets/markdown/gcpInfraAutomation.md",
     "githubUrl": "https://github.com/surya-madhav/InfraAutomation"
   },
   {
@@ -95,5 +95,72 @@
     "href": "projects/learnLab",
     "markdownContent": "## AI-Powered Learning Platform\n\nLearnLab transforms static PDF documents into engaging, multi-modal learning experiences using advanced AI technologies and cloud infrastructure. The system employs **RAG (Retrieval Augmented Generation)** architecture and **Multi Agentic Architecture** for content generation.\n\n### Multi-Agent System\n\n- **Podcast Generator Agent** creates conversational audio content with dramatic elements\n- **Quiz Generator Agent** produces interactive educational assessments\n- **Flashcard Agent** develops study materials with spaced repetition\n- **Blog/Social Agent** handles content distribution\n\n### Technical Implementation\n\n- Implemented **LangGraph** for agent orchestration and workflow management\n- Utilized **OpenAI's text-embedding-3-small** for semantic understanding\n- Integrated **ElevenLabs** for high-quality text-to-speech synthesis\n- Achieved 50% reduction in podcast generation time through optimization\n\n### Cloud Architecture\n\n- **FastAPI** backend with **PostgreSQL** database\n- **Next.js** frontend with **Streamlit** analytics dashboard\n- **Apache Airflow** for workflow orchestration\n- **AWS S3** and **GCP** for cloud infrastructure\n- **Pinecone** for vector database operations\n\n### Security and Scalability\n\n- **JWT** authentication system\n- **Docker** containerization\n- **GitHub Actions** for CI/CD\n- Comprehensive logging and monitoring\n- Semantic caching for performance optimization\n\n### Learning Analytics\n\n- User engagement tracking\n- Learning progress monitoring\n- Performance analytics\n- Content effectiveness measurement\n\nFor detailed technical documentation and source code, visit the [Github Repository](https://github.com/surya-madhav/LearnLab).",
     "githubUrl": "https://github.com/surya-madhav/LearnLab"
+  },
+  {
+    "id": 6,
+    "slug": "hpcTusimple",
+    "image": "/images/hpc/multi_gpu_performance_analysis.png",
+    "alt": "HPC Lane Detection Research",
+    "title": "High-Performance Computing for Lane Detection",
+    "categories": [
+      "PyTorch",
+      "Distributed Computing",
+      "Deep Learning",
+      "Computer Vision",
+      "Parallel Computing",
+      "CUDA",
+      "HPC"
+    ],
+    "techStack": [
+      "Python",
+      "PyTorch",
+      "CUDA",
+      "ResNet",
+      "U-Net",
+      "Dask",
+      "Attention Mechanisms",
+      "Distributed Data Parallel",
+      "Mixed Precision"
+    ],
+    "show": true,
+    "description": "Researched and implemented optimized lane detection for autonomous driving using high-performance computing techniques, with detailed parallel efficiency analysis and scaling across multiple CPUs and GPUs.",
+    "href": "projects/hpcTusimple",
+    "markdownPath": "/assets/markdown/hpc-tusimple.md",
+    "githubUrl": "https://github.com/surya-madhav/hpc-tusimple"
+  },
+  {
+    "id": 7,
+    "slug": "multiModalRag",
+    "image": "/images/BikeSharingFlow.png",
+    "alt": "Multi-Modal RAG System",
+    "title": "Multi-Modal RAG System with Agentic Architectures",
+    "categories": [
+      "Python",
+      "LangChain",
+      "LangGraph",
+      "Generative AI",
+      "RAG",
+      "Multi-Modal",
+      "Apache Airflow",
+      "FastAPI"
+    ],
+    "techStack": [
+      "Python",
+      "LangChain",
+      "LangGraph",
+      "OpenAI API",
+      "Pinecone",
+      "AWS S3",
+      "GPT-4o Vision",
+      "FastAPI",
+      "PostgreSQL",
+      "Apache Airflow",
+      "Docker"
+    ],
+    "show": true,
+    "description": "Designed and implemented a sophisticated multi-modal RAG system with specialized agents for processing diverse document formats, extracting text, images, and tables to enhance information retrieval and generation capabilities.",
+    "href": "projects/multiModalRag",
+    "markdownPath": "/assets/markdown/multi-modal-rag.md",
+    "githubUrl": "https://github.com/surya-madhav/multi-modal-rag"
   }
 ]

@@ -5,20 +5,66 @@ import { Project } from '@/types/project';
 import Link from 'next/link';
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import React from 'react';
+import path from 'path';
+import fs from 'fs';
+import dynamic from 'next/dynamic';
 
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkGfm from 'remark-gfm';
 // Import from data module instead of server utils
 import { getProjectsWithTechStack, getProjectBySlug } from '@/data';
 
+// Dynamically import the client component with no SSR
+const MermaidRenderer = dynamic(
+  () => import('@/components/MermaidRenderer'),
+  { ssr: false }
+);
+
 /**
- * Converts a markdown string to HTML.
- * @param markdown - The markdown content to convert.
+ * Reads markdown content from a file.
+ * @param filePath - The path to the markdown file.
+ * @returns A promise that resolves to the markdown content.
+ */
+async function readMarkdownFile(filePath: string): Promise<string> {
+  try {
+    // Resolve the absolute path to the file
+    const absolutePath = path.join(process.cwd(), filePath);
+    // Read the file content
+    const content = await fs.promises.readFile(absolutePath, 'utf8');
+    return content;
+  } catch (error) {
+    console.error(`Error reading markdown file ${filePath}:`, error);
+    return ''; // Return empty string on error
+  }
+}
+
+/**
+ * Processes markdown content, whether it's a direct string or from a file path.
+ * @param project - The project containing either markdownContent or markdownPath.
  * @returns A promise that resolves to the HTML string.
  */
-async function markdownToHtml(markdown: string): Promise<string> {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
+async function processMarkdown(project: Project): Promise<string> {
+  let markdownContent = '';
+  
+  // If markdownPath is provided, read content from file
+  if (project.markdownPath) {
+    markdownContent = await readMarkdownFile(project.markdownPath);
+  } 
+  // Otherwise use direct markdown content if available
+  else if (project.markdownContent) {
+    markdownContent = project.markdownContent;
+  }
+  
+  // Convert markdown to HTML with GFM support (tables, etc.)
+  const result = await remark()
+    .use(remarkGfm)  // Adds GitHub Flavored Markdown support (tables, etc.)
+    .use(html, { sanitize: false })  // Don't sanitize to allow script tags
+    .process(markdownContent);
+    
+  let htmlContent = result.toString();
+  
+  return htmlContent;
 }
 
 
@@ -56,7 +102,7 @@ export default async function ProjectPage({ params }: Props) {
   }
 
   // Convert markdownContent to HTML
-  const contentHtml = await markdownToHtml(project.markdownContent || '');
+  const contentHtml = await processMarkdown(project);
   
 
   return (
@@ -104,7 +150,7 @@ export default async function ProjectPage({ params }: Props) {
         {/* Render the HTML content */}
         <div className="prose-container">
           <div className="prose prose-lg my-6">
-            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            <MermaidRenderer htmlContent={contentHtml} />
           </div>
         </div>
       </div>
