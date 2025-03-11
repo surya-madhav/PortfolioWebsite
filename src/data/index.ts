@@ -2,7 +2,7 @@
 import projectsData from '../../data/projects.json';
 import technologiesData from '../../data/technologies.json';
 import { Project } from '@/types/project';
-import { TechStack } from '@/types/techstack';
+import { TechStack, TechStackItem } from '@/types/techstack';
 import { getRouteProjects } from '@/lib/route-projects';
 
 // Import JSON directly - Next.js allows this
@@ -66,4 +66,29 @@ export function enrichProjectWithTechStack(project: Project): Project {
 export function getProjectsWithTechStack(): Project[] {
   const allProjects = getAllProjects();
   return allProjects.map(project => enrichProjectWithTechStack(project));
+}
+
+/**
+ * Group technologies by category
+ */
+export function getTechnologiesByCategory(): Record<string, TechStackItem[]> {
+  const result: Record<string, TechStackItem[]> = {};
+  
+  // Iterate through all technologies
+  Object.values(technologies).forEach(tech => {
+    // Initialize the category array if it doesn't exist
+    if (!result[tech.category]) {
+      result[tech.category] = [];
+    }
+    
+    // Add the technology to its category
+    result[tech.category].push(tech);
+  });
+  
+  // Sort technologies alphabetically by name within each category
+  Object.keys(result).forEach(category => {
+    result[category].sort((a, b) => a.name.localeCompare(b.name));
+  });
+  
+  return result;
 }

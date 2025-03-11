@@ -1,18 +1,70 @@
 "use client";
 import Link from 'next/link'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import NavLink from './NavLink'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import MenuOverlay from './MenuOverlay';
 import ContactMeDialog from './ContactDialog';
-const links:{title:string,href:string}[] = []
+
+const links:{title:string,href:string}[] = [
+  {
+    title: "About Me",
+    href: "#about"
+  },
+  {
+    title: "Projects",
+    href: "#projects"
+  },
+  {
+    title: "Skills",
+    href: "#skills"
+  }
+]
 export const Navbar = () => {
-    const [navbarOpen, setNavbarOpen] = React.useState(false);
+    const [navbarOpen, setNavbarOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("");
+    
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = {
+                about: document.getElementById('about')?.offsetTop,
+                projects: document.getElementById('projects')?.offsetTop,
+                skills: document.getElementById('skills')?.offsetTop
+            };
+            
+            const scrollPosition = window.scrollY + 100; // Adding offset to account for navbar height
+            
+            if (sections.skills && scrollPosition >= sections.skills) {
+                setActiveSection("#skills");
+            } else if (sections.projects && scrollPosition >= sections.projects) {
+                setActiveSection("#projects");
+            } else if (sections.about && scrollPosition >= sections.about) {
+                setActiveSection("#about");
+            } else {
+                setActiveSection("");
+            }
+        };
+        
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+    
+    const handleNavLinkClick = (href: string) => {
+        setNavbarOpen(false); // Close mobile menu when a link is clicked
+        
+        // Smooth scroll to the target section
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     return (
         <nav className='w-full fixed top-0 left-0 right-0 z-10 bg-opacity-100 bg-gray-900 container mx-auto'>
             <div className='flex flex-wrap items-center justify-between mx-auto p-4'>
                 <Link href={"/"} className='text-sm text-orange-400  opacity-80 font-medium shadow-sm  font-mono'>rssmv.</Link>                
-                <div className='mobile-menu hidden'>
+                <div className='mobile-menu block md:hidden'>
                     {
                         !navbarOpen ? (<button className='flex items-center px-3 py-2 border rounded border-slate-200' onClick={() => setNavbarOpen(true)}><Bars3Icon className='h-5 w-5' /></button>) : (<button className='flex items-center px-3 py-2 border rounded border-slate-200' onClick={() => setNavbarOpen(false)}>
                             <XMarkIcon className='h-5 w-5' />
@@ -24,14 +76,44 @@ export const Navbar = () => {
                         {
                             links.map((link, index) => (
                                 <li key={index} className='inline-block md:ml-4'>
-                                    <NavLink href={link.href} title={link.title} />
+                                    <Link 
+                                        href={link.href} 
+                                        className={`block py-2 pl-3 pr-4 ${activeSection === link.href ? 'text-orange-400 font-medium' : 'text-gray-200'} hover:text-orange-300`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            handleNavLinkClick(link.href);
+                                        }}
+                                    >
+                                        {link.title}
+                                    </Link>
                                 </li>
                             ))
                         }
                     </ul>
                 </div>
             </div>
-            {navbarOpen ? <MenuOverlay links={links}/>: null}
+            {navbarOpen ? 
+                <div className="md:hidden bg-gray-900 py-2">
+                    <ul className='flex flex-col py-4 items-center'>
+                        {
+                            links.map((link, index) => (
+                                <li key={index} className='py-2'>
+                                    <Link 
+                                        href={link.href} 
+                                        className={`block py-2 px-4 ${activeSection === link.href ? 'text-orange-400 font-medium' : 'text-gray-200'} hover:text-orange-300`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            handleNavLinkClick(link.href);
+                                        }}
+                                    >
+                                        {link.title}
+                                    </Link>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            : null}
         </nav>
     )
 }

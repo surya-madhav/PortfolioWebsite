@@ -26,10 +26,8 @@ export default function RootLayout({
 
       <body className="bg-gray-900 text-yellow-50">
         <main className="flex min-h-screen flex-col items-center container mx-auto bg-gray-900">
-          <div className="mb-12">
-            <Navbar />
-          </div>
-          <div className="w-full">{children}</div>
+          <Navbar />
+          <div className="w-full mt-16">{children}</div>
           <Analytics />
         </main>
 
