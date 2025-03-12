@@ -23,7 +23,8 @@
     width: 100%;
     max-width: none; /* Avoid width restrictions */
     border-radius: 0.5rem;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    background-color: rgba(26, 32, 44, 0.2); /* Very subtle dark background */
+    backdrop-filter: blur(4px); /* Light blur effect */
 }
 
 .prose :where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
@@ -83,7 +84,7 @@
 
 /* Blockquote styling */
 .prose-container .prose blockquote {
-    background-color: #2d3748; /* Slightly lighter dark background */
+    background-color: rgba(45, 55, 72, 0.6); /* Semi-transparent background */
     border-left: 4px solid #63b3ed; /* Blue border */
     padding: 1rem;
     font-style: italic;
@@ -93,14 +94,14 @@
 
 /* Code block styling */
 .prose-container .prose code {
-    background-color: #2d3748;
+    background-color: rgba(45, 55, 72, 0.7);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     color: #fbd38d; /* Soft yellow for code */
 }
 
 .prose-container .prose pre {
-    background-color: #2d3748;
+    background-color: rgba(45, 55, 72, 0.7);
     padding: 1rem;
     border-radius: 0.375rem;
     overflow-x: auto;
@@ -125,7 +126,7 @@
 }
 
 .prose-container .prose table th {
-    background-color: #2d3748;
+    background-color: rgba(45, 55, 72, 0.8);
     color: #63b3ed;
     font-weight: bold;
     padding: 0.75rem 1rem;
@@ -140,18 +141,18 @@
 }
 
 .prose-container .prose table tr:nth-child(even) {
-    background-color: #2d3748;
+    background-color: rgba(45, 55, 72, 0.5);
 }
 
 .prose-container .prose table tr:hover {
-    background-color: #2c3344;
+    background-color: rgba(44, 51, 68, 0.7);
 }
 
 /* Mermaid diagram styling */
 .prose-container .prose .mermaid {
     margin: 1.5rem 0;
     text-align: center;
-    background-color: #2d3748;
+    background-color: rgba(45, 55, 72, 0.7);
     padding: 1rem;
     border-radius: 0.375rem;
 }

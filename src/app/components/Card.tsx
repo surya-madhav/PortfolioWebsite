@@ -10,7 +10,7 @@ const Card = ({ project }: { project: Project }) => {
 
   return (
     <div
-      className='flex group flex-col rounded-xl border bg-gray-800/80 backdrop-blur-sm shadow-md hover:border-orange-500 hover:shadow-orange-500/20 cursor-pointer transition-all duration-300'
+      className='flex group flex-col rounded-xl border border-gray-800 bg-gray-900/30 backdrop-blur-sm hover:border-orange-500 cursor-pointer transition-all duration-300'
       onClick={() => {
         router.push("/projects/" + project.slug);
       }}

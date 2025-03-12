@@ -61,7 +61,7 @@ export const Navbar = () => {
         }
     };
     return (
-        <nav className='w-full fixed top-0 left-0 right-0 z-10 bg-gray-900/80 backdrop-blur-md shadow-md border-b border-gray-800 container mx-auto'>
+        <nav className='w-full fixed top-0 left-0 right-0 z-10 bg-gray-900/60 backdrop-blur-md border-b border-gray-800/30 container mx-auto'>
             <div className='flex flex-wrap items-center justify-between mx-auto p-4'>
                 <Link href={"/"} className='text-sm text-orange-400  opacity-80 font-medium shadow-sm  font-mono'>rssmv.</Link>                
                 <div className='mobile-menu block md:hidden'>
@@ -93,7 +93,7 @@ export const Navbar = () => {
                 </div>
             </div>
             {navbarOpen ? 
-                <div className="md:hidden bg-gray-900/80 backdrop-blur-md border-t border-gray-800 py-2">
+                <div className="md:hidden bg-gray-900/60 backdrop-blur-md border-t border-gray-800/30 py-2">
                     <ul className='flex flex-col py-4 items-center'>
                         {
                             links.map((link, index) => (

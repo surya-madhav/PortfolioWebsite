@@ -107,7 +107,6 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <div className="py-8 w-full">
-      <div className="backdrop-blur-sm">
       <header className="text-center">
 
         <div className='w-full'>
@@ -138,9 +137,9 @@ export default async function ProjectPage({ params }: Props) {
           <div 
             key={tech.name} 
             className="w-24 h-24 p-2 flex flex-col items-center justify-center 
-                       shadow-sm text-white border border-orange-300 
-                       shadow-yellow-600 rounded-md hover:shadow 
-                       hover:shadow-yellow-400 transition-shadow duration-300"
+                       text-white border border-gray-700 rounded-md 
+                       bg-gray-900/30 backdrop-blur-sm 
+                       hover:border-orange-400 transition-all duration-300"
           >
             <Image src={tech.icon} alt={`${tech.name} icon`} width={30} height={30} />
             <div className='mt-2 text-xs font-medium text-center'>{tech.name}</div>
@@ -154,7 +153,6 @@ export default async function ProjectPage({ params }: Props) {
             <MermaidRenderer htmlContent={contentHtml} />
           </div>
         </div>
-      </div>
       </div>
     </div>
   );

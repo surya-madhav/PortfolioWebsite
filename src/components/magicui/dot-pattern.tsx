@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import React, { useEffect, useId, useRef, useState } from "react";
 
 /**
@@ -15,7 +15,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
  * @param {number} [cy=1] - The y-offset of individual dots
  * @param {number} [cr=1] - The radius of each dot
  * @param {string} [className] - Additional CSS classes to apply to the SVG container
- * @param {boolean} [glow=false] - Whether dots should have a glowing animation effect
+ * @param {boolean} [glow=true] - Whether dots should have a glowing animation effect
  */
 interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number;
