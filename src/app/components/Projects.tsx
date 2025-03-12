@@ -1,34 +1,5 @@
-'use client';
-
-import { Project } from '@/types/project';
-import { useRouter } from 'next/navigation';
-import { BentoImageCard } from '@/components/BentoImageCard';
 import { getAllProjects } from '@/data';
-import {
-  CloudIcon,
-  BrainCircuitIcon,
-  CpuIcon,
-  BarChartIcon,
-  DatabaseIcon
-} from "lucide-react";
-
-// Icon mapping for projects
-const getIconForProject = (slug: string) => {
-  switch (slug) {
-    case 'gcpInfraAutomation':
-      return CloudIcon;
-    case 'LearnLab':
-      return BrainCircuitIcon;
-    case 'hpcTusimple':
-      return CpuIcon;
-    case 'bikeSharing':
-      return BarChartIcon;
-    case 'multiModalRag':
-      return BrainCircuitIcon;
-    default:
-      return DatabaseIcon;
-  }
-};
+import ProjectCard from './ProjectCard';
 
 // Project size mapping (for grid layout)
 const getProjectSize = (slug: string) => {
@@ -57,7 +28,7 @@ const projectOrder = [
 ];
 
 const Projects = () => {
-  const router = useRouter();
+  // Get projects data on the server
   const allProjects = getAllProjects();
   
   // Sort projects according to the specified order
@@ -84,23 +55,13 @@ const Projects = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
         {projects.map((project) => {
-          const Icon = getIconForProject(project.slug);
           const sizeClass = getProjectSize(project.slug);
           
-          // Log image path for debugging
-          console.log(`Project: ${project.title}, Image: ${project.image}`);
-          
           return (
-            <BentoImageCard
+            <ProjectCard
               key={project.id}
-              title={project.title}
-              description={project.description}
-              imageSrc={project.image}
-              imageAlt={project.alt}
-              href={`/projects/${project.slug}`}
-              categories={project.categories}
-              className={sizeClass}
-              Icon={Icon}
+              project={project}
+              sizeClass={sizeClass}
             />
           );
         })}

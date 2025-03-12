@@ -1,6 +1,4 @@
-`use client`
 import HeroSection from "./components/HeroSection";
-import React from "react";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 
