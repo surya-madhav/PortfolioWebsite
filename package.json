@@ -22,6 +22,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.5.0",
+    "lucide-react": "^0.363.0",
     "marked": "^14.1.2",
     "mermaid": "^10.8.0",
     "motion": "^10.17.0",
