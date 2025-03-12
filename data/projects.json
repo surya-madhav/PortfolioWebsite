@@ -63,7 +63,7 @@
   {
     "id": 5,
     "slug": "LearnLab",
-    "image": "/images/smds.png",
+    "image": "/images/learnlab.png",
     "alt": "LearnLab - Interactive Learning Platform",
     "title": "LearnLab - AI-Powered Learning Platform",
     "categories": [
@@ -131,7 +131,7 @@
   {
     "id": 7,
     "slug": "multiModalRag",
-    "image": "/images/BikeSharingFlow.png",
+    "image": "/images/multi-agent-rag.png",
     "alt": "Multi-Modal RAG System",
     "title": "Multi-Modal RAG System with Agentic Architectures",
     "categories": [

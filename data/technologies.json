@@ -2,191 +2,332 @@
     "React": {
         "name": "React",
         "icon": "/icons/react-javascript-js-framework-facebook-svgrepo-com.svg",
-        "category": "Frontend Framework"
+        "category": "Web Technologies"
     },
     "Next.js": {
         "name": "Next.js",
         "icon": "/icons/nextjs-icon.svg",
-        "category": "Frontend Framework"
+        "category": "Web Technologies"
     },
     "FastAPI": {
         "name": "FastAPI",
         "icon": "/icons/fastapi-svgrepo-com.svg",
-        "category": "Backend Framework"
+        "category": "Web Technologies"
     },
     "Elasticsearch": {
         "name": "Elasticsearch",
         "icon": "/icons/elasticsearch-logo-svgrepo-com.svg",
-        "category": "Database"
+        "category": "Database & Data Engineering"
     },
     "Python": {
         "name": "Python",
         "icon": "/icons/python.svg",
-        "category": "Programming Language"
+        "category": "Programming Languages"
     },
     "RabbitMQ": {
         "name": "RabbitMQ",
         "icon": "/icons/rabbitmq-logo-svgrepo-com.svg",
-        "category": "Messaging Service"
+        "category": "Distributed Systems & Cloud"
     },
     "PostgreSQL": {
         "name": "PostgreSQL",
         "icon": "/icons/postgresql-svgrepo-com.svg",
-        "category": "Database"
+        "category": "Database & Data Engineering"
     },
     "Amazon S3": {
         "name": "Amazon S3",
         "icon": "/icons/amazonaws-svgrepo-com.svg",
-        "category": "Cloud Storage"
+        "category": "Distributed Systems & Cloud"
     },
     "Redis": {
         "name": "Redis",
         "icon": "/icons/redis-svgrepo-com.svg",
-        "category": "In-Memory Database"
+        "category": "Database & Data Engineering"
     },
     "Docker": {
         "name": "Docker",
         "icon": "/icons/docker-svgrepo-com.svg",
-        "category": "Containerization"
+        "category": "Distributed Systems & Cloud"
     },
     "Kubernetes": {
         "name": "Kubernetes",
         "icon": "/icons/kubernetes-svgrepo-com.svg",
-        "category": "Orchestration"
+        "category": "Distributed Systems & Cloud"
     },
     "Node.js": {
         "name": "Node.js",
         "icon": "/icons/nodejs.svg",
-        "category": "Programming Language"
+        "category": "Programming Languages"
     },
     "Express": {
         "name": "Express",
         "icon": "/icons/express.svg",
-        "category": "Framework"
+        "category": "Web Technologies"
     },
     "MySQL": {
         "name": "MySQL",
         "icon": "/icons/cloud_sql.svg",
-        "category": "Database"
+        "category": "Database & Data Engineering"
     },
     "Terraform": {
         "name": "Terraform",
         "icon": "/icons/terraform.svg",
-        "category": "Infrastructure as Code"
+        "category": "Distributed Systems & Cloud"
     },
     "Packer": {
         "name": "Packer",
         "icon": "/icons/packer.svg",
-        "category": "Infrastructure Automation"
+        "category": "Distributed Systems & Cloud"
     },
     "Google Cloud Platform": {
         "name": "Google Cloud Platform",
         "icon": "/icons/my_cloud.svg",
-        "category": "Cloud Provider"
+        "category": "Distributed Systems & Cloud"
     },
     "Pub/Sub": {
         "name": "Pub/Sub",
         "icon": "/icons/pubsub.svg",
-        "category": "Messaging Service"
+        "category": "Distributed Systems & Cloud"
     },
     "Cloud Functions": {
         "name": "Cloud Functions",
         "icon": "/icons/cloud_functions.svg",
-        "category": "Serverless"
+        "category": "Distributed Systems & Cloud"
     },
     "Compute Engine": {
         "name": "Compute Engine",
         "icon": "/icons/compute_engine.svg",
-        "category": "Cloud Infrastructure"
+        "category": "Distributed Systems & Cloud"
     },
     "CMEK": {
         "name": "CMEK",
         "icon": "/icons/kms.svg",
-        "category": "Security & Compliance"
+        "category": "Distributed Systems & Cloud"
     },
     "Load Balancing": {
         "name": "Load Balancing",
         "icon": "/icons/load_bal.svg",
-        "category": "Networking"
+        "category": "Distributed Systems & Cloud"
     },
     "Autoscaling": {
         "name": "Autoscaling",
         "icon": "/icons/autoscale.svg",
-        "category": "Cloud Infrastructure"
+        "category": "Distributed Systems & Cloud"
     },
     "Continuous Deployment": {
         "name": "Continuous Deployment",
         "icon": "/icons/cicd.svg",
-        "category": "DevOps"
+        "category": "Distributed Systems & Cloud"
     },
     "scikit-learn": {
         "name": "scikit-learn",
         "icon": "/icons/scikit-learn.svg",
-        "category": "Machine Learning"
+        "category": "Machine Learning & High-Performance Computing"
     },
     "AutoML": {
         "name": "AutoML",
         "icon": "/icons/H2O-Logo.svg",
-        "category": "Machine Learning"
+        "category": "Machine Learning & High-Performance Computing"
     },
     "Pandas": {
         "name": "Pandas",
         "icon": "/icons/pandas.svg",
-        "category": "Data Analysis"
+        "category": "Machine Learning & High-Performance Computing"
     },
     "NumPy": {
         "name": "NumPy",
         "icon": "/icons/numpy.svg",
-        "category": "Data Analysis"
+        "category": "Machine Learning & High-Performance Computing"
     },
     "CUDA": {
         "name": "CUDA",
         "icon": "/icons/cuda-svgrepo-com.svg",
-        "category": "Parallel Computing"
+        "category": "Machine Learning & High-Performance Computing"
     },
     "PyTorch": {
         "name": "PyTorch",
         "icon": "/icons/pytorch-svgrepo-com.svg",
-        "category": "Machine Learning"
+        "category": "Machine Learning & High-Performance Computing"
     },
     "YOLOv8": {
         "name": "YOLOv8",
         "icon": "/icons/facebook-color-svgrepo-com.svg",
-        "category": "Computer Vision"
+        "category": "Generative AI"
     },
     "OpenCV": {
         "name": "OpenCV",
         "icon": "/icons/opencv-svgrepo-com.svg",
-        "category": "Computer Vision"
+        "category": "Generative AI"
     },
     "LangChain": {
         "name": "LangChain",
         "icon": "/icons/langchain.png",
-        "category": "AI Framework"
+        "category": "Generative AI"
     },
     "LangGraph": {
         "name": "LangGraph",
         "icon": "/icons/langraph.png",
-        "category": "AI Framework"
+        "category": "Generative AI"
     },
     "Pinecone": {
         "name": "Pinecone",
         "icon": "/icons/pinecone.svg",
-        "category": "Vector Database"
+        "category": "Generative AI"
     },
     "ElevenLabs": {
         "name": "ElevenLabs",
         "icon": "/icons/elevenlabs.svg",
-        "category": "Text-to-Speech"
+        "category": "Generative AI"
     },
     "Apache Airflow": {
         "name": "Apache Airflow",
         "icon": "/icons/airflow.svg",
-        "category": "Workflow Orchestration"
+        "category": "Database & Data Engineering"
     },
     "Tailwind CSS": {
         "name": "Tailwind CSS",
         "icon": "/icons/tailwind.png",
-        "category": "Frontend Styling"
+        "category": "Web Technologies"
+    },
+    "Java": {
+        "name": "Java",
+        "icon": "/icons/java.svg",
+        "category": "Programming Languages"
+    },
+    "JavaScript": {
+        "name": "JavaScript",
+        "icon": "/icons/javascript.svg",
+        "category": "Programming Languages"
+    },
+    "TypeScript": {
+        "name": "TypeScript",
+        "icon": "/icons/typescript.svg",
+        "category": "Programming Languages"
+    },
+    
+    "MongoDB": {
+        "name": "MongoDB",
+        "icon": "/icons/mongodb.svg",
+        "category": "Database & Data Engineering"
+    },
+    "Firebase": {
+        "name": "Firebase",
+        "icon": "/icons/firebase.svg",
+        "category": "Database & Data Engineering"
+    },
+    "Snowflake": {
+        "name": "Snowflake",
+        "icon": "/icons/snowflake.png",
+        "category": "Database & Data Engineering"
+    },
+    "DBT": {
+        "name": "DBT",
+        "icon": "/icons/dbt.svg",
+        "category": "Database & Data Engineering"
+    },
+    "Spring Boot": {
+        "name": "Spring Boot",
+        "icon": "/icons/spring.svg",
+        "category": "Web Technologies"
+    },
+    "HTML": {
+        "name": "HTML",
+        "icon": "/icons/html.svg",
+        "category": "Web Technologies"
+    },
+    "CSS": {
+        "name": "CSS",
+        "icon": "/icons/css.svg",
+        "category": "Web Technologies"
+    },
+    "Angular": {
+        "name": "Angular",
+        "icon": "/icons/angular.svg",
+        "category": "Web Technologies"
+    },
+    "Streamlit": {
+        "name": "Streamlit",
+        "icon": "/icons/streamlit.svg",
+        "category": "Web Technologies"
+    },
+    "AWS": {
+        "name": "AWS",
+        "icon": "/icons/aws.svg",
+        "category": "Distributed Systems & Cloud"
+    },
+    "Snowpark": {
+        "name": "Snowpark",
+        "icon": "/icons/snowflake.png",
+        "category": "Distributed Systems & Cloud"
+    },
+    "Linux": {
+        "name": "Linux",
+        "icon": "/icons/linux.svg",
+        "category": "Distributed Systems & Cloud"
+    },
+    "Git": {
+        "name": "Git",
+        "icon": "/icons/git.svg",
+        "category": "Distributed Systems & Cloud"
+    },
+    "CI/CD": {
+        "name": "CI/CD",
+        "icon": "/icons/cicd.svg",
+        "category": "Distributed Systems & Cloud"
+    },
+    "Jenkins": {
+        "name": "Jenkins",
+        "icon": "/icons/jenkins.svg",
+        "category": "Distributed Systems & Cloud"
+    },
+    "Github Actions": {
+        "name": "Github Actions",
+        "icon": "/icons/github.svg",
+        "category": "Distributed Systems & Cloud"
+    },
+    "Kafka": {
+        "name": "Kafka",
+        "icon": "/icons/kafka.svg",
+        "category": "Distributed Systems & Cloud"
+    },
+    "Tensorflow": {
+        "name": "Tensorflow",
+        "icon": "/icons/tensorflow.svg",
+        "category": "Machine Learning & High-Performance Computing"
+    },
+    "Dask": {
+        "name": "Dask",
+        "icon": "/icons/dask.svg",
+        "category": "Machine Learning & High-Performance Computing"
+    },
+    "Slurm": {
+        "name": "Slurm",
+        "icon": "/icons/slurm.svg",
+        "category": "Machine Learning & High-Performance Computing"
+    },
+    "Llama Index": {
+        "name": "Llama Index",
+        "icon": "/icons/llama-index.svg",
+        "category": "Generative AI"
+    },
+    "MCP Server-Client Architecture": {
+        "name": "MCP Server-Client Architecture",
+        "icon": "/icons/mcp.png",
+        "category": "Generative AI"
+    },
+    "RAG Models": {
+        "name": "RAG Models",
+        "icon": "/icons/rag.svg",
+        "category": "Generative AI"
+    },
+    "Agentic Architecture": {
+        "name": "Agentic Architecture",
+        "icon": "/icons/agent.svg",
+        "category": "Generative AI"
+    },
+    "NoSQL": {
+        "name": "NoSQL",
+        "icon": "/icons/nosql.svg",
+        "category": "Database & Data Engineering"
     }
 }
