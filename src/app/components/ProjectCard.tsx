@@ -36,6 +36,7 @@ interface ProjectCardProps {
     image: string;
     alt: string;
     categories: string[];
+    videoUrl?: string;
   };
   sizeClass: string;
 }
@@ -54,6 +55,7 @@ const ProjectCard = ({ project, sizeClass }: ProjectCardProps) => {
       categories={project.categories}
       className={sizeClass}
       Icon={Icon}
+      videoUrl={project.videoUrl}
     />
   );
 };

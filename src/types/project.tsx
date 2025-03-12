@@ -14,4 +14,5 @@ export interface Project {
     markdownContent?: string;
     markdownPath?: string;
     githubUrl: string;
+    videoUrl?: string;
   }

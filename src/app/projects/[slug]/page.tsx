@@ -8,6 +8,7 @@ import React from 'react';
 import path from 'path';
 import fs from 'fs';
 import dynamic from 'next/dynamic';
+import { YouTubeEmbed } from '@/components/YouTubeEmbed';
 
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -92,6 +93,7 @@ export default async function ProjectPage({ params }: Props) {
   try {
     const projects = await getProjectsWithTechStack();
     project = projects.find((p) => p.slug === params.slug);
+    console.log('Found project:', project?.title, 'Video URL:', project?.videoUrl);
   } catch (error) {
     console.error("Error fetching project data: ", error);
   }
@@ -122,14 +124,25 @@ export default async function ProjectPage({ params }: Props) {
       </header>
 
       <div className='w-full'>
-        <div className="my-6 image-container w-full relative"> {/* Added relative and height for Image component */}
-          <Image
-            src={project.image}
-            alt={`Image of ${project.title}`}
-            layout="fill"
-            objectFit="contain"
-            priority // Optional: prioritize loading
-          />
+        <div className="my-6 image-container w-full relative">
+          {project.videoUrl ? (
+            <div className="w-full aspect-video pb-[56.25%] relative">
+              <YouTubeEmbed
+                videoId={project.videoUrl}
+                title={project.title}
+                autoplay={true}
+                className="w-full h-full"
+              />
+            </div>
+          ) : (
+            <Image
+              src={project.image}
+              alt={`Image of ${project.title}`}
+              layout="fill"
+              objectFit="contain"
+              priority // Optional: prioritize loading
+            />
+          )}
         </div>
         <div className="w-full flex justify-center">
       <div className="flex flex-wrap justify-center gap-4 max-w-4xl">

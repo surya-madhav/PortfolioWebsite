@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 
 interface BentoImageCardProps {
   title: string;
@@ -15,6 +16,7 @@ interface BentoImageCardProps {
   categories: string[];
   className?: string;
   Icon: React.ElementType;
+  videoUrl?: string;
 }
 
 export const BentoImageCard = ({
@@ -25,7 +27,8 @@ export const BentoImageCard = ({
   href,
   categories,
   className = "",
-  Icon
+  Icon,
+  videoUrl
 }: BentoImageCardProps) => {
   return (
     <div
@@ -40,13 +43,24 @@ export const BentoImageCard = ({
         className.includes("md:row-span-2") ? "flex-grow md:h-72" : "h-48"
       )}>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-gray-900/20 to-gray-900/90" />
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          width={500}
-          height={300}
-          className="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-105"
-        />
+        {videoUrl ? (
+          <div className="h-full w-full absolute inset-0">
+            <YouTubeEmbed 
+              videoId={videoUrl} 
+              title={title}
+              autoplay={true}
+              className="w-full h-full"
+            />
+          </div>
+        ) : (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={500}
+            height={300}
+            className="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-105"
+          />
+        )}
         <div className="absolute bottom-0 left-0 z-20 p-4">
           <div className="flex flex-wrap gap-1">
             {categories.slice(0, 3).map((category, idx) => (
