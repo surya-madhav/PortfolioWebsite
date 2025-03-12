@@ -162,5 +162,36 @@
     "href": "projects/multiModalRag",
     "markdownPath": "/assets/markdown/multi-modal-rag.md",
     "githubUrl": "https://github.com/surya-madhav/multi-modal-rag"
+  },
+  {
+    "id": 8,
+    "slug": "mcpWebTools",
+    "image": "/images/multi-agent-rag.png",
+    "alt": "MCP Web Tools Server and Client",
+    "title": "MCP Web Tools Server and Client",
+    "categories": [
+      "Python",
+      "Model Context Protocol",
+      "FastAPI",
+      "Streamlit",
+      "Web Scraping",
+      "Generative AI",
+      "LLM Tools"
+    ],
+    "techStack": [
+      "Python",
+      "MCP Server-Client Architecture",
+      "FastAPI",
+      "Streamlit",
+      "Docker",
+      "Node.js",
+      "LangChain",
+      "LangGraph"
+    ],
+    "show": true,
+    "description": "Developed a Model Context Protocol (MCP) server and client system that enables language models to interact with web content through standardized tools for web scraping, search, and content extraction.",
+    "href": "projects/mcpWebTools",
+    "markdownPath": "/assets/markdown/mcp-web-tools.md",
+    "githubUrl": "https://github.com/surya-madhav/MCP"
   }
 ]
