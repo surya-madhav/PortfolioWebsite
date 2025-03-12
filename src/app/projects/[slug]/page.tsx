@@ -131,6 +131,8 @@ export default async function ProjectPage({ params }: Props) {
                 videoId={project.videoUrl}
                 title={project.title}
                 autoplay={true}
+                showControls={false}
+                loop={true}
                 className="w-full h-full"
               />
             </div>

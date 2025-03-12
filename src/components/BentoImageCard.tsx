@@ -49,6 +49,8 @@ export const BentoImageCard = ({
               videoId={videoUrl} 
               title={title}
               autoplay={true}
+              showControls={false}
+              loop={true}
               className="w-full h-full"
             />
           </div>
