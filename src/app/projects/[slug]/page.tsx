@@ -126,16 +126,14 @@ export default async function ProjectPage({ params }: Props) {
       <div className='w-full'>
         <div className="my-6 image-container w-full relative">
           {project.videoUrl ? (
-            <div className="w-full aspect-video pb-[56.25%] relative">
-              <YouTubeEmbed
-                videoId={project.videoUrl}
-                title={project.title}
-                autoplay={true}
-                showControls={false}
-                loop={true}
-                className="w-full h-full"
-              />
-            </div>
+            <YouTubeEmbed
+              videoId={project.videoUrl}
+              title={project.title}
+              autoplay={true}
+              showControls={true}
+              loop={true}
+              className="w-full aspect-video"
+            />
           ) : (
             <Image
               src={project.image}
