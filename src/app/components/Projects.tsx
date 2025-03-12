@@ -82,7 +82,7 @@ const Projects = () => {
     <div>
       <h1 className='text-4xl font-bold text-center lg:text-left mt-12 mb-6'>Projects</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
         {projects.map((project) => {
           const Icon = getIconForProject(project.slug);
           const sizeClass = getProjectSize(project.slug);

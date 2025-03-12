@@ -30,20 +30,20 @@ export const BentoImageCard = ({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-xl border border-gray-800/30 bg-gray-900/30 backdrop-blur-sm hover:border-orange-500/50 transition-all duration-300",
+        "group relative overflow-hidden rounded-xl border border-gray-800/30 bg-gray-900/30 backdrop-blur-sm hover:border-orange-500/50 transition-all duration-300 flex flex-col h-full",
         className
       )}
     >
       {/* Image Top Section */}
       <div className={cn(
         "relative w-full overflow-hidden",
-        className.includes("md:row-span-2") ? "h-64 md:h-72" : "h-48"
+        className.includes("md:row-span-2") ? "flex-grow md:h-72" : "h-48"
       )}>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-gray-900/20 to-gray-900/90" />
         <Image
           src={imageSrc}
           alt={imageAlt}
-          width={600}
+          width={500}
           height={300}
           className="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-105"
         />
@@ -67,14 +67,14 @@ export const BentoImageCard = ({
       </div>
 
       {/* Content Section */}
-      <div className="p-6">
+      <div className="p-4 flex flex-col">
         <div className="flex items-center gap-2">
           <Icon className="h-6 w-6 text-orange-400" />
           <h3 className="text-xl font-semibold text-white">{title}</h3>
         </div>
-        <p className="mt-2 text-gray-300">{description}</p>
-        <div className="mt-4">
-          <Button variant="ghost" asChild size="sm" className="text-orange-400 hover:text-orange-300 hover:bg-gray-800/50">
+        <p className="mt-2 text-gray-300 line-clamp-2">{description}</p>
+        <div className="mt-3">
+          <Button variant="ghost" asChild size="sm" className="text-orange-400 hover:text-orange-300 hover:bg-gray-800/50 px-3 py-1 h-auto">
             <Link href={href}>
               View Project
               <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
