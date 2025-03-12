@@ -107,6 +107,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <div className="py-8 w-full">
+      <div className="backdrop-blur-sm">
       <header className="text-center">
 
         <div className='w-full'>
@@ -154,7 +155,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         </div>
       </div>
-
+      </div>
     </div>
   );
 }

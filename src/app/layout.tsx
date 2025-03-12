@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Navbar } from "./components/Navbar";
 import { Analytics } from "@vercel/analytics/react"
+import { DotBackground } from "@/components/ui/dot-background"
 
 
 export const metadata: Metadata = {
@@ -25,12 +26,13 @@ export default function RootLayout({
     <html lang="en">
 
       <body className="bg-gray-900 text-yellow-50">
-        <main className="flex min-h-screen flex-col items-center container mx-auto bg-gray-900">
-          <Navbar />
-          <div className="w-full mt-16">{children}</div>
-          <Analytics />
-        </main>
-
+        <DotBackground opacity={0.15} width={28} height={28} cr={1} className="min-h-screen">
+          <main className="flex min-h-screen flex-col items-center container mx-auto">
+            <Navbar />
+            <div className="w-full mt-16">{children}</div>
+            <Analytics />
+          </main>
+        </DotBackground>
       </body>
       <SpeedInsights />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XYZ"} />

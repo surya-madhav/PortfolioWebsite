@@ -35,7 +35,8 @@ const Skills = () => {
                     key={tech.name} 
                     className="p-4 flex flex-col items-center justify-center 
                              border border-gray-700 rounded-lg hover:border-orange-400 
-                             transition-all duration-300 bg-gray-800"
+                             transition-all duration-300 bg-gray-800/50 backdrop-blur-sm
+                             hover:shadow-md hover:shadow-orange-500/10"
                   >
                     <div className="h-10 w-10 relative mb-2">
                       <Image 
