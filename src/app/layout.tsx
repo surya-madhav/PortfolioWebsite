@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Sai Surya's Portfolio",
     description: "A portfolio website showcasing my projects and skills and experience.",
     countryName: "United States",
-    images: "https://www.rssmv.in/_next/image?url=%2Fimages%2FProfileRedJacket.png&w=640&q=90",
+    images: "https://www.rssmv.in/_next/image?url=%2Fimages%banner.png&w=640&q=90",
   }
 };
 
