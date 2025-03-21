@@ -13,7 +13,16 @@ import { DotPattern } from "@/components/magicui/dot-pattern"
 
 export const metadata: Metadata = {
   title: "Sai Surya's Portfolio",
-  description: "A portfolio website showcasing my projects and skills.",
+  description: "A portfolio website showcasing my projects and skills and experience.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://rssmv.in",
+    title: "Sai Surya's Portfolio",
+    description: "A portfolio website showcasing my projects and skills and experience.",
+    countryName: "United States",
+    images: "https://www.rssmv.in/_next/image?url=%2Fimages%2FProfileRedJacket.png&w=640&q=90",
+  }
 };
 
 export default function RootLayout({
