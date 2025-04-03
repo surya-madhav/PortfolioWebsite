@@ -17,6 +17,10 @@ const config = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      heading: ['Karla', 'sans-serif'],
+      body: ['Inconsolata', 'monospace'],
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

@@ -1,10 +1,19 @@
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Karla, Inconsolata } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
-const inter = Inter({ subsets: ["latin"] });
+
+const karla = Karla({
+  subsets: ["latin"],
+  variable: '--font-karla',
+});
+
+const inconsolata = Inconsolata({
+  subsets: ["latin"],
+  variable: '--font-inconsolata',
+});
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Navbar } from "./components/Navbar";
 import { Analytics } from "@vercel/analytics/react"
@@ -34,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="bg-gray-900 text-yellow-50">
+      <body className={`bg-gray-900 text-yellow-50 ${inconsolata.variable} ${karla.variable} font-body`}>
         <div className="relative min-h-screen w-full overflow-hidden">
           <DotPattern 
             width={28} 

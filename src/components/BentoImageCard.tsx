@@ -86,9 +86,9 @@ export const BentoImageCard = ({
       <div className="p-4 flex flex-col">
         <div className="flex items-center gap-2">
           <Icon className="h-6 w-6 text-orange-400" />
-          <h3 className="text-xl font-semibold text-white">{title}</h3>
+          <h3 className="text-white">{title}</h3>
         </div>
-        <p className="mt-2 text-gray-300 line-clamp-2">{description}</p>
+        <p className="mt-2 text-gray-300 line-clamp-2 text-sm">{description}</p>
         <div className="mt-3">
           <Button variant="ghost" asChild size="sm" className="text-orange-400 hover:text-orange-300 hover:bg-gray-800/50 px-3 py-1 h-auto">
             <Link href={href}>
