@@ -5,16 +5,16 @@ import ProjectCard from './ProjectCard';
 const getProjectSize = (slug: string) => {
   switch (slug) {
     case 'gcpInfraAutomation':
-      return 'col-span-1 md:col-span-2 md:row-span-2'; // Large
+      return 'col-span-1 sm:col-span-2 lg:col-span-2'; // Large
     case 'LearnLab':
-      return 'col-span-1 md:col-span-1 md:row-span-2'; // Medium
+      return 'col-span-1 sm:col-span-1 lg:col-span-1'; // Medium
     case 'hpcTusimple':
-      return 'col-span-1 md:col-span-3 lg:col-span-2 md:row-span-1'; // Medium-wide
+      return 'col-span-1 sm:col-span-2 lg:col-span-2'; // Medium-wide
     case 'multiModalRag':
     case 'bikeSharing':
-      return 'col-span-1 md:col-span-3 lg:col-span-1 md:row-span-1'; // Small
+      return 'col-span-1'; // Small
     default:
-      return 'col-span-1 md:col-span-3 lg:col-span-1 md:row-span-1'; // Small
+      return 'col-span-1'; // Small
   }
 };
 
@@ -50,10 +50,10 @@ const Projects = () => {
   });
 
   return (
-    <div>
-      <h1 className='text-center lg:text-left mt-12'>Projects</h1>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <h1 className='text-center lg:text-left mt-12 mb-8 text-4xl font-bold'>Projects</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {projects.map((project) => {
           const sizeClass = getProjectSize(project.slug);
           
