@@ -50,6 +50,21 @@
     @apply font-body mb-4 leading-relaxed;
   }
 }
+
+/* Custom grid templates are handled via CSS variables in markdown.css */
+
+/* Fix for markdown closing delimiters */
+.markdown-columns > p:last-child:empty,
+.markdown-tabs > p:last-child:empty,
+.markdown-alert > p:last-child:empty {
+  display: none;
+}
+
+/* Ensure images in markdown respect their container */
+.markdown-image-container img {
+  object-fit: cover;
+}
+
 /* 
 @media (prefers-color-scheme: dark) {
   :root {

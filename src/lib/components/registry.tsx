@@ -1,5 +1,43 @@
 import dynamic from 'next/dynamic';
 
+/**
+ * Component Registry
+ * 
+ * This file maintains a map of component names (used in markdown :::name)
+ * to their corresponding file paths. This allows for dynamic loading
+ * of components without needing to import them all upfront.
+ * 
+ * The ComponentRenderer uses this map to dynamically import components.
+ */
+
+// A map of component names to their file names (without extension)
+export const componentMap: Record<string, string> = {
+  // Essential components (Epic 3)
+  'code': 'CodeBlock',
+  'codeblock': 'CodeBlock', // Alias
+  'columns': 'Columns',
+  'column': 'Column',
+  'toc': 'TableOfContents',
+  'tableofcontents': 'TableOfContents', // Alias
+  'image': 'ImageWithCaption',
+  'alert': 'Alert',
+  'tabs': 'Tabs',
+  'tab': 'Tab',
+  'mermaid': 'MermaidWrapper', // Use wrapper for SSR compatibility
+
+  // Interactive/advanced components (Future Epics)
+  'youtube': 'YouTubeEmbed'
+};
+
+/**
+ * Retrieves a component's file name from the map.
+ * @param name The name of the component to retrieve.
+ * @returns The file name or undefined if not found.
+ */
+export function getComponentFileName(name: string): string | undefined {
+  return componentMap[name.toLowerCase()];
+}
+
 // --- Component Registry ---
 
 // A flexible type for dynamically imported components
@@ -28,9 +66,8 @@ export function registerComponent(name: string, componentPath: string) {
  * Initializes the component registry with all known components.
  */
 export function initializeRegistry() {
-  // We will register all our markdown components here in Epic 3.
-  // Example:
-  // registerComponent('Alert', 'Alert');
+  // This function is kept for backward compatibility but is not currently used
+  // Components are loaded via componentMap in ComponentRenderer
 }
 
 /**
@@ -40,4 +77,4 @@ export function initializeRegistry() {
  */
 export function getComponent(name: string): LazyComponent | undefined {
   return componentRegistry.get(name.toLowerCase());
-} 
+}

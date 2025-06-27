@@ -14,6 +14,8 @@ import {
   ContentType,
 } from '@/types/content';
 import readingTime from 'reading-time';
+import remarkDirective from 'remark-directive';
+import { toString } from 'mdast-util-to-string';
 
 // --- Types and Interfaces ---
 
@@ -24,53 +26,104 @@ interface MarkdownProcessResult {
   headings: Heading[];
 }
 
-// Custom Remark plugin to parse ::: directives
-const remarkCustomDirectives: Plugin = () => {
+// Custom Remark plugin to handle attributes and create component instances
+const remarkComponentCompiler: Plugin = () => {
   return (tree, file) => {
     const components = new Map<string, ComponentInstance>();
     let componentCounter = 0;
 
-    visit(tree, 'paragraph', (node: any, index, parent) => {
-      const text = node.children.map((c:any) => c.value).join('');
-      if (!text.startsWith(':::')) {
-        return;
-      }
-      
-      const componentRegex = /:::\s*(\w+)(?:\[([^\]]*)\])?(?:\s*({.*}))?\s*\n([\s\S]*?)\n:::/g;
-      
-      let match;
-
-      if ((match = componentRegex.exec(text)) !== null) {
-        const [fullMatch, name, inlineContent, propsString, content] = match;
-
+    visit(tree, (node: any) => {
+      if (
+        node.type === 'containerDirective' ||
+        node.type === 'leafDirective' ||
+        node.type === 'textDirective'
+      ) {
         const id = `component-${componentCounter++}`;
-        const props = propsString ? JSON.parse(propsString) : {};
+        const data = node.data || (node.data = {});
+        const attributes = node.attributes || {};
+
+        // Debug: Log the node structure
+        if (node.name === 'columns' || node.name === 'tabs') {
+          console.log(`\n=== ${node.name.toUpperCase()} DIRECTIVE ===`);
+          console.log('Node type:', node.type);
+          console.log('Attributes:', attributes);
+          console.log('Children count:', node.children?.length);
+          console.log('Children types:', node.children?.map((c: any) => c.type));
+          console.log('First few children:', node.children?.slice(0, 3));
+        }
+
+        // Parse attributes
+        let props: Record<string, any> = {};
+        for (const [key, value] of Object.entries(attributes)) {
+          if (value === '' || value === true) {
+            props[key] = true;
+          } else {
+            props[key] = value;
+          }
+        }
         
+        // Extract content for specific components
+        let content = '';
+        
+        // For components that need text content (like mermaid)
+        if (node.name === 'mermaid' || node.name === 'code') {
+          if (node.type === 'containerDirective' && node.children) {
+            const extractText = (nodes: any[]): string => {
+              return nodes.map((child: any) => {
+                if (child.type === 'text') {
+                  return child.value;
+                } else if (child.type === 'paragraph' && child.children) {
+                  return extractText(child.children);
+                } else if (child.type === 'code') {
+                  return child.value;
+                } else if (child.children) {
+                  return extractText(child.children);
+                }
+                return '';
+              }).join('\n');
+            };
+            
+            content = extractText(node.children).trim();
+          }
+        }
+        
+        // For image captions
+        if (node.name === 'image' && node.children) {
+          // Look for text after "caption:" or just get all text
+          const textContent = toString(node);
+          if (textContent.includes('caption:')) {
+            content = textContent.split('caption:')[1]?.trim() || '';
+          } else {
+            content = textContent;
+          }
+        }
+
         const componentInstance: ComponentInstance = {
           id,
-          name,
+          name: node.name,
           props,
-          content: content.trim(),
-          children: [], 
-          position: { start: node.position.start.offset, end: node.position.end.offset },
+          content,
+          position: { 
+            start: node.position?.start?.offset || 0, 
+            end: node.position?.end?.offset || 0 
+          },
         };
+        
         components.set(id, componentInstance);
-
-        const placeholderNode = {
-          type: 'html',
-          value: `<div data-component-id="${id}"></div>`
+        
+        // For container directives, we want to keep the children for rendering
+        // but mark it as a component
+        data.hName = 'div';
+        data.hProperties = { 
+          'data-component-id': id
         };
-        
-        parent.children.splice(index, 1, placeholderNode);
-        
-        if (!file.data.components) {
-          file.data.components = new Map<string, ComponentInstance>();
-        }
-        components.forEach((value, key) => (file.data.components as Map<string, ComponentInstance>).set(key, value));
       }
     });
+
+    (file.data as any).components = components;
   };
 };
+
 
 // --- Main Processing Function ---
 
@@ -88,7 +141,8 @@ export async function processMarkdown(
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
-    .use(remarkCustomDirectives)
+    .use(remarkDirective) // Use the official directive plugin
+    .use(remarkComponentCompiler) // Our custom plugin to process the directives
     .use(() => (tree) => {
       visit(tree, 'heading', (node: any) => {
         const depth = node.depth;
@@ -144,8 +198,9 @@ export function stripMarkdown(markdown: string): string {
     .replace(/(\*\*|__)(.*?)\1/g, '$2')      // Bold
     .replace(/(\*|_)(.*?)\1/g, '$2')        // Italic
     .replace(/`([^`]+)`/g, '$1')            // Inline code
-    .replace(/#+\s/g, '')                   // Headers
-    .replace(/>\s/g, '')                    // Blockquotes
+    .replace(/```[\s\S]*?```/g, '')          // Code blocks
+    .replace(/#+\s/g, '')                    // Headers
+    .replace(/^>\s/g, '')                    // Blockquotes
     .replace(/!\[.*?\]\(.*?\)/g, '')        // Images
     .replace(/(\r\n|\n|\r)/gm, ' ');        // Newlines
 }
@@ -166,4 +221,4 @@ export function generateTocHtml(headings: Heading[]): string {
     .join('');
 
   return `<nav class="toc"><h3 class="toc-title">Table of Contents</h3><ul>${tocItems}</ul></nav>`;
-} 
+}

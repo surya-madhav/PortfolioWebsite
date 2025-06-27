@@ -1,20 +1,83 @@
 ---
-title: "Sample Note"
+title: "Sample Note with All Components"
 slug: "sample-note"
 date: "2024-01-20"
-type: "note"  
+type: "note"
 published: true
-summary: "A quick note to test the system"
-tags: ["test", "note"]
-categories: ["Testing"]
+seo:
+  title: "Sample Note with All Components"
+  description: "A sample note demonstrating all custom markdown components."
+  keywords: ["sample", "note", "components", "demo"]
+  image: "/images/sampleImage.jpg"
+summary: "A sample note demonstrating all custom markdown components."
+tags: ["Demo", "Markdown", "Components"]
+categories: ["Demo"]
+author: "Your Name"
+featured: false
+updated: "2024-01-25"
+thumbnail: "/images/sampleImage.jpg"
+hero:
+  type: "image"
+  src: "/images/sampleImage.jpg"
+  alt: "Sample Note Hero"
+toc: true
+readingTime: true
 ---
 
-# Sample Note
+# Sample Note: All Components Demo
 
-This is a sample note to test the content system.
+:::alert{"type": "tip", "title": "Tip"}
+You can use all custom components in notes too!
+:::
 
-## Key Points
+:::toc{"depth": 2, "title": "Contents"}
+:::
 
-- Point 1
-- Point 2
-- Point 3 
+## Code Block Example
+
+:::code{"lang": "python", "title": "hello.py", "showLineNumbers": true, "highlight": "2"}
+def hello():
+    print("Hello, world!")
+:::
+
+## Columns Example
+
+:::columns{"ratio": "1:1", "gap": "sm", "stack": "sm"}
+::column
+#### Left
+Left column content.
+::column
+#### Right
+Right column content.
+:::
+
+## Image With Caption Example
+
+:::image{"src": "/images/sampleImage.jpg", "alt": "Sample Note", "size": "small"}
+caption: This is a sample image in a note.
+:::
+
+## Tabs Example
+
+:::tabs
+::tab{"title": "Python"}
+```python
+def foo():
+    return "bar"
+```
+::tab
+::tab{"title": "JavaScript"}
+```js
+function foo() {
+  return "bar";
+}
+```
+:::
+
+## Mermaid Diagram Example
+
+:::mermaid{"theme": "forest", "caption": "Decision Tree"}
+graph TD;
+  Start --> Option1;
+  Start --> Option2;
+::: 

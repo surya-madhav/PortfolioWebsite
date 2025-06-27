@@ -1,27 +1,81 @@
 ---
-title: "Sample Blog Post"
+title: "Sample Blog Post with All Components"
 slug: "sample-post"
 date: "2024-01-20"
 type: "blog"
 published: true
-summary: "A sample blog post to test the new CMS"
-tags: ["blog", "test"]
-categories: ["Announcements"]
+seo:
+  title: "Sample Blog Post with All Components"
+  description: "A sample blog post demonstrating all custom markdown components."
+  keywords: ["sample", "blog", "components", "demo"]
+  image: "/images/sampleImage.jpg"
+summary: "A sample blog post demonstrating all custom markdown components."
+tags: ["Demo", "Markdown", "Components"]
+categories: ["Demo"]
 author: "Your Name"
+featured: false
+updated: "2024-01-25"
+thumbnail: "/images/sampleImage.jpg"
+hero:
+  type: "image"
+  src: "/images/sampleImage.jpg"
+  alt: "Sample Blog Hero"
+toc: true
+readingTime: true
 ---
 
-# Sample Blog Post
+# Sample Blog Post: All Components Demo
 
-This is a sample blog post to test the new content management system.
+:::alert{"type": "warning", "title": "Heads Up"}
+This blog post demonstrates **all** custom markdown components.
+:::
 
-## Introduction
+:::toc{"depth": 2, "title": "Contents"}
+:::
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+## Code Block Example
 
-## Main Content
+:::code{"lang": "javascript", "title": "hello.js", "showLineNumbers": true, "highlight": "2"}
+function hello() {
+  console.log("Hello, world!");
+}
+:::
 
-More content here...
+## Columns Example
 
-## Conclusion
+:::columns{"ratio": "1:2", "gap": "lg", "stack": "lg"}
+::column
+##### Narrow
+Narrow column content.
+::column
+##### Wide
+Wide column content.
+:::
 
-Wrapping up the post. 
+## Image With Caption Example
+
+:::image{"src": "/images/sampleImage.jpg", "alt": "Sample Blog", "size": "large"}
+caption: Blog image with a caption.
+:::
+
+## Tabs Example
+
+:::tabs
+::tab{"title": "HTML"}
+```html
+<p>Hello, world!</p>
+```
+::tab
+::tab{"title": "CSS"}
+```css
+body { color: orange; }
+```
+:::
+
+## Mermaid Diagram Example
+
+:::mermaid{"theme": "neutral", "caption": "Blog Flow"}
+graph TD;
+  Post --> Read;
+  Post --> Comment;
+::: 

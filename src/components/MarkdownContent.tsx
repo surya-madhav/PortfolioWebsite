@@ -13,6 +13,12 @@ interface MarkdownContentProps {
 // Initialize the component registry for the server
 initializeRegistry();
 
+// List of void/self-closing HTML elements
+const VOID_ELEMENTS = new Set([
+  'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+  'link', 'meta', 'param', 'source', 'track', 'wbr'
+]);
+
 // --- Manual HAST to React Renderer ---
 
 function renderNode(node: any, content: Content): React.ReactNode {
@@ -26,33 +32,91 @@ function renderNode(node: any, content: Content): React.ReactNode {
 
     if (componentId && content.components?.has(componentId)) {
       const componentData = content.components.get(componentId)!;
-      return (
-        <ComponentRenderer
-          name={componentData.name}
-          props={componentData.props}
-          content={componentData.content}
-        />
-      );
+      
+      // For container directives with children, render the children
+      const hasChildren = children && children.length > 0 && 
+        children.some((child: any) => child.type !== 'text' || child.value.trim() !== '');
+      
+      if (hasChildren) {
+        // Filter out closing delimiter text nodes (:::)
+        const filteredChildren = children.filter((child: any) => {
+          if (child.type === 'text' && child.value.trim() === ':::') {
+            return false;
+          }
+          return true;
+        });
+        
+        const componentChildren = filteredChildren.map((child: any, i: number) => 
+          <Fragment key={i}>{renderNode(child, content)}</Fragment>
+        );
+        
+        return (
+          <ComponentRenderer
+            name={componentData.name}
+            props={componentData.props}
+            content={componentData.content}
+          >
+            {componentChildren}
+          </ComponentRenderer>
+        );
+      } else {
+        // For leaf directives or container directives with content property
+        return (
+          <ComponentRenderer
+            name={componentData.name}
+            props={componentData.props}
+            content={componentData.content}
+          />
+        );
+      }
     }
     
     // Convert HAST properties to React properties
     const reactProps: { [key: string]: any } = {};
     for (const key in rest) {
         if(key === 'className'){
-            reactProps.className = rest[key].join(' ');
+            reactProps.className = Array.isArray(rest[key]) ? rest[key].join(' ') : rest[key];
         } else {
              reactProps[key] = rest[key];
         }
     }
 
+    // Check if this is a void element
+    if (VOID_ELEMENTS.has(tagName)) {
+      // Void elements should not have children
+      return React.createElement(tagName, reactProps);
+    }
+
+    // Filter out standalone ::: text nodes
+    let childElements = null;
+    if (children && children.length > 0) {
+      const filteredChildren = children.filter((child: any) => {
+        // Skip text nodes that are just ":::"
+        if (child.type === 'text' && child.value.trim() === ':::') {
+          return false;
+        }
+        return true;
+      });
+      
+      if (filteredChildren.length > 0) {
+        childElements = filteredChildren.map((child: any, i: number) => 
+          <Fragment key={i}>{renderNode(child, content)}</Fragment>
+        );
+      }
+    }
+
     return React.createElement(
       tagName,
       reactProps,
-      children.map((child: any, i: number) => <Fragment key={i}>{renderNode(child, content)}</Fragment>)
+      childElements
     );
   }
 
   if (node.type === 'text') {
+    // Filter out standalone ::: delimiters
+    if (node.value.trim() === ':::') {
+      return null;
+    }
     return node.value;
   }
 
@@ -80,7 +144,7 @@ export default function MarkdownContent({
         />
       )}
       
-      <div className="prose dark:prose-invert max-w-none">
+      <div className="prose-invert max-w-none">
         {renderedContent}
       </div>
       
@@ -91,4 +155,4 @@ export default function MarkdownContent({
       )}
     </article>
   );
-} 
+}

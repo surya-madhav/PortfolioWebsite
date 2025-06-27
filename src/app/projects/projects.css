@@ -9,6 +9,7 @@
 .prose{
     width: 100%;
     max-width: none;
+    color: #f6ad55;
 }
 
 .image-container{
@@ -32,7 +33,7 @@
 }
 /* Styling for prose (markdown content) */
 .prose-container .prose {
-    color: #e2e8f0; /* Light gray text for dark background */
+    color: #fff; /* Pure white text for maximum contrast */
     line-height: 1.8;
     width: 100%;
 }
@@ -46,17 +47,18 @@
     margin-bottom: 0.5rem;
 }
 .prose-lg :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    color: #fff; /* Pure white for h2 in prose-lg */
     margin-bottom: 0.25rem;
 }
 .prose-container .prose h2, .prose h3 {
-    color: #63b3ed; /* Lighter blue */
+    color: #63b3ed; /* Lighter blue for headings */
     margin-top: 1.2rem;
 }
 
 /* Paragraph styling */
 .prose-container .prose p {
     margin-bottom: 1.5rem;
-    color: #cbd5e0; /* Slightly lighter gray for text */
+    color: #fff; /* Pure white for text */
 }
 
 /* Links */
@@ -73,13 +75,13 @@
 .prose-container .prose ul {
     list-style-type: disc;
     margin-left: 1.5rem;
-    color: #cbd5e0; /* Light gray for list items */
+    color: #fff; /* Pure white for list items */
 }
 
 .prose-container .prose ol {
     list-style-type: decimal;
     margin-left: 1.5rem;
-    color: #cbd5e0;
+    color: #fff;
 }
 
 /* Blockquote styling */
@@ -88,7 +90,7 @@
     border-left: 4px solid #63b3ed; /* Blue border */
     padding: 1rem;
     font-style: italic;
-    color: #a0aec0; /* Lighter gray for quote text */
+    color: #fff; /* White for quote text */
     margin: 1.5rem 0;
 }
 
@@ -127,7 +129,7 @@
 
 .prose-container .prose table th {
     background-color: rgba(45, 55, 72, 0.8);
-    color: #63b3ed;
+    color: #fff; /* White for table headers */
     font-weight: bold;
     padding: 0.75rem 1rem;
     text-align: left;
@@ -137,7 +139,7 @@
 .prose-container .prose table td {
     padding: 0.75rem 1rem;
     border: 1px solid #4a5568;
-    color: #cbd5e0;
+    color: #fff;
 }
 
 .prose-container .prose table tr:nth-child(even) {
@@ -159,7 +161,7 @@
 
 /* Make mermaid diagrams more visible on dark backgrounds */
 .prose-container .prose .mermaid .label {
-    color: #cbd5e0 !important;
+    color: #fff !important;
     font-family: inherit !important;
 }
 
@@ -236,6 +238,28 @@ pre[data-language]::before {
 .prose h5[id]:hover::before,
 .prose h6[id]:hover::before {
   content: '#';
-  @apply absolute -left-6 text-gray-500;
+  @apply absolute -left-6;
   color: #63b3ed; /* Lighter blue */
+}
+
+/* Override Tailwind Typography prose variables for dark backgrounds */
+.prose {
+  --tw-prose-body: #fff;
+  --tw-prose-headings: #f6ad55;
+  --tw-prose-lead: #fff;
+  --tw-prose-links: #81e6d9;
+  --tw-prose-bold: #f6ad55;
+  --tw-prose-counters: #fff;
+  --tw-prose-bullets: #fff;
+  --tw-prose-hr: #fff;
+  --tw-prose-quotes: #fff;
+  --tw-prose-quote-borders: #f6ad55;
+  --tw-prose-captions: #fff;
+  --tw-prose-kbd: #fff;
+  --tw-prose-kbd-shadows: 255 255 255;
+  --tw-prose-code: #fbd38d;
+  --tw-prose-pre-code: #fff;
+  --tw-prose-pre-bg: #1f2937;
+  --tw-prose-th-borders: #fff;
+  --tw-prose-td-borders: #fff;
 }

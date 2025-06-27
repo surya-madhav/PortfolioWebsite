@@ -116,5 +116,12 @@ export interface ContentQueryOptions {
   sortOrder?: 'asc' | 'desc'; // Sort order
 }
 
+// Props for custom markdown components
+export interface ComponentProps {
+  children?: React.ReactNode;
+  className?: string;
+  [key: string]: any;
+}
+
 // Re-export tech stack types for compatibility
 export type { TechStackItem } from './techstack'; 
