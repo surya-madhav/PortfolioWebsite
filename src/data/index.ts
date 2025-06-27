@@ -2,8 +2,13 @@
 import projectsData from '../../data/projects.json';
 import technologiesData from '../../content/data/technologies.json';
 import { Project } from '@/types/project';
-import { TechStack, TechStackItem } from '@/types/techstack';
+import { TechStackItem, TechStack } from '@/types/techstack';
 import { getRouteProjects } from '@/lib/route-projects';
+import { Content, ContentMeta } from '@/types/content';
+
+// Correctly type and convert the technologies data
+const technologies: TechStack = technologiesData as TechStack;
+const allTechnologies: TechStackItem[] = Object.values(technologies);
 
 // Import JSON directly - Next.js allows this
 export const projects: Project[] = (projectsData as any[]).map((p) => ({
@@ -37,8 +42,6 @@ export const projects: Project[] = (projectsData as any[]).map((p) => ({
   experiments: undefined
 }));
 
-export const technologies: TechStack = technologiesData;
-
 /**
  * Get all projects, combining JSON and route-based projects
  */
@@ -54,46 +57,51 @@ export function getAllProjects(): Project[] {
 }
 
 /**
- * Get a single project by slug
+ * Retrieves a single legacy project by its slug, with its tech stack enriched.
+ * @param slug - The slug of the project to retrieve.
+ * @returns A promise that resolves to the project, or undefined if not found.
  */
-export function getProjectBySlug(slug: string): Project | undefined {
-  const allProjects = getAllProjects();
-  return allProjects.find((project) => project.slug === slug);
+export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
+  const projects: Project[] = projectsData as Project[];
+  const project = projects.find(p => p.slug === slug);
+  if (!project) return undefined;
+  return enrichProjectWithTechStack(project) as unknown as Project;
 }
 
 /**
- * Add tech stack details to project
+ * Enriches a project's tech stack (string[]) with full TechStackItem objects.
+ * @param project - A project-like object with a techStack array of strings.
+ * @returns The project with a fully populated techStack of TechStackItem objects.
  */
-export function enrichProjectWithTechStack(project: Project): Project {
-  // If the project has no tech stack or it's already enriched, return as is
-  if (!project.techStack || typeof project.techStack[0] !== 'string') {
-    return project;
-  }
+export function enrichProjectWithTechStack<T extends { techStack?: (string | TechStackItem)[] }>(
+  project: T
+): Omit<T, 'techStack'> & { techStack: TechStackItem[] } {
+  
+  const enrichedTechStack = project.techStack
+    ? project.techStack
+        .map(tech => {
+          if (typeof tech === 'string') {
+            return allTechnologies.find(t => t.name.toLowerCase() === tech.toLowerCase());
+          }
+          // It's already a TechStackItem object
+          return tech;
+        })
+        .filter((t): t is TechStackItem => !!t) // Filter out undefined or invalid items
+    : [];
 
-  const enrichedTechStack = project.techStack.map((techName) => {
-    if (typeof techName === 'string') {
-      if (technologies[techName]) {
-        return technologies[techName];
-      }
-      console.warn(`Tech stack item not found: ${techName}`);
-      return {
-        name: techName,
-        icon: '/icons/placeholder.svg',
-        category: 'Unknown'
-      };
-    }
-    return techName; // Already a TechStackItem object
-  });
-
-  return { ...project, techStack: enrichedTechStack };
+  return {
+    ...project,
+    techStack: enrichedTechStack,
+  };
 }
 
 /**
- * Get all projects with tech stack details
+ * Retrieves all legacy projects from JSON with their tech stacks enriched.
+ * @returns A promise that resolves to an array of projects.
  */
-export function getProjectsWithTechStack(): Project[] {
-  const allProjects = getAllProjects();
-  return allProjects.map(project => enrichProjectWithTechStack(project));
+export async function getProjectsWithTechStack(): Promise<Project[]> {
+  const projects: Project[] = projectsData as Project[];
+  return projects.map(p => enrichProjectWithTechStack(p) as unknown as Project);
 }
 
 /**

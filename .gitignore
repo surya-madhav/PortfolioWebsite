@@ -36,3 +36,4 @@ yarn-error.log*
 next-env.d.ts
 docs/*.md
 docs/implemented/Epic_01_Core_Infrastructure_Implemented.md
+docs/implemented/

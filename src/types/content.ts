@@ -68,8 +68,11 @@ export interface ContentMeta {
 // Processed content interface
 export interface Content extends Omit<ContentMeta, 'readingTime'> {
   content: string;           // Raw markdown content
-  htmlContent: string;       // Processed HTML
+  htmlContent: string;       // Processed HTML for client-side hydration
+  hast: any;                 // Processed HAST for server-side rendering
+  components?: Map<string, ComponentInstance>; // Map of used components
   readingTime: number;       // Estimated reading time (minutes)
+  readingTimeString?: string; // Formatted reading time
   excerpt: string;           // Auto-generated excerpt
   headings: Heading[];       // Extracted headings for TOC
 }

@@ -185,3 +185,57 @@
     fill: #2d3748 !important;
     stroke: #4a5568 !important;
 }
+
+/* Table of Contents */
+.toc-container {
+  @apply mb-8 p-6 bg-gray-900/20 backdrop-blur-sm rounded-lg border border-blue-400/30;
+}
+
+.toc nav ul {
+  @apply list-none p-0 m-0 space-y-2;
+}
+
+.toc nav ul ul {
+  @apply ml-4 mt-2;
+}
+
+.toc nav a {
+  @apply text-gray-300 transition-colors duration-200 text-sm;
+  color: #81e6d9; /* Soft cyan for links */
+}
+
+.toc nav a:hover {
+  color: #4fd1c5; /* Slightly darker cyan on hover */
+}
+
+/* Component containers */
+[data-component-id] {
+  @apply my-6;
+}
+
+/* Table wrapper for responsive tables */
+.table-wrapper {
+  @apply overflow-x-auto my-6;
+}
+
+.table-wrapper table {
+  @apply min-w-full;
+}
+
+/* Code block enhancements */
+pre[data-language]::before {
+  content: attr(data-language);
+  @apply absolute top-0 right-0 px-2 py-1 text-xs text-blue-300 bg-gray-900/50 rounded-bl;
+}
+
+/* Heading anchors */
+.prose h1[id]:hover::before,
+.prose h2[id]:hover::before,
+.prose h3[id]:hover::before,
+.prose h4[id]:hover::before,
+.prose h5[id]:hover::before,
+.prose h6[id]:hover::before {
+  content: '#';
+  @apply absolute -left-6 text-gray-500;
+  color: #63b3ed; /* Lighter blue */
+}

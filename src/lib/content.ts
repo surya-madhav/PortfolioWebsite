@@ -10,6 +10,8 @@ import {
   ValidationError,
   Heading
 } from '@/types/content';
+import { processMarkdown, calculateReadingTime, stripMarkdown } from './markdown';
+import { getProcessedContent } from './content-processor';
 
 // Content directory configuration
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
@@ -24,7 +26,7 @@ const CONTENT_DIRECTORIES: Record<ContentType, string> = {
 /**
  * Get the directory path for a content type
  */
-function getContentDirectory(type: ContentType): string {
+export function getContentDirectory(type: ContentType): string {
   return path.join(CONTENT_ROOT, CONTENT_DIRECTORIES[type]);
 }
 
@@ -136,17 +138,7 @@ export function validateContentMeta(
  */
 export function extractExcerpt(content: string, length: number = 160): string {
   // Remove markdown syntax
-  const plainText = content
-    .replace(/^#+\s+/gm, '')           // Headers
-    .replace(/\*\*([^*]+)\*\*/g, '$1') // Bold
-    .replace(/\*([^*]+)\*/g, '$1')     // Italic  
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Links
-    .replace(/`([^`]+)`/g, '$1')       // Inline code
-    .replace(/```[\s\S]*?```/g, '')    // Code blocks
-    .replace(/^>\s+/gm, '')            // Blockquotes
-    .replace(/!\[.*?\]\(.*?\)/g, '')   // Images
-    .replace(/\n{2,}/g, ' ')           // Multiple newlines
-    .trim();
+  const plainText = stripMarkdown(content);
   
   if (plainText.length <= length) {
     return plainText;
@@ -166,54 +158,7 @@ export async function getContentBySlug(
   type: ContentType,
   slug: string
 ): Promise<Content | null> {
-  try {
-    const directory = getContentDirectory(type);
-    const filePath = path.join(directory, `${slug}.md`);
-    
-    // Check if file exists
-    if (!fs.existsSync(filePath)) {
-      console.warn(`Content not found: ${type}/${slug}`);
-      return null;
-    }
-    
-    // Read file content
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContent);
-    
-    // Validate metadata
-    const { meta, errors } = validateContentMeta(data, type);
-    
-    if (errors.length > 0) {
-      console.error(`Validation errors for ${type}/${slug}:`, errors);
-      return null;
-    }
-    
-    if (!meta) {
-      return null;
-    }
-    
-    // Calculate reading time
-    const { minutes } = readingTime(content);
-    
-    // Extract excerpt
-    const excerpt = meta.summary || extractExcerpt(content);
-    
-    // TODO: Process markdown to HTML (Epic 2)
-    const htmlContent = content; // Placeholder
-    const headings: Heading[] = []; // Placeholder
-    
-    return {
-      ...meta,
-      content,
-      htmlContent,
-      readingTime: Math.ceil(minutes),
-      excerpt,
-      headings
-    };
-  } catch (error) {
-    console.error(`Error loading content ${type}/${slug}:`, error);
-    return null;
-  }
+  return getProcessedContent(type, slug);
 }
 
 /**

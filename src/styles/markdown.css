@@ -1,0 +1,99 @@
+/* Component-specific styles */
+
+/* Columns component */
+.markdown-columns {
+  @apply grid gap-6 my-8;
+}
+
+.markdown-columns.columns-2 {
+  @apply md:grid-cols-2;
+}
+
+.markdown-columns.columns-3 {
+  @apply md:grid-cols-3;
+}
+
+/* Alert/Callout component */
+.markdown-alert {
+  @apply p-4 rounded-lg border my-6;
+}
+
+.markdown-alert.alert-info {
+  @apply bg-blue-900/20 border-blue-500/50 text-blue-200;
+}
+
+.markdown-alert.alert-warning {
+  @apply bg-orange-900/20 border-orange-500/50 text-orange-200;
+}
+
+.markdown-alert.alert-error {
+  @apply bg-red-900/20 border-red-500/50 text-red-200;
+}
+
+.markdown-alert.alert-success {
+  @apply bg-green-900/20 border-green-500/50 text-green-200;
+}
+
+/* Tabs component */
+.markdown-tabs {
+  @apply my-8;
+}
+
+.markdown-tabs-list {
+  @apply flex border-b border-gray-700;
+}
+
+.markdown-tab-trigger {
+  @apply px-4 py-2 text-sm font-medium text-gray-400;
+  @apply hover:text-orange-400 transition-colors;
+  @apply border-b-2 border-transparent;
+}
+
+.markdown-tab-trigger.active {
+  @apply text-orange-400 border-orange-400;
+}
+
+.markdown-tab-content {
+  @apply py-4;
+}
+
+/* Image with caption */
+.markdown-image-container {
+  @apply my-8;
+}
+
+.markdown-image-container figure {
+  @apply space-y-2;
+}
+
+.markdown-image-container figcaption {
+  @apply text-sm text-gray-400 text-center italic;
+}
+
+/* Code block with features */
+.markdown-code-block {
+  @apply relative my-6;
+}
+
+.markdown-code-header {
+  @apply flex items-center justify-between;
+  @apply px-4 py-2 bg-gray-900 border-b border-gray-700;
+  @apply rounded-t-lg;
+}
+
+.markdown-code-title {
+  @apply text-sm text-gray-400;
+}
+
+.markdown-code-copy {
+  @apply text-xs text-gray-500 hover:text-orange-400;
+  @apply transition-colors cursor-pointer;
+}
+
+.markdown-code-content {
+  @apply rounded-b-lg overflow-hidden;
+}
+
+.markdown-code-content pre {
+  @apply rounded-none m-0;
+} 
