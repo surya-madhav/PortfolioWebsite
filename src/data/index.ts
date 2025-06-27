@@ -1,12 +1,42 @@
 // Static data imports (safe for client and server components)
 import projectsData from '../../data/projects.json';
-import technologiesData from '../../data/technologies.json';
+import technologiesData from '../../content/data/technologies.json';
 import { Project } from '@/types/project';
 import { TechStack, TechStackItem } from '@/types/techstack';
 import { getRouteProjects } from '@/lib/route-projects';
 
 // Import JSON directly - Next.js allows this
-export const projects: Project[] = projectsData;
+export const projects: Project[] = (projectsData as any[]).map((p) => ({
+  ...p,
+  date: '2023-01-01T00:00:00.000Z', // Placeholder date
+  published: p.show,
+  seo: {
+    title: p.title,
+    description: p.description,
+  },
+  summary: p.description,
+  tags: p.categories,
+  content: p.markdownContent || '',
+  htmlContent: '', // Will be processed later
+  readingTime: 0, // Placeholder
+  excerpt: (p.description || '').slice(0, 155) + '...', // Simple excerpt
+  headings: [], // Placeholder
+  thumbnail: p.image,
+  author: undefined,
+  featured: false,
+  updated: undefined,
+  hero: undefined,
+  demoUrl: undefined,
+  duration: undefined,
+  role: undefined,
+  team: undefined,
+  toc: true,
+  comments: false,
+  relatedContent: undefined,
+  trackingId: undefined,
+  experiments: undefined
+}));
+
 export const technologies: TechStack = technologiesData;
 
 /**
@@ -35,29 +65,27 @@ export function getProjectBySlug(slug: string): Project | undefined {
  * Add tech stack details to project
  */
 export function enrichProjectWithTechStack(project: Project): Project {
-  const enrichedProject = { ...project };
-  
-  // If the project already has detailed tech stack, return as is
-  if (typeof enrichedProject.techStack[0] !== 'string') {
-    return enrichedProject;
+  // If the project has no tech stack or it's already enriched, return as is
+  if (!project.techStack || typeof project.techStack[0] !== 'string') {
+    return project;
   }
-  
-  // Map string tech names to full tech objects
-  enrichedProject.techStack = enrichedProject.techStack.map((tech) => {
-    const techName = tech as string;
-    if (technologies[techName]) {
-      return technologies[techName];
+
+  const enrichedTechStack = project.techStack.map((techName) => {
+    if (typeof techName === 'string') {
+      if (technologies[techName]) {
+        return technologies[techName];
+      }
+      console.warn(`Tech stack item not found: ${techName}`);
+      return {
+        name: techName,
+        icon: '/icons/placeholder.svg',
+        category: 'Unknown'
+      };
     }
-    // Return a placeholder if tech not found
-    console.warn(`Tech stack item not found: ${techName}`);
-    return {
-      name: techName,
-      icon: '/icons/placeholder.svg',
-      category: 'Unknown'
-    };
+    return techName; // Already a TechStackItem object
   });
-  
-  return enrichedProject;
+
+  return { ...project, techStack: enrichedTechStack };
 }
 
 /**

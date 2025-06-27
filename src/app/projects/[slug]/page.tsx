@@ -14,7 +14,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
 // Import from data module instead of server utils
-import { getProjectsWithTechStack, getProjectBySlug } from '@/data';
+import { getProjectsWithTechStack, getProjectBySlug, enrichProjectWithTechStack } from '@/data';
 
 // Dynamically import the client component with no SSR
 const MermaidRenderer = dynamic(
@@ -91,8 +91,11 @@ export async function generateStaticParams() {
 export default async function ProjectPage({ params }: Props) {
   let project: Project | undefined;
   try {
-    const projects = await getProjectsWithTechStack();
-    project = projects.find((p) => p.slug === params.slug);
+    const allProjects = await getProjectsWithTechStack();
+    const foundProject = allProjects.find((p) => p.slug === params.slug);
+    if (foundProject) {
+      project = enrichProjectWithTechStack(foundProject);
+    }
     console.log('Found project:', project?.title, 'Video URL:', project?.videoUrl);
   } catch (error) {
     console.error("Error fetching project data: ", error);
@@ -114,9 +117,11 @@ export default async function ProjectPage({ params }: Props) {
         <div className='w-full'>
           <h1 className="text-3xl font-bold">{project.title}</h1>
           <div className="flex flex-col justify-center items-center">
-            <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="bg-gradient-to-tr from-purple-500 to-blue-400 rounded-full border-orange-400 hover:shadow-2xl hover:shadow-orange-300 hover:border-orange-200 border mt-4 h-12 w-12 inline-block">
-              <GitHubLogoIcon className='w-full h-full' />
-            </Link>
+            {project.githubUrl && (
+              <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" className="bg-gradient-to-tr from-purple-500 to-blue-400 rounded-full border-orange-400 hover:shadow-2xl hover:shadow-orange-300 hover:border-orange-200 border mt-4 h-12 w-12 inline-block">
+                <GitHubLogoIcon className='w-full h-full' />
+              </Link>
+            )}
             <p className='text-xs text-gray-500 mt-2'>View Code On Github</p>
           </div>
         </div>
@@ -146,7 +151,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
         <div className="w-full flex justify-center">
       <div className="flex flex-wrap justify-center gap-4 max-w-4xl">
-        {project.techStack.map(tech => (
+        {project.techStack && (project.techStack as any[]).map(tech => (
           <div 
             key={tech.name} 
             className="w-24 h-24 p-2 flex flex-col items-center justify-center 

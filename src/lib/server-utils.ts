@@ -43,9 +43,11 @@ export async function getTechStack(): Promise<TechStack> {
  */
 export async function validateTechStack(project: Project, techStack: TechStack): Promise<string[]> {
   const missingTech: string[] = [];
-  for (const tech of project.techStack) {
-    if (!techStack[tech]) {
-      missingTech.push(tech as string);
+  if (project.techStack) {
+    for (const tech of project.techStack) {
+      if (typeof tech === 'string' && !techStack[tech]) {
+        missingTech.push(tech);
+      }
     }
   }
   return missingTech;
@@ -66,11 +68,15 @@ export async function getProjectsWithTechStack(): Promise<Project[]> {
       if (missingTech.length > 0) {
         console.warn(`Project ${project.title} is missing tech stack definitions for: ${missingTech.join(', ')}`);
         // Filter out missing tech stack items
-        project.techStack = project.techStack.filter(tech => !missingTech.includes(tech as string));
+        if (project.techStack) {
+          project.techStack = project.techStack.filter(tech => !missingTech.includes(tech as string));
+        }
       }
       
       // Map tech stack strings to full objects
-      project.techStack = project.techStack.map((tech) => techStack[tech as string]);
+      if (project.techStack) {
+        project.techStack = project.techStack.map((tech) => techStack[tech as string]);
+      }
     }
     
     return projects;
