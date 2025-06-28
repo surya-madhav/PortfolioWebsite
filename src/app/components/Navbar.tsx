@@ -6,18 +6,31 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import MenuOverlay from './MenuOverlay';
 import ContactMeDialog from './ContactDialog';
 
-const links:{title:string,href:string}[] = [
+const links:{title:string,href:string,isSection?:boolean}[] = [
   {
     title: "About Me",
-    href: "#about"
+    href: "#about",
+    isSection: true
   },
   {
     title: "Projects",
-    href: "#projects"
+    href: "#projects",
+    isSection: true
+  },
+  {
+    title: "Notes",
+    href: "/notes",
+    isSection: false
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+    isSection: false
   },
   {
     title: "Skills",
-    href: "#skills"
+    href: "#skills",
+    isSection: true
   }
 ]
 export const Navbar = () => {
@@ -51,13 +64,15 @@ export const Navbar = () => {
         };
     }, []);
     
-    const handleNavLinkClick = (href: string) => {
+    const handleNavLinkClick = (href: string, isSection?: boolean) => {
         setNavbarOpen(false); // Close mobile menu when a link is clicked
         
-        // Smooth scroll to the target section
-        const targetElement = document.querySelector(href);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+        // Only smooth scroll for section links
+        if (isSection) {
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     };
     return (
@@ -80,8 +95,10 @@ export const Navbar = () => {
                                         href={link.href} 
                                         className={`block py-2 pl-3 pr-4 ${activeSection === link.href ? 'text-orange-400 font-medium' : 'text-gray-200'} hover:text-orange-300`}
                                         onClick={(e) => {
-                                            e.preventDefault();
-                                            handleNavLinkClick(link.href);
+                                            if (link.isSection) {
+                                                e.preventDefault();
+                                                handleNavLinkClick(link.href, link.isSection);
+                                            }
                                         }}
                                     >
                                         {link.title}
@@ -102,8 +119,10 @@ export const Navbar = () => {
                                         href={link.href} 
                                         className={`block py-2 px-4 ${activeSection === link.href ? 'text-orange-400 font-medium' : 'text-gray-200'} hover:text-orange-300`}
                                         onClick={(e) => {
-                                            e.preventDefault();
-                                            handleNavLinkClick(link.href);
+                                            if (link.isSection) {
+                                                e.preventDefault();
+                                                handleNavLinkClick(link.href, link.isSection);
+                                            }
                                         }}
                                     >
                                         {link.title}
