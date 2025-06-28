@@ -1,3 +1,58 @@
+---
+title: "GCP Infrastructure Automation"
+slug: "gcpInfraAutomation"
+date: "2024-06-01"
+type: "project"
+published: true
+seo:
+  title: "GCP Infrastructure Automation"
+  description: "Utilized Terraform for infrastructure provisioning and Packer for GCP machine image creation, enhancing system reliability."
+  keywords:
+    - Terraform
+    - Google Cloud Platform
+    - Packer
+    - Github CI/CD
+    - Serverless
+    - NodeJS
+  image: "/images/GCP.svg"
+summary: "Utilized Terraform for infrastructure provisioning and Packer for GCP machine image creation, enhancing system reliability."
+tags:
+  - Terraform
+  - Google Cloud Platform
+  - Packer
+  - Github CI/CD
+  - Serverless
+  - NodeJS
+categories:
+  - Terraform
+  - Google Cloud Platform
+  - Packer
+  - Github CI/CD
+  - Serverless
+  - NodeJS
+featured: false
+techStack:
+  - Node.js
+  - Express
+  - MySQL
+  - Terraform
+  - Packer
+  - Google Cloud Platform
+  - Pub/Sub
+  - Cloud Functions
+  - Compute Engine
+  - CMEK
+  - Load Balancing
+  - Autoscaling
+  - Continuous Deployment
+githubUrl: "https://github.com/surya-madhav/InfraAutomation"
+thumbnail: "/images/GCP.svg"
+hero:
+  type: "image"
+  src: "/images/GCP.svg"
+  alt: "GCP Infrastructure Automation"
+---
+
 ## Cloud-Native Application
 
 The application is developed as a **RESTful API** using **Node.js** and **Prisma**, featuring endpoints for user management and health checks. Prisma, acting as an ORM, ensures efficient database interactions. This setup provides a robust backend capable of handling high loads while maintaining performance and security.
@@ -66,4 +121,4 @@ This ensures the application remains responsive under varying loads.
 
 
 
-For more detailed information on this project, please visit the [Github Code](https://github.com/surya-madhav/InfraAutomation).
+For more detailed information on this project, please visit the [Github Code](https://github.com/surya-madhav/InfraAutomation). 

@@ -1,3 +1,57 @@
+---
+title: "High-Performance Computing for Lane Detection"
+slug: "hpcTusimple"
+date: "2024-06-01"
+type: "project"
+published: true
+seo:
+  title: "High-Performance Computing for Lane Detection"
+  description: "Researched and implemented optimized lane detection for autonomous driving using high-performance computing techniques, with detailed parallel efficiency analysis and scaling across multiple CPUs and GPUs."
+  keywords:
+    - PyTorch
+    - Distributed Computing
+    - Deep Learning
+    - Computer Vision
+    - Parallel Computing
+    - CUDA
+    - HPC
+  image: "/images/hpc/multi_gpu_performance_analysis.png"
+summary: "Researched and implemented optimized lane detection for autonomous driving using high-performance computing techniques, with detailed parallel efficiency analysis and scaling across multiple CPUs and GPUs."
+tags:
+  - PyTorch
+  - Distributed Computing
+  - Deep Learning
+  - Computer Vision
+  - Parallel Computing
+  - CUDA
+  - HPC
+categories:
+  - PyTorch
+  - Distributed Computing
+  - Deep Learning
+  - Computer Vision
+  - Parallel Computing
+  - CUDA
+  - HPC
+featured: false
+techStack:
+  - Python
+  - PyTorch
+  - CUDA
+  - ResNet
+  - U-Net
+  - Dask
+  - Attention Mechanisms
+  - Distributed Data Parallel
+  - Mixed Precision
+githubUrl: "https://github.com/surya-madhav/hpc-tusimple"
+thumbnail: "/images/hpc/multi_gpu_performance_analysis.png"
+hero:
+  type: "image"
+  src: "/images/hpc/multi_gpu_performance_analysis.png"
+  alt: "HPC Lane Detection Research"
+---
+
 # TuSimple Lane Detection HPC Project
 
 ## Introduction
@@ -26,14 +80,14 @@ In my preprocessing pipeline, images were resized to 800×360 pixels to reduce c
 
 ## Model Architecture
 
-<div class="mermaid">
+:::mermaid{theme=dark}
 graph TD
     A[Input Image] --> B[Preprocessing]
     B --> C[Feature Extraction - ResNet Backbone]
     C --> D[Coordinate Attention]
     D --> E[U-Net Decoder]
     E --> F[Segmentation Output]
-</div>
+:::
 
 I designed a lane detection architecture following an encoder-decoder paradigm enhanced with attention mechanisms. The architecture includes:
 
@@ -48,7 +102,7 @@ ResNet-50 delivered approximately 1.7% higher validation accuracy than ResNet-18
 
 ### Coordinate Attention Mechanism
 
-<div class="mermaid">
+:::mermaid{theme=dark}
 graph TD
     A[Feature Map] --> B[Horizontal Pooling]
     A --> C[Vertical Pooling]
@@ -61,7 +115,7 @@ graph TD
     F2 --> G
     G --> H[Sigmoid Activation]
     H --> I[Element-wise Multiplication with Input]
-</div>
+:::
 
 I implemented a specialized spatial attention mechanism called Coordinate Attention that enhances lane feature detection by separately processing horizontal and vertical coordinate information. This mechanism offers:
 
@@ -148,14 +202,14 @@ My analysis showed:
 
 ### Mixed Precision Training
 
-<div class="mermaid">
+:::mermaid{theme=dark}
 flowchart TD
     A[Input in FP32] --> B[Model Forward in FP16]
     B --> C[Loss Calculation in FP32]
     C --> D[Backward Pass in FP16]
     D --> E[Gradient Scaling]
     E --> F[Optimizer Step in FP32]
-</div>
+:::
 
 Mixed precision training provided substantial performance gains:
 
@@ -197,58 +251,4 @@ Key insights from my analysis:
    - For memory-constrained systems: **Baseline DataLoader**
 
 2. **Configuration Settings**:
-   - **Batch Size**: 64 (for high-performance systems)
-   - **Worker Count**: 4-8 workers (based on available CPU cores)
-
-### Model Architecture
-
-1. **Backbone Selection**:
-   - **ResNet-50**: For applications requiring highest accuracy
-   - **ResNet-18**: For resource-constrained environments or real-time applications
-
-2. **Attention Mechanism**:
-   - Retain the Coordinate Attention mechanism for its significant improvement in lane detection accuracy
-
-### Parallelization Strategy
-
-1. **CPU Optimization**:
-   - **Optimal Configuration**: 4 CPU processes for distributed training
-
-2. **GPU Optimization**:
-   - **Optimal Configuration**: 3 GPUs for distributed data parallel training
-   - **Communication Backend**: Use NCCL for GPU communication
-
-3. **Mixed Precision Training**:
-   - Implement mixed precision training for all GPU configurations
-   - Expected benefit: ~18.7% performance improvement with compatible GPUs
-
-### Best Approach for Different Scenarios
-
-1. **High-Performance Research Environment**:
-   - ResNet-50 backbone
-   - Memory-mapped data loading
-   - 3 GPUs with DDP
-   - Mixed precision training
-   - Batch size 64
-
-2. **Resource-Constrained Environment**:
-   - ResNet-18 backbone
-   - Baseline DataLoader with 4 workers
-   - Single GPU with mixed precision
-   - Batch size 32
-
-## Conclusion
-
-In this research project, I successfully implemented and evaluated a lane detection model for the TuSimple dataset, achieving over 98% accuracy while optimizing performance through parallel computing techniques.
-
-Key findings include:
-
-1. **Data Loading Optimization**: Memory-mapped loading offered the fastest performance (0.67s batch loading time), while the optimized DataLoader provided the best balance between performance and resource utilization.
-
-2. **CPU Parallelization**: 4 CPU processes represent the optimal configuration, providing a speedup of approximately 2x compared to the 2-CPU baseline.
-
-3. **GPU Parallelization**: 3 GPUs provided the best balance between speedup (2.31x) and efficiency (77.1%), while 4 GPUs showed diminishing returns.
-
-4. **Mixed Precision Training**: An 18.65% reduction in training time without compromising model accuracy.
-
-The optimal approach combines ResNet-50 backbone with Coordinate Attention, optimized DataLoader, 3-GPU DDP training, mixed precision, and a combined loss function, achieving near-linear speedup while maintaining model accuracy.
+   - **Batch Size**: 64 (for high-performance systems) 

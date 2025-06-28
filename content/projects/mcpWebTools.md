@@ -1,3 +1,57 @@
+---
+title: "MCP Web Tools Server and Client"
+slug: "mcpWebTools"
+date: "2024-06-01"
+type: "project"
+published: true
+seo:
+  title: "MCP Web Tools Server and Client"
+  description: "Developed a Model Context Protocol (MCP) server and client system that enables language models to interact with web content through standardized tools for web scraping, search, and content extraction."
+  keywords:
+    - Python
+    - Model Context Protocol
+    - FastAPI
+    - Streamlit
+    - Web Scraping
+    - Generative AI
+    - LLM Tools
+  image: "/images/multi-agent-rag.png"
+summary: "Developed a Model Context Protocol (MCP) server and client system that enables language models to interact with web content through standardized tools for web scraping, search, and content extraction."
+tags:
+  - Python
+  - Model Context Protocol
+  - FastAPI
+  - Streamlit
+  - Web Scraping
+  - Generative AI
+  - LLM Tools
+categories:
+  - Python
+  - Model Context Protocol
+  - FastAPI
+  - Streamlit
+  - Web Scraping
+  - Generative AI
+  - LLM Tools
+featured: false
+techStack:
+  - Python
+  - MCP Server-Client Architecture
+  - FastAPI
+  - Streamlit
+  - Docker
+  - Node.js
+  - LangChain
+  - LangGraph
+githubUrl: "https://github.com/surya-madhav/MCP"
+videoUrl: "https://youtu.be/t6aHh3GhQbs"
+thumbnail: "/images/multi-agent-rag.png"
+hero:
+  type: "video"
+  src: "https://youtu.be/t6aHh3GhQbs"
+  alt: "MCP Web Tools Server and Client"
+---
+
 # MCP Web Tools Server and Client
 
 ## Introduction
@@ -6,7 +60,7 @@ I designed and developed a comprehensive Model Context Protocol (MCP) server and
 
 ## System Architecture
 
-<pre class="mermaid bg-white p-4">
+:::mermaid{theme=dark}
 flowchart TD
     A[LLM Model] --- B[MCP Transport Layer]
     B --- C[MCP Server]
@@ -31,7 +85,7 @@ flowchart TD
     D3 --> E3[Crawl4AI Engine]
     D4 --> E4[Structured Thinking Framework]
     end
-</pre>
+:::
 
 The system is built on a modular architecture with several key components:
 
@@ -44,7 +98,7 @@ The system is built on a modular architecture with several key components:
 
 The MCP server implements several powerful web tools that expand AI capabilities:
 
-<pre class="mermaid bg-white p-4">
+:::mermaid{theme=dark}
 flowchart TD
     A[User Query] --> B[LLM Processing]
     B -->|Tool Selection| C{Tool Dispatcher}
@@ -74,7 +128,7 @@ flowchart TD
     subgraph ResultsProcessing
     H -->|Context Integration| I[Enhanced Response Generation]
     end
-</pre>
+:::
 
 ### 1. Web Scraping Tool
 
@@ -88,7 +142,7 @@ The `ddg_search` tool enables comprehensive web searching with customizable para
 
 The `advanced_scrape` tool uses Crawl4AI to extract clean, structured content from complex web pages:
 
-<pre class="mermaid bg-white p-4">
+:::mermaid{theme=dark}
 flowchart TD
     A[Input URL] --> B[Browser Configuration]
     B --> C[Content Filtering Strategy]
@@ -110,13 +164,13 @@ flowchart TD
     C --> F
     I --> J
     M --> E
-</pre>
+:::
 
 ## Sequential Thinking Tool
 
 This tool provides structured reasoning capabilities for complex problem-solving. It was integrated from [arben-adm/mcp-sequential-thinking](https://github.com/arben-adm/mcp-sequential-thinking) with enhancements for persistence and dataset generation.
 
-<pre class="mermaid bg-white p-4">
+:::mermaid{theme=dark}
 stateDiagram-v2
     [*] --> ProblemDefinition
     
@@ -142,7 +196,7 @@ stateDiagram-v2
     Conclusion --> TT
     
     TT --> DP
-</pre>
+:::
 
 ### Enhanced Features
 
@@ -154,12 +208,7 @@ stateDiagram-v2
 
 The system includes a Streamlit-based management interface that enables:
 
-1. **Server Configuration**: Easily configure and connect to MCP servers
-2. **Tool Testing**: Interactively test tools with real-time results
-3. **Documentation**: Access comprehensive guides and references
-4. **Monitoring**: Track server status and performance
-
-<pre class="mermaid bg-white p-4">
+:::mermaid{theme=dark}
 flowchart TD
     A[Streamlit UI] --> B[Server Management]
     A --> C[Tool Testing]
@@ -176,7 +225,7 @@ flowchart TD
     
     D --> D1[MCP Documentation]
     D --> D2[Tool Reference]
-</pre>
+:::
 
 ## Integration with Claude
 
@@ -196,25 +245,4 @@ The system implements comprehensive error handling to ensure robustness, includi
 
 All tools use asynchronous programming for optimal performance, allowing non-blocking execution of potentially slow operations like web requests or complex processing tasks.
 
-## Key Technologies
-
-- **FastMCP**: Python implementation of the Model Context Protocol
-- **httpx**: Modern, async HTTP client for Python
-- **Streamlit**: Interactive UI framework
-- **Crawl4AI**: Advanced web content extraction
-- **DuckDuckGo Search**: Web search capabilities
-- **LangGraph**: Structured reasoning graph framework
-
-## Future Developments
-
-- **Additional Web Tools**: Expand capabilities with more specialized web interaction tools
-- **Advanced Persistence**: Enhance the sequential thinking storage for better data collection
-- **Multi-Model Support**: Extend compatibility to more LLM platforms beyond Claude
-- **Performance Optimizations**: Further improve response times for web content retrieval
-- **Enhanced Visualization**: Add more comprehensive monitoring and visualization tools
-
-## Conclusion
-
-The MCP Web Tools Server and Client system represents a significant advancement in extending LLM capabilities through standardized tool interfaces. By providing a robust framework for web interaction, search, content extraction, and structured thinking, it enables AI models to access and leverage web content more effectively, leading to more informed and contextually relevant responses.
-
-The modular architecture and standardized protocol ensure compatibility with various LLM platforms, while the comprehensive management interface simplifies configuration and testing. The system demonstrates the power of the Model Context Protocol in bridging the gap between AI models and the broader web ecosystem.
+## Key Technologies 

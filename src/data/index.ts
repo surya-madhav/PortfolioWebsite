@@ -1,71 +1,34 @@
 // Static data imports (safe for client and server components)
-import projectsData from '../../data/projects.json';
 import technologiesData from '../../content/data/technologies.json';
 import { Project } from '@/types/project';
 import { TechStackItem, TechStack } from '@/types/techstack';
-import { getRouteProjects } from '@/lib/route-projects';
-import { Content, ContentMeta } from '@/types/content';
+import { getAllContent } from '@/lib/content';
 
 // Correctly type and convert the technologies data
 const technologies: TechStack = technologiesData as TechStack;
 const allTechnologies: TechStackItem[] = Object.values(technologies);
 
-// Import JSON directly - Next.js allows this
-export const projects: Project[] = (projectsData as any[]).map((p) => ({
-  ...p,
-  date: '2023-01-01T00:00:00.000Z', // Placeholder date
-  published: p.show,
-  seo: {
-    title: p.title,
-    description: p.description,
-  },
-  summary: p.description,
-  tags: p.categories,
-  content: p.markdownContent || '',
-  htmlContent: '', // Will be processed later
-  readingTime: 0, // Placeholder
-  excerpt: (p.description || '').slice(0, 155) + '...', // Simple excerpt
-  headings: [], // Placeholder
-  thumbnail: p.image,
-  author: undefined,
-  featured: false,
-  updated: undefined,
-  hero: undefined,
-  demoUrl: undefined,
-  duration: undefined,
-  role: undefined,
-  team: undefined,
-  toc: true,
-  comments: false,
-  relatedContent: undefined,
-  trackingId: undefined,
-  experiments: undefined
-}));
-
 /**
- * Get all projects, combining JSON and route-based projects
+ * Get all projects using the new content system
  */
-export function getAllProjects(): Project[] {
-  const jsonProjects = projects;
-  const routeProjects = getRouteProjects();
-  
-  // Combine both sources of projects
-  const allProjects = [...jsonProjects, ...routeProjects];
-  
-  // Return only projects that should be shown
-  return allProjects.filter(project => project.show);
-}
-
-/**
- * Retrieves a single legacy project by its slug, with its tech stack enriched.
- * @param slug - The slug of the project to retrieve.
- * @returns A promise that resolves to the project, or undefined if not found.
- */
-export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
-  const projects: Project[] = projectsData as Project[];
-  const project = projects.find(p => p.slug === slug);
-  if (!project) return undefined;
-  return enrichProjectWithTechStack(project) as unknown as Project;
+export async function getAllProjects(): Promise<Project[]> {
+  const content = await getAllContent('project', { published: true });
+  // Return the full Content object with legacy fields added/overridden
+  return content.map((item, index) => ({
+    ...item,
+    id: index + 1,
+    image: item.thumbnail || '',
+    alt: item.hero?.alt || item.title,
+    href: `/projects/${item.slug}`,
+    show: item.published,
+    description: item.summary,
+    markdownContent: item.content,
+    categories: item.tags,
+    techStack: item.techStack || [],
+    githubUrl: item.githubUrl || '',
+    demoUrl: item.demoUrl,
+    videoUrl: item.videoUrl,
+  }));
 }
 
 /**
@@ -76,7 +39,6 @@ export async function getProjectBySlug(slug: string): Promise<Project | undefine
 export function enrichProjectWithTechStack<T extends { techStack?: (string | TechStackItem)[] }>(
   project: T
 ): Omit<T, 'techStack'> & { techStack: TechStackItem[] } {
-  
   const enrichedTechStack = project.techStack
     ? project.techStack
         .map(tech => {
@@ -93,15 +55,6 @@ export function enrichProjectWithTechStack<T extends { techStack?: (string | Tec
     ...project,
     techStack: enrichedTechStack,
   };
-}
-
-/**
- * Retrieves all legacy projects from JSON with their tech stacks enriched.
- * @returns A promise that resolves to an array of projects.
- */
-export async function getProjectsWithTechStack(): Promise<Project[]> {
-  const projects: Project[] = projectsData as Project[];
-  return projects.map(p => enrichProjectWithTechStack(p) as unknown as Project);
 }
 
 /**
