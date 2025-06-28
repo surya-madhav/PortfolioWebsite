@@ -6,7 +6,6 @@ import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import { unified, Plugin } from 'unified';
 import { visit } from 'unist-util-visit';
-import { h } from 'hastscript';
 import { Node } from 'unist';
 import {
   ComponentInstance,
