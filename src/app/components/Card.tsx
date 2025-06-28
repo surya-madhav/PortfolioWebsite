@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useRouter } from 'next/navigation'
 import { Project } from '@/types/project' // Ensure that you have the Project interface defined
 
@@ -35,22 +34,6 @@ const Card = ({ project }: { project: Project }) => {
       </div>
     </div>
   );
-};
-
-Card.propTypes = {
-  project: PropTypes.shape({
-    id: PropTypes.number,
-    slug: PropTypes.string,
-    image: PropTypes.string,
-    alt: PropTypes.string,
-    title: PropTypes.string,
-    categories: PropTypes.arrayOf(PropTypes.string),
-    techStack: PropTypes.arrayOf(PropTypes.string),
-    show: PropTypes.bool,
-    description: PropTypes.string,
-    href: PropTypes.string,
-    markdownContent: PropTypes.string
-  })
 };
 
 export default Card;
