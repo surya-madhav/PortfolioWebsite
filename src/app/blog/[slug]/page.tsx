@@ -6,6 +6,7 @@ import ContentCard from '@/components/content/ContentCard';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { generateContentMetadata, generateStructuredData, generateBreadcrumbSchema } from '@/lib/seo';
 
 interface Props {
   params: {
@@ -26,21 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   
-  return {
-    title: post.seo.title || post.title,
-    description: post.seo.description || post.summary,
-    keywords: post.seo.keywords,
-    openGraph: {
-      title: post.seo.title || post.title,
-      description: post.seo.description || post.summary,
-      images: post.seo.image ? [post.seo.image] : undefined,
-      type: 'article',
-      publishedTime: post.date,
-      modifiedTime: post.updated,
-      authors: post.author ? [post.author] : undefined,
-      tags: post.tags,
-    },
-  };
+  return generateContentMetadata(post);
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -52,7 +39,28 @@ export default async function BlogPostPage({ params }: Props) {
   
   const relatedPosts = await getRelatedContent(post, 3);
   
+  // Generate structured data
+  const structuredData = generateStructuredData(post);
+  const breadcrumbData = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: post.title, url: `/blog/${post.slug}` },
+  ]);
+  
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData),
+        }}
+      />
     <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-24">
       {/* Breadcrumb */}
       <nav className="mb-8">
@@ -121,7 +129,7 @@ export default async function BlogPostPage({ params }: Props) {
         <h3 className="text-lg font-medium text-gray-400 mb-4">Share this post</h3>
         <div className="flex gap-4">
           <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://yoursite.com'}/blog/${post.slug}`)}`}
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://rssmv.in'}/blog/${post.slug}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 bg-gray-800/50 hover:bg-gray-800 text-gray-300 hover:text-white rounded-md transition-all duration-200"
@@ -129,7 +137,7 @@ export default async function BlogPostPage({ params }: Props) {
             Twitter
           </a>
           <a
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://yoursite.com'}/blog/${post.slug}`)}`}
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://rssmv.in'}/blog/${post.slug}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 bg-gray-800/50 hover:bg-gray-800 text-gray-300 hover:text-white rounded-md transition-all duration-200"
@@ -181,5 +189,6 @@ export default async function BlogPostPage({ params }: Props) {
         </Link>
       </div>
     </article>
+    </>
   );
 }

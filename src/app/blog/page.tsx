@@ -7,14 +7,14 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Thoughts, tutorials, and insights on software development and technology. Deep dives into problems I\'ve solved and lessons I\'ve learned.',
-  keywords: ['blog', 'tutorials', 'software development', 'technology', 'programming'],
+  description: 'Technical insights on AI engineering, LLMs, distributed systems, and software development. Deep dives into GenAI architectures and cloud-native solutions.',
+  keywords: ['AI blog', 'GenAI tutorials', 'LLMs', 'distributed systems', 'cloud architecture', 'machine learning', 'software engineering', 'technical insights', 'AI engineering'],
   alternates: {
     canonical: 'https://rssmv.in/blog',
   },
   openGraph: {
     title: 'Blog | Sai Surya\'s Portfolio',
-    description: 'Thoughts, tutorials, and insights on software development and technology.',
+    description: 'Technical insights on AI engineering, LLMs, distributed systems, and software development.',
     url: 'https://rssmv.in/blog',
     type: 'website',
   },
@@ -50,8 +50,8 @@ export default async function BlogPage() {
           Blog
         </h1>
         <p className="text-lg text-gray-300 max-w-3xl">
-          Thoughts, tutorials, and insights on software development and technology. 
-          Deep dives into problems I&apos;ve solved and lessons I&apos;ve learned.
+          Technical insights on AI engineering, LLMs, distributed systems, and software development. 
+          Deep dives into GenAI architectures and cloud-native solutions.
         </p>
       </header>
       

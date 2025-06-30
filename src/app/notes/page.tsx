@@ -7,14 +7,14 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Notes',
-  description: 'Quick thoughts, tips, and learnings from my software development journey. Code snippets, best practices, and technical insights.',
-  keywords: ['notes', 'development tips', 'coding', 'technical insights', 'programming'],
+  description: 'Quick technical notes and learnings from AI engineering, distributed systems, and full-stack development. Tips on LLMs, cloud architecture, and best practices.',
+  keywords: ['technical notes', 'AI engineering', 'LLMs', 'distributed systems', 'cloud architecture', 'development tips', 'best practices', 'GenAI', 'machine learning'],
   alternates: {
     canonical: 'https://rssmv.in/notes',
   },
   openGraph: {
     title: 'Notes | Sai Surya\'s Portfolio',
-    description: 'Quick thoughts, tips, and learnings from my software development journey.',
+    description: 'Quick technical notes and learnings from AI engineering, distributed systems, and full-stack development.',
     url: 'https://rssmv.in/notes',
     type: 'website',
   },
@@ -46,8 +46,8 @@ export default async function NotesPage() {
           Notes
         </h1>
         <p className="text-lg text-gray-300 max-w-3xl">
-          Quick thoughts, tips, and learnings from my development journey. 
-          A collection of insights and discoveries I&apos;ve gathered along the way.
+          Quick technical notes and learnings from AI engineering, distributed systems, 
+          and full-stack development. Tips on LLMs, cloud architecture, and best practices.
         </p>
       </header>
       

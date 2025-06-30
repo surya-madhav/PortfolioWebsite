@@ -30,18 +30,18 @@ const HeroSection = () => {
                 <div className="col-span-5">
                     <div className="w-full h-full flex items-center justify-center place-self-center mt-4 lg:mt-0 mb-6">
                         <Image
-                            className='rounded-full w-72 h-72 bg-gray-800 shadow-lg border border-orange-200'
+                            className='rounded-2xl w-72 h-72 bg-gray-800 shadow-lg border border-orange-200'
                             src="/images/ProfileRedJacket.png"
                             alt="Hero Image"
-                            width={288}
-                            height={288}
+                            width={350}
+                            height={350}
                             priority
                             quality={90}
-                            sizes="(max-width: 768px) 288px, 288px"
+                            sizes="(max-width: 768px) 350px, 350px"
                             style={{ 
                                 objectFit: "cover",
-                                width: '288px',
-                                height: '288px'
+                                width: '350px',
+                                height: '350px'
                             }}
                         />
                     </div>

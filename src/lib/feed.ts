@@ -26,7 +26,7 @@ export function generateRSSFeed(
       <title>${escapeXml(item.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <description>${escapeXml(item.excerpt)}</description>
+      <description>${escapeXml(item.summary)}</description>
       <pubDate>${new Date(item.date).toUTCString()}</pubDate>
       ${item.author ? `<author>${escapeXml(item.author)}</author>` : ''}
       ${item.categories.map(cat => `<category>${escapeXml(cat)}</category>`).join('')}

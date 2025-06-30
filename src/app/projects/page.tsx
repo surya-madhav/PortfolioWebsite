@@ -4,14 +4,14 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Projects',
-  description: 'A showcase of my software development projects, featuring web applications, tools, and open-source contributions.',
-  keywords: ['projects', 'portfolio', 'web development', 'software engineering', 'React', 'Next.js'],
+  description: 'Explore my AI and software engineering projects featuring GenAI applications, distributed systems, cloud infrastructure automation, and full-stack development.',
+  keywords: ['AI projects', 'GenAI applications', 'distributed systems', 'cloud infrastructure', 'full-stack development', 'LLMs', 'RAG', 'machine learning', 'portfolio'],
   alternates: {
     canonical: 'https://rssmv.in/projects',
   },
   openGraph: {
     title: 'Projects | Sai Surya\'s Portfolio',
-    description: 'Explore my software development projects showcasing various technologies and problem-solving approaches.',
+    description: 'Explore my AI and software engineering projects featuring GenAI applications, distributed systems, cloud infrastructure automation, and full-stack development.',
     url: 'https://rssmv.in/projects',
     type: 'website',
   },
@@ -35,8 +35,8 @@ export default async function ProjectsListingPage() {
           Projects
         </h1>
         <p className="text-lg text-gray-300 max-w-3xl">
-          A collection of projects I&apos;ve worked on, showcasing different technologies 
-          and problem-solving approaches.
+          A collection of AI and software engineering projects showcasing GenAI applications, 
+          distributed systems, cloud infrastructure, and full-stack development.
         </p>
       </header>
       

@@ -3,7 +3,7 @@ import { Content, ContentType } from '@/types/content';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://rssmv.in';
 const SITE_NAME = "Sai Surya's Portfolio";
-const DEFAULT_AUTHOR = 'Sai Surya';
+const DEFAULT_AUTHOR = 'Sai Surya Madhav Rebbapragada';
 
 /**
  * Generate base metadata for the site
@@ -15,8 +15,8 @@ export function getBaseMetadata(): Metadata {
       default: SITE_NAME,
       template: `%s | ${SITE_NAME}`,
     },
-    description: "A portfolio website showcasing my projects and skills and experience.",
-    keywords: ['portfolio', 'software engineer', 'web development', 'projects'],
+    description: "AI Engineer portfolio showcasing production-ready GenAI applications, distributed systems, and full-stack projects. Specializing in LLMs, RAG, and cloud-native architectures.",
+    keywords: ['AI Engineer', 'GenAI', 'LLMs', 'Full-Stack Developer', 'Distributed Systems', 'Data Engineering', 'React', 'Python', 'Machine Learning', 'Cloud Architecture', 'Portfolio'],
     authors: [{ name: DEFAULT_AUTHOR }],
     creator: DEFAULT_AUTHOR,
     publisher: DEFAULT_AUTHOR,
@@ -31,10 +31,10 @@ export function getBaseMetadata(): Metadata {
       url: SITE_URL,
       siteName: SITE_NAME,
       title: SITE_NAME,
-      description: "A portfolio website showcasing my projects and skills and experience.",
+      description: "AI Engineer portfolio showcasing production-ready GenAI applications, distributed systems, and full-stack projects. Specializing in LLMs, RAG, and cloud-native architectures.",
       images: [
         {
-          url: `${SITE_URL}/_next/image?url=%2Fimages%2Fbanner.png&w=1200&q=90`,
+          url: `${SITE_URL}/images/banner.png`,
           width: 1200,
           height: 630,
           alt: SITE_NAME,
@@ -44,9 +44,9 @@ export function getBaseMetadata(): Metadata {
     twitter: {
       card: 'summary_large_image',
       title: SITE_NAME,
-      description: "A portfolio website showcasing my projects and skills and experience.",
-      creator: '@saisurya', // Update with your Twitter handle
-      images: [`${SITE_URL}/_next/image?url=%2Fimages%2Fbanner.png&w=1200&q=90`],
+      description: "AI Engineer portfolio showcasing production-ready GenAI applications, distributed systems, and full-stack projects. Specializing in LLMs, RAG, and cloud-native architectures.",
+      creator: '@surya_madhav_',
+      images: [`${SITE_URL}/images/banner.png`],
     },
     robots: {
       index: true,
@@ -101,7 +101,7 @@ export function generateContentMetadata(content: Content): Metadata {
       card: 'summary_large_image',
       title,
       description,
-      creator: '@saisurya', // Update with your Twitter handle
+      creator: '@surya_madhav_',
       images: image ? [image.startsWith('http') ? image : `${SITE_URL}${image}`] : undefined,
     },
     robots: {
@@ -262,33 +262,49 @@ export function generatePersonSchema(): object {
     name: DEFAULT_AUTHOR,
     url: SITE_URL,
     sameAs: [
-      'https://github.com/yourusername', // Update with your social links
-      'https://linkedin.com/in/yourusername',
-      'https://twitter.com/saisurya',
+      'https://github.com/surya-madhav',
+      'https://linkedin.com/in/saisuryarebbapragada',
+      'https://x.com/surya_madhav_',
     ],
-    jobTitle: 'Software Engineer',
+    jobTitle: 'AI Engineer | Data Systems Engineer',
     worksFor: {
       '@type': 'Organization',
-      name: 'Your Company', // Update with your company
+      name: 'Northeastern University',
     },
-    description: 'A passionate software engineer specializing in web development and creating innovative solutions.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Seattle',
+      addressRegion: 'WA',
+      addressCountry: 'US',
+    },
+    description: 'AI Engineer with experience building production-ready GenAI applications using LLMs, embeddings, and agentic architectures. Specialized in full-stack development, distributed systems, and data engineering.',
     image: {
       '@type': 'ImageObject',
-      url: `${SITE_URL}/images/profile.jpg`, // Update with your profile image
+      url: `${SITE_URL}/images/ProfileRedJacket.png`,
       width: 400,
       height: 400,
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
-      name: 'Your University', // Update with your university
+      name: 'Northeastern University',
     },
     knowsAbout: [
-      'Web Development',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Node.js',
-      'Software Engineering',
+      // Programming Languages
+      'Python', 'Java', 'JavaScript', 'TypeScript', 'C++', 'SQL',
+      // AI/ML Technologies
+      'LangChain', 'LangGraph', 'RAG Models', 'Vector Databases',
+      'LLMs', 'OpenAI', 'Gemini APIs', 'Agentic Architecture',
+      'Machine Learning', 'Deep Learning', 'Neural Networks',
+      // Web Technologies
+      'React', 'Next.js', 'Angular', 'Node.js', 'Spring Boot',
+      'FastAPI', 'Streamlit',
+      // Data & Cloud
+      'Snowflake', 'PostgreSQL', 'MongoDB', 'MySQL', 'Redis',
+      'AWS', 'GCP', 'Docker', 'Kubernetes', 'Terraform',
+      'Airflow', 'Kafka', 'Spark', 'DBT',
+      // Systems
+      'Distributed Systems', 'Microservices', 'CI/CD',
+      'High-Performance Computing', 'Big Data Systems',
     ],
   };
 }
@@ -302,7 +318,7 @@ export function generateWebsiteSchema(): object {
     '@type': 'WebSite',
     name: SITE_NAME,
     url: SITE_URL,
-    description: "A portfolio website showcasing my projects and skills and experience.",
+    description: "AI Engineer portfolio showcasing production-ready GenAI applications, distributed systems, and full-stack projects. Specializing in LLMs, RAG, and cloud-native architectures.",
     author: {
       '@type': 'Person',
       name: DEFAULT_AUTHOR,
