@@ -1,12 +1,23 @@
 import { getAllContent } from '@/lib/content';
 import ContentCard from '@/components/content/ContentCard';
 import ContentFilters from '@/components/content/ContentFilters';
+import ContentSearch from '@/components/content/ContentSearch';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog | Portfolio',
-  description: 'Thoughts, tutorials, and insights on software development and technology.',
+  title: 'Blog',
+  description: 'Thoughts, tutorials, and insights on software development and technology. Deep dives into problems I\'ve solved and lessons I\'ve learned.',
+  keywords: ['blog', 'tutorials', 'software development', 'technology', 'programming'],
+  alternates: {
+    canonical: 'https://rssmv.in/blog',
+  },
+  openGraph: {
+    title: 'Blog | Sai Surya\'s Portfolio',
+    description: 'Thoughts, tutorials, and insights on software development and technology.',
+    url: 'https://rssmv.in/blog',
+    type: 'website',
+  },
 };
 
 export default async function BlogPage() {
@@ -43,6 +54,9 @@ export default async function BlogPage() {
           Deep dives into problems I&apos;ve solved and lessons I&apos;ve learned.
         </p>
       </header>
+      
+      {/* Search */}
+      <ContentSearch contentType="blog" placeholder="Search blog posts..." />
       
       {/* Featured Posts */}
       {featuredPosts.length > 0 && (

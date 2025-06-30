@@ -25,10 +25,7 @@ export default function Columns({
   // Debug logging
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('=== COLUMNS COMPONENT RENDERED ===');
-      console.log('Props:', { ratio, gap, stack, align });
-      console.log('Number of expected columns:', numColumns);
-      console.log('Ratios:', ratios);
+      console.log('Columns component rendered with', numColumns, 'columns');
     }
   }, [ratio, gap, stack, align, numColumns, ratios]);
   
@@ -56,8 +53,7 @@ export default function Columns({
     let columnIndex = 0;
     
     if (process.env.NODE_ENV === 'development') {
-      console.log('=== PARSING COLUMNS ===');
-      console.log('Total children:', childArray.length);
+      console.log('Parsing columns with', childArray.length, 'children');
     }
     
     childArray.forEach((child, index) => {
@@ -78,15 +74,8 @@ export default function Columns({
                      (typeof elementToCheck.type === 'string' && elementToCheck.type.toLowerCase() === 'h3') ||
                      (elementToCheck.props && (elementToCheck.props.mdxType === 'h3' || elementToCheck.props.originalType === 'h3'));
         
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`Child ${index}:`, {
-            type: child.type,
-            actualType: elementToCheck.type,
-            isH3,
-            isFragment: child.type === Fragment,
-            props: child.props,
-            content: typeof elementToCheck.props?.children === 'string' ? elementToCheck.props.children : 'complex content'
-          });
+        if (process.env.NODE_ENV === 'development' && isH3) {
+          console.log(`Found column separator at child ${index}`);
         }
         
         if (isH3) {
@@ -94,9 +83,6 @@ export default function Columns({
           if (currentColumn.length > 0) {
             columnData.push(currentColumn);
             columnIndex++;
-            if (process.env.NODE_ENV === 'development') {
-              console.log(`Saved column ${columnIndex - 1} with ${currentColumn.length} items`);
-            }
           }
           // Start new column with this heading
           currentColumn = [child];
@@ -107,26 +93,16 @@ export default function Columns({
       } else {
         // Add non-element content to current column
         currentColumn.push(child);
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`Child ${index}: Non-element content`);
-        }
       }
     });
     
     // Don't forget the last column
     if (currentColumn.length > 0) {
       columnData.push(currentColumn);
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`Saved final column ${columnIndex} with ${currentColumn.length} items`);
-      }
     }
     
     if (process.env.NODE_ENV === 'development') {
-      console.log('=== COLUMN PARSING COMPLETE ===');
-      console.log('Total columns created:', columnData.length);
-      columnData.forEach((col, idx) => {
-        console.log(`Column ${idx}: ${col.length} items`);
-      });
+      console.log('Created', columnData.length, 'columns');
     }
     
     return columnData;
@@ -213,14 +189,6 @@ export default function Columns({
   const responsiveClass = needsCustomGrid && stack !== 'never' 
     ? `columns-responsive-${stack}` 
     : '';
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log('=== FINAL RENDER ===');
-    console.log('Grid class:', gridClass);
-    console.log('Responsive class:', responsiveClass);
-    console.log('Inline styles:', inlineStyles);
-    console.log('Number of columns to render:', columns.length);
-  }
   
   return (
     <div 

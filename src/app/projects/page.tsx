@@ -3,8 +3,18 @@ import ContentCard from '@/components/content/ContentCard';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Projects | Portfolio',
-  description: 'A showcase of my projects and technical work.',
+  title: 'Projects',
+  description: 'A showcase of my software development projects, featuring web applications, tools, and open-source contributions.',
+  keywords: ['projects', 'portfolio', 'web development', 'software engineering', 'React', 'Next.js'],
+  alternates: {
+    canonical: 'https://rssmv.in/projects',
+  },
+  openGraph: {
+    title: 'Projects | Sai Surya\'s Portfolio',
+    description: 'Explore my software development projects showcasing various technologies and problem-solving approaches.',
+    url: 'https://rssmv.in/projects',
+    type: 'website',
+  },
 };
 
 export default async function ProjectsListingPage() {

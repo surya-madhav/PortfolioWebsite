@@ -1,9 +1,13 @@
-
 import type { Metadata } from "next";
 import { Karla, Inconsolata } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleAnalytics } from '@next/third-parties/google'
+import { Navbar } from "./components/Navbar";
+import { Analytics } from "@vercel/analytics/react"
+import { DotPattern } from "@/components/magicui/dot-pattern"
+import { getBaseMetadata } from "@/lib/seo";
 
 const karla = Karla({
   subsets: ["latin"],
@@ -14,25 +18,8 @@ const inconsolata = Inconsolata({
   subsets: ["latin"],
   variable: '--font-inconsolata',
 });
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { Navbar } from "./components/Navbar";
-import { Analytics } from "@vercel/analytics/react"
-import { DotPattern } from "@/components/magicui/dot-pattern"
 
-
-export const metadata: Metadata = {
-  title: "Sai Surya's Portfolio",
-  description: "A portfolio website showcasing my projects and skills and experience.",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://rssmv.in",
-    title: "Sai Surya's Portfolio",
-    description: "A portfolio website showcasing my projects and skills and experience.",
-    countryName: "United States",
-    images: "https://www.rssmv.in/_next/image?url=%2Fimages%banner.png&w=640&q=90",
-  }
-};
+export const metadata: Metadata = getBaseMetadata();
 
 export default function RootLayout({
   children,
@@ -42,7 +29,6 @@ export default function RootLayout({
   console.log("Started")
   return (
     <html lang="en">
-
       <body className={`bg-gray-900 text-yellow-50 ${inconsolata.variable} ${karla.variable} font-body`}>
         <div className="relative min-h-screen w-full overflow-hidden">
           <DotPattern 

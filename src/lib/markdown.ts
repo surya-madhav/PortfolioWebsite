@@ -42,12 +42,10 @@ const remarkComponentCompiler: Plugin = () => {
 
         // Debug: Log the node structure
         if (node.name === 'columns' || node.name === 'tabs') {
-          console.log(`\n=== ${node.name.toUpperCase()} DIRECTIVE ===`);
-          console.log('Node type:', node.type);
-          console.log('Attributes:', attributes);
-          console.log('Children count:', node.children?.length);
-          console.log('Children types:', node.children?.map((c: any) => c.type));
-          console.log('First few children:', node.children?.slice(0, 3));
+          // Reduced logging - only log basic info in development
+          if (process.env.NODE_ENV === 'development') {
+            console.log(`${node.name} directive found with ${node.children?.length || 0} children`);
+          }
         }
 
         // Parse attributes

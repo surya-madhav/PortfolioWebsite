@@ -1,12 +1,23 @@
 import { getAllContent } from '@/lib/content';
 import ContentCard from '@/components/content/ContentCard';
 import ContentFilters from '@/components/content/ContentFilters';
+import ContentSearch from '@/components/content/ContentSearch';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Notes | Portfolio',
-  description: 'Quick thoughts, tips, and learnings from my development journey.',
+  title: 'Notes',
+  description: 'Quick thoughts, tips, and learnings from my software development journey. Code snippets, best practices, and technical insights.',
+  keywords: ['notes', 'development tips', 'coding', 'technical insights', 'programming'],
+  alternates: {
+    canonical: 'https://rssmv.in/notes',
+  },
+  openGraph: {
+    title: 'Notes | Sai Surya\'s Portfolio',
+    description: 'Quick thoughts, tips, and learnings from my software development journey.',
+    url: 'https://rssmv.in/notes',
+    type: 'website',
+  },
 };
 
 export default async function NotesPage() {
@@ -39,6 +50,9 @@ export default async function NotesPage() {
           A collection of insights and discoveries I&apos;ve gathered along the way.
         </p>
       </header>
+      
+      {/* Search */}
+      <ContentSearch contentType="note" placeholder="Search notes..." />
       
       {/* Filters */}
       <ContentFilters
