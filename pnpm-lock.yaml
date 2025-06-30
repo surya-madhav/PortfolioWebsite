@@ -53,6 +53,9 @@ importers:
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
+      hastscript:
+        specifier: ^9.0.1
+        version: 9.0.1
       lucide-react:
         specifier: ^0.363.0
         version: 0.363.0(react@18.3.1)

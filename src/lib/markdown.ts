@@ -41,11 +41,8 @@ const remarkComponentCompiler: Plugin = () => {
         const attributes = node.attributes || {};
 
         // Debug: Log the node structure
-        if (node.name === 'columns' || node.name === 'tabs') {
-          // Reduced logging - only log basic info in development
-          if (process.env.NODE_ENV === 'development') {
-            console.log(`${node.name} directive found with ${node.children?.length || 0} children`);
-          }
+        if (node.name === 'code' || node.name === 'codeblock') {
+          console.log(`Processing ${node.name} directive`);
         }
 
         // Parse attributes
@@ -61,9 +58,10 @@ const remarkComponentCompiler: Plugin = () => {
         // Extract content for specific components
         let content = '';
         
-        // For components that need text content (like mermaid)
-        if (node.name === 'mermaid' || node.name === 'code') {
+        // For code blocks and similar components that need raw text content
+        if (node.name === 'code' || node.name === 'codeblock' || node.name === 'mermaid') {
           if (node.type === 'containerDirective' && node.children) {
+            // Extract all text content from the children
             const extractText = (nodes: any[]): string => {
               return nodes.map((child: any) => {
                 if (child.type === 'text') {
@@ -80,6 +78,11 @@ const remarkComponentCompiler: Plugin = () => {
             };
             
             content = extractText(node.children).trim();
+            
+            // For code blocks, remove the children so they don't get rendered twice
+            if (node.name === 'code' || node.name === 'codeblock') {
+              node.children = [];
+            }
           }
         }
         

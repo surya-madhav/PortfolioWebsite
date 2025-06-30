@@ -5,6 +5,8 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import React from 'react';
 import { Metadata } from 'next';
 
+import '../projects.css';
+
 import { YouTubeEmbed } from '@/components/YouTubeEmbed';
 import MarkdownContent from '@/components/MarkdownContent';
 import { getAllContent, getContentBySlug } from '@/lib/content';

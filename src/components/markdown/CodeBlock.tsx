@@ -11,6 +11,7 @@ interface CodeBlockProps extends ComponentProps {
   highlight?: string;
   startLine?: number;
   theme?: 'dark' | 'light';
+  content?: string;
 }
 
 export default function CodeBlock({ 
@@ -22,7 +23,8 @@ export default function CodeBlock({
   highlight,
   startLine = 1,
   theme = 'dark',
-  className = ''
+  className = '',
+  content
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -94,7 +96,7 @@ export default function CodeBlock({
     };
     
     loadPrism();
-  }, [mounted, codeLang, children]);
+  }, [mounted, codeLang, children, content]);
   
   const handleCopy = async () => {
     if (!codeRef.current) return;
@@ -113,10 +115,10 @@ export default function CodeBlock({
     }
   };
   
-  // Get code content as string
-  const codeContent = typeof children === 'string' 
+  // Get code content as string - prioritize content prop, then children
+  const codeContent = content || (typeof children === 'string' 
     ? children 
-    : React.Children.toArray(children).join('');
+    : React.Children.toArray(children).join(''));
   
   // Split into lines for line numbers
   const lines = codeContent.trim().split('\n');
@@ -197,4 +199,4 @@ declare global {
   interface Window {
     Prism: any;
   }
-} 
+}

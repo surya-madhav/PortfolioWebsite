@@ -51,13 +51,21 @@
   }
 }
 
-/* Custom grid templates are handled via CSS variables in markdown.css */
+/* Fix for markdown closing delimiters and empty paragraphs */
+.prose-invert p:empty,
+.prose p:empty,
+.markdown-columns > p:empty,
+.markdown-tabs > p:empty,
+.markdown-alert > p:empty,
+[data-component-id] > p:empty {
+  display: none !important;
+}
 
-/* Fix for markdown closing delimiters */
-.markdown-columns > p:last-child:empty,
-.markdown-tabs > p:last-child:empty,
-.markdown-alert > p:last-child:empty {
-  display: none;
+/* Fix for text nodes containing only ::: */
+.prose-invert p:only-child {
+  &:has-text(":::") {
+    display: none !important;
+  }
 }
 
 /* Ensure images in markdown respect their container */
@@ -65,27 +73,373 @@
   object-fit: cover;
 }
 
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Override any conflicting prose styles from Tailwind Typography */
+.prose-invert {
+  --tw-prose-body: #ffffff;
+  --tw-prose-headings: #f6ad55;
+  --tw-prose-lead: #ffffff;
+  --tw-prose-links: #81e6d9;
+  --tw-prose-bold: #fbd38d;
+  --tw-prose-counters: #ffffff;
+  --tw-prose-bullets: #ffffff;
+  --tw-prose-hr: #4a5568;
+  --tw-prose-quotes: #ffffff;
+  --tw-prose-quote-borders: #63b3ed;
+  --tw-prose-captions: #ffffff;
+  --tw-prose-kbd: #ffffff;
+  --tw-prose-kbd-shadows: 255 255 255;
+  --tw-prose-code: #fbd38d;
+  --tw-prose-pre-code: #fbd38d;
+  --tw-prose-pre-bg: rgba(45, 55, 72, 0.7);
+  --tw-prose-th-borders: #4a5568;
+  --tw-prose-td-borders: #4a5568;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Ensure components have proper spacing */
+[data-component-id] {
+  @apply my-6;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Fix for component placeholders showing as text */
+div[data-component-id]:has(> :only-child:is(:text)) {
+  > :text-content(":::") {
+    display: none !important;
   }
-} */
+}
+/* ------------------- */
+
+
+.image-height{
+  height: 24rem;
+}
+@media (min-width: 768px) {
+  .image-height{
+      height: 46rem;
+  }
+}
+.prose{
+  width: 100%;
+  max-width: none;
+  color: #f6ad55;
+}
+
+.image-container{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 263/164;
+}
+
+/* General container */
+.prose-container {
+  display: block;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: none;
+  border-radius: 0.5rem;
+  background-color: rgba(26, 32, 44, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+/* Prose styling with proper dark mode support */
+.prose-invert {
+  color: #fff;
+  line-height: 1.8;
+  width: 100%;
+}
+
+/* Fix heading colors and spacing */
+.prose-invert h1 {
+  color: #f6ad55; /* Orange for h1 */
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose-invert h2 {
+  color: #63b3ed; /* Blue for h2 */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose-invert h3 {
+  color: #63b3ed; /* Blue for h3 */
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose-invert h4 {
+  color: #81e6d9; /* Cyan for h4 */
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* First heading should not have top margin */
+.prose-invert > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* Paragraph styling with proper spacing */
+.prose-invert p {
+  margin-bottom: 1.5rem;
+  color: #fff;
+  line-height: 1.8;
+}
+
+/* Bold text in yellow (like code) */
+.prose-invert strong,
+.prose-invert b {
+  color: #fbd38d; /* Yellow like code */
+  font-weight: bold;
+}
+
+/* Links */
+.prose-invert a {
+  color: #81e6d9;
+  text-decoration: underline;
+}
+
+.prose-invert a:hover {
+  color: #4fd1c5;
+}
+
+/* Lists - fix list rendering */
+.prose-invert ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  color: #fff;
+}
+
+.prose-invert ul li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-invert ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  color: #fff;
+}
+
+.prose-invert ol li {
+  margin-bottom: 0.5rem;
+}
+
+/* Nested lists */
+.prose-invert ul ul,
+.prose-invert ol ul,
+.prose-invert ul ol,
+.prose-invert ol ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote styling */
+.prose-invert blockquote {
+  background-color: rgba(45, 55, 72, 0.6);
+  border-left: 4px solid #63b3ed;
+  padding: 1rem;
+  font-style: italic;
+  color: #fff;
+  margin: 1.5rem 0;
+}
+
+/* Code and code blocks */
+.prose-invert code {
+  background-color: rgba(45, 55, 72, 0.7);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #fbd38d;
+  font-size: 0.875em;
+}
+
+.prose-invert pre {
+  background-color: rgba(45, 55, 72, 0.7);
+  padding: 1rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  color: #fbd38d;
+  margin: 1.5rem 0;
+}
+
+.prose-invert pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+/* Image styling */
+.prose-invert img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  border: 2px solid #4fd1c5;
+}
+
+/* Table styling */
+.prose-invert table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+.prose-invert table th {
+  background-color: rgba(45, 55, 72, 0.8);
+  color: #fff;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid #4a5568;
+}
+
+.prose-invert table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #4a5568;
+  color: #fff;
+}
+
+.prose-invert table tr:nth-child(even) {
+  background-color: rgba(45, 55, 72, 0.5);
+}
+
+.prose-invert table tr:hover {
+  background-color: rgba(44, 51, 68, 0.7);
+}
+
+/* HR (horizontal rule) */
+.prose-invert hr {
+  border-color: #4a5568;
+  margin: 2rem 0;
+}
+
+/* Table of Contents specific styling */
+.toc-container {
+  margin-bottom: 2rem !important; /* Fixed spacing after ToC */
+  padding: 1.5rem;
+  background-color: rgba(17, 24, 39, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(99, 179, 237, 0.3);
+}
+
+.toc-container .toc-title {
+  color: #f6ad55;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem; /* Reduced spacing below ToC title */
+}
+
+.toc nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  space-y: 0.5rem;
+}
+
+.toc nav ul ul {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.toc nav a {
+  color: #81e6d9;
+  transition: color 0.2s;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.toc nav a:hover {
+  color: #4fd1c5;
+}
+
+/* Component containers */
+[data-component-id] {
+  margin: 1.5rem 0;
+}
+
+/* Table wrapper for responsive tables */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.table-wrapper table {
+  min-width: 100%;
+}
+
+/* Code block enhancements */
+pre[data-language] {
+  position: relative;
+}
+
+pre[data-language]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: #93c5fd;
+  background-color: rgba(17, 24, 39, 0.5);
+  border-bottom-left-radius: 0.25rem;
+}
+
+/* Heading anchors */
+.prose-invert h1[id],
+.prose-invert h2[id],
+.prose-invert h3[id],
+.prose-invert h4[id],
+.prose-invert h5[id],
+.prose-invert h6[id] {
+  position: relative;
+}
+
+.prose-invert h1[id]:hover::before,
+.prose-invert h2[id]:hover::before,
+.prose-invert h3[id]:hover::before,
+.prose-invert h4[id]:hover::before,
+.prose-invert h5[id]:hover::before,
+.prose-invert h6[id]:hover::before {
+  content: '#';
+  position: absolute;
+  left: -1.5rem;
+  color: #63b3ed;
+}
+
+/* Fix for empty paragraphs and component delimiters */
+.prose-invert p:empty {
+  display: none;
+}
+
+/* Ensure proper spacing between content sections */
+.prose-invert > * + * {
+  margin-top: 1rem;
+}
+
+/* Special spacing for headings following other elements */
+.prose-invert > * + h1 {
+  margin-top: 3rem;
+}
+
+.prose-invert > * + h2 {
+  margin-top: 2.5rem;
+}
+
+.prose-invert > * + h3 {
+  margin-top: 2rem;
+}
+
+.prose-invert > * + h4 {
+  margin-top: 1.75rem;
+}

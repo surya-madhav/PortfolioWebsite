@@ -26,16 +26,16 @@ readingTime: true
 
 # Sample Blog Post: All Components Demo
 
-:::alert{"type": "warning", "title": "Heads Up"}
+:::alert{type=warning title="Heads Up"}
 This blog post demonstrates **all** custom markdown components.
 :::
 
-:::toc{"depth": 2, "title": "Contents"}
+:::toc{depth=2 title="Contents"}
 :::
 
 ## Code Block Example
 
-:::code{"lang": "javascript", "title": "hello.js", "showLineNumbers": true, "highlight": "2"}
+:::code{lang=javascript title="hello.js" showLineNumbers=true highlight="2"}
 function hello() {
   console.log("Hello, world!");
 }
@@ -43,39 +43,47 @@ function hello() {
 
 ## Columns Example
 
-:::columns{"ratio": "1:2", "gap": "lg", "stack": "lg"}
-::column
-##### Narrow
-Narrow column content.
-::column
-##### Wide
-Wide column content.
+:::columns{ratio="1:2" gap=lg stack=lg}
+### Narrow Column
+Narrow column content with some text.
+
+### Wide Column
+Wide column content with more detailed information and examples.
 :::
 
 ## Image With Caption Example
 
-:::image{"src": "/images/sampleImage.jpg", "alt": "Sample Blog", "size": "large"}
-caption: Blog image with a caption.
+:::image{src="/images/sampleImage.jpg" alt="Sample Blog" size=large}
+Blog image with a caption.
 :::
 
 ## Tabs Example
 
 :::tabs
-::tab{"title": "HTML"}
+### HTML
 ```html
 <p>Hello, world!</p>
 ```
-::tab
-::tab{"title": "CSS"}
+
+### CSS
 ```css
-body { color: orange; }
+body { 
+  color: orange; 
+}
+```
+
+### JavaScript
+```javascript
+console.log('Hello tabs!');
 ```
 :::
 
 ## Mermaid Diagram Example
 
-:::mermaid{"theme": "neutral", "caption": "Blog Flow"}
+:::mermaid{theme=neutral}
 graph TD;
   Post --> Read;
   Post --> Comment;
-::: 
+  Read --> Share;
+  Comment --> Reply;
+:::

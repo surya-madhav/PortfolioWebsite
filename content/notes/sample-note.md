@@ -26,48 +26,47 @@ readingTime: true
 
 # Sample Note: All Components Demo
 
-:::alert{"type": "tip", "title": "Tip"}
+:::alert{type=tip title="Tip"}
 You can use all custom components in notes too!
 :::
 
-:::toc{"depth": 2, "title": "Contents"}
+:::toc{depth=2 title="Contents"}
 :::
 
 ## Code Block Example
 
-:::code{"lang": "python", "title": "hello.py", "showLineNumbers": true, "highlight": "2"}
+:::code{lang=python title="hello.py" showLineNumbers=true highlight="2"}
 def hello():
     print("Hello, world!")
 :::
 
 ## Columns Example
 
-:::columns{"ratio": "1:1", "gap": "sm", "stack": "sm"}
-::column
-#### Left
-Left column content.
-::column
-#### Right
-Right column content.
+:::columns{ratio="1:1" gap=sm stack=sm}
+### Left Column
+Left column content with some information.
+
+### Right Column
+Right column content with more details.
 :::
 
 ## Image With Caption Example
 
-:::image{"src": "/images/sampleImage.jpg", "alt": "Sample Note", "size": "small"}
-caption: This is a sample image in a note.
+:::image{src="/images/sampleImage.jpg" alt="Sample Note" size=small}
+This is a sample image in a note.
 :::
 
 ## Tabs Example
 
 :::tabs
-::tab{"title": "Python"}
+### Python
 ```python
 def foo():
     return "bar"
 ```
-::tab
-::tab{"title": "JavaScript"}
-```js
+
+### JavaScript
+```javascript
 function foo() {
   return "bar";
 }
@@ -76,8 +75,10 @@ function foo() {
 
 ## Mermaid Diagram Example
 
-:::mermaid{"theme": "forest", "caption": "Decision Tree"}
+:::mermaid{theme=forest}
 graph TD;
   Start --> Option1;
   Start --> Option2;
-::: 
+  Option1 --> End;
+  Option2 --> End;
+:::

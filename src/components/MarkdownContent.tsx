@@ -33,6 +33,20 @@ function renderNode(node: any, content: Content): React.ReactNode {
     if (componentId && content.components?.has(componentId)) {
       const componentData = content.components.get(componentId)!;
       
+      // For code blocks, ensure we pass the content properly
+      if (componentData.name === 'code' || componentData.name === 'codeblock') {
+        // The content should be in componentData.content
+        return (
+          <ComponentRenderer
+            name={componentData.name}
+            props={componentData.props}
+            content={componentData.content}
+          >
+            {componentData.content}
+          </ComponentRenderer>
+        );
+      }
+      
       // For container directives with children, render the children
       const hasChildren = children && children.length > 0 && 
         children.some((child: any) => child.type !== 'text' || child.value.trim() !== '');

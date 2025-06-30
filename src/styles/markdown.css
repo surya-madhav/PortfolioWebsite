@@ -5,9 +5,6 @@
   @apply my-8;
 }
 
-/* Custom grid templates for common ratios */
-/* Removed @apply md:grid-cols-* due to Tailwind limitation. Responsive classes will be applied in the component. */
-
 /* Column content */
 .markdown-column {
   @apply space-y-4;
@@ -220,28 +217,27 @@
 }
 
 .markdown-code-title {
-  @apply text-sm text-gray-400 font-body;
+  @apply text-sm text-gray-400;
 }
 
 .markdown-code-copy {
   @apply px-3 py-1 text-xs text-gray-400;
   @apply hover:text-orange-400 hover:bg-gray-800;
   @apply rounded transition-all duration-200;
-  @apply font-body;
 }
 
 .markdown-code-content {
   @apply bg-gray-900/50;
-  @apply text-sm leading-relaxed;
 }
 
 .markdown-code-content pre {
   @apply m-0 p-4 overflow-x-auto;
+  @apply text-sm leading-relaxed;
 }
-
+/* 
 .markdown-code-content code {
-  @apply font-body;
-}
+  
+} */
 
 /* Override Prism styles for dark theme */
 .markdown-code-content pre[class*="language-"] {
@@ -296,6 +292,15 @@
   @apply pl-4;
 }
 
+.toc-link.level-3 {
+  @apply pl-8 text-xs;
+}
+
+.toc-link.level-4 {
+  @apply pl-12 text-xs;
+}
+
+/* Sticky TOC scrollbar */
 .markdown-toc.sticky::-webkit-scrollbar {
   @apply w-2;
 }
@@ -310,4 +315,19 @@
 
 .markdown-toc.sticky::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-500;
-} 
+}
+
+/* Mermaid diagram wrapper */
+.mermaid {
+  @apply my-6 p-4 bg-gray-900/50 rounded-lg;
+  @apply flex justify-center items-center;
+  @apply overflow-x-auto;
+}
+
+/* Fix component delimiters being rendered */
+.prose-invert > p:only-child:empty,
+.markdown-columns > p:last-child:empty,
+.markdown-alert > p:last-child:empty,
+.markdown-tabs > p:last-child:empty {
+  display: none !important;
+}
