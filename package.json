@@ -26,6 +26,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.363.0",
     "marked": "^14.1.4",
+    "mdast-util-to-string": "^4.0.0",
     "mermaid": "^10.9.3",
     "motion": "^10.18.0",
     "next": "14.2.2",
