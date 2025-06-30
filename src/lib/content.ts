@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
+import { cache } from 'react';
 import { 
   Content, 
   ContentMeta, 
@@ -11,7 +12,7 @@ import {
   Heading
 } from '@/types/content';
 import { processMarkdown, calculateReadingTime, stripMarkdown } from './markdown';
-import { getProcessedContent } from './content-processor';
+import { getProcessedContent, getContentMeta } from './content-processor';
 
 // Content directory configuration
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
@@ -164,10 +165,10 @@ export async function getContentBySlug(
 /**
  * Get all content of a specific type
  */
-export async function getAllContent(
+export const getAllContent = cache(async (
   type?: ContentType,
   options: ContentQueryOptions = {}
-): Promise<Content[]> {
+): Promise<Content[]> => {
   try {
     const types = type ? [type] : ['project', 'note', 'blog'] as ContentType[];
     const allContent: Content[] = [];
@@ -250,15 +251,115 @@ export async function getAllContent(
     if (options.offset || options.limit) {
       const start = options.offset || 0;
       const end = options.limit ? start + options.limit : undefined;
-      filtered = filtered.slice(start, end);
+      return filtered.slice(start, end);
     }
     
     return filtered;
+    
   } catch (error) {
-    console.error('Error loading content:', error);
+    console.error("Error fetching all content: ", error);
     return [];
   }
-}
+});
+
+/**
+ * Get metadata for all content of a specific type.
+ * This is a lightweight version for list pages.
+ */
+export const getAllContentMeta = cache(async (
+  type?: ContentType,
+  options: ContentQueryOptions = {}
+): Promise<ContentMeta[]> => {
+  try {
+    const types = type ? [type] : ['project', 'note', 'blog'] as ContentType[];
+    const allContent: ContentMeta[] = [];
+    
+    for (const contentType of types) {
+      const directory = getContentDirectory(contentType);
+      
+      if (!fs.existsSync(directory)) {
+        continue;
+      }
+      
+      const files = fs.readdirSync(directory)
+        .filter(file => file.endsWith('.md'));
+      
+      // Load each file's metadata
+      for (const file of files) {
+        const slug = file.replace('.md', '');
+        const meta = getContentMeta(contentType, slug);
+        
+        if (meta) {
+          allContent.push(meta);
+        }
+      }
+    }
+    
+    // Apply filters
+    let filtered = allContent;
+    
+    if (options.published !== undefined) {
+      filtered = filtered.filter(c => c.published === options.published);
+    }
+    
+    if (options.featured !== undefined) {
+      filtered = filtered.filter(c => c.featured === options.featured);
+    }
+    
+    if (options.tags && options.tags.length > 0) {
+      filtered = filtered.filter(c => 
+        options.tags!.some(tag => c.tags.includes(tag))
+      );
+    }
+    
+    if (options.categories && options.categories.length > 0) {
+      filtered = filtered.filter(c =>
+        options.categories!.some(cat => c.categories.includes(cat))
+      );
+    }
+    
+    // Sort content
+    const sortBy = options.sortBy || 'date';
+    const sortOrder = options.sortOrder || 'desc';
+    
+    filtered.sort((a, b) => {
+      let aVal: any, bVal: any;
+      
+      switch (sortBy) {
+        case 'title':
+          aVal = a.title.toLowerCase();
+          bVal = b.title.toLowerCase();
+          break;
+        case 'updated':
+          aVal = new Date(a.updated || a.date).getTime();
+          bVal = new Date(b.updated || b.date).getTime();
+          break;
+        default: // date
+          aVal = new Date(a.date).getTime();
+          bVal = new Date(b.date).getTime();
+      }
+      
+      if (sortOrder === 'asc') {
+        return aVal > bVal ? 1 : -1;
+      } else {
+        return aVal < bVal ? 1 : -1;
+      }
+    });
+    
+    // Apply pagination
+    if (options.offset || options.limit) {
+      const start = options.offset || 0;
+      const end = options.limit ? start + options.limit : undefined;
+      return filtered.slice(start, end);
+    }
+    
+    return filtered;
+    
+  } catch (error) {
+    console.error("Error fetching all content metadata: ", error);
+    return [];
+  }
+});
 
 /**
  * Get static paths for a content type

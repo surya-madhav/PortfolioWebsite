@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Content } from '@/types/content';
-import ContentMeta from './ContentMeta';
+import { Content, ContentMeta } from '@/types/content';
+import ContentMetaComponent from './ContentMeta';
 
 interface ContentCardProps {
-  content: Content;
+  content: Content | ContentMeta;
   variant?: 'grid' | 'list' | 'compact';
   showImage?: boolean;
   showExcerpt?: boolean;
@@ -75,7 +75,7 @@ export default function ContentCard({
               )}
               
               {showMeta && (
-                <ContentMeta
+                <ContentMetaComponent
                   content={content}
                   showAuthor={content.type === 'blog'}
                   showReadingTime={true}
@@ -119,7 +119,7 @@ export default function ContentCard({
           )}
           
           {showMeta && (
-            <ContentMeta
+            <ContentMetaComponent
               content={content}
               showAuthor={content.type === 'blog'}
               showReadingTime={true}

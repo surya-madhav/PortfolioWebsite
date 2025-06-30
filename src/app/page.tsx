@@ -1,8 +1,15 @@
 import { Metadata } from "next";
+import dynamic from 'next/dynamic';
 import HeroSection from "./components/HeroSection";
 import Projects from "./components/Projects";
-import Skills from "./components/Skills";
 import { generatePersonSchema, generateWebsiteSchema } from "@/lib/seo";
+
+const Skills = dynamic(() => import('./components/Skills'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-96 bg-gray-900/50 rounded-lg animate-pulse" />
+  ),
+});
 
 export const metadata: Metadata = {
   alternates: {

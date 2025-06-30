@@ -1,8 +1,8 @@
 import React from 'react';
-import { Content } from '@/types/content';
+import { Content, ContentMeta as ContentMetaType } from '@/types/content';
 
 interface ContentMetaProps {
-  content: Content;
+  content: Content | ContentMetaType;
   showAuthor?: boolean;
   showReadingTime?: boolean;
   showDate?: boolean;

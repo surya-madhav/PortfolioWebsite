@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0c0c0c;
+  color: white;
+}
+
+.dot-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c0c0c;
+  background-image: radial-gradient(circle at 1px 1px, #ff8c00 1px, transparent 0);
+  background-size: 28px 28px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
 @import '../styles/markdown.css';
 
 /* Set radius variable */

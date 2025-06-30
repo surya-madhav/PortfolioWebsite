@@ -63,6 +63,10 @@ export interface ContentMeta {
   // Analytics
   trackingId?: string;       // Custom tracking ID
   experiments?: string[];    // A/B test experiments
+
+  // Added for metadata-only fetches
+  readingTimeString?: string; // Formatted reading time
+  excerpt?: string;           // Auto-generated excerpt
 }
 
 // Processed content interface

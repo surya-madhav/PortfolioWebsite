@@ -1,4 +1,4 @@
-import { getAllContent } from '@/lib/content';
+import { getAllContentMeta } from '@/lib/content';
 import ContentCard from '@/components/content/ContentCard';
 import ContentFilters from '@/components/content/ContentFilters';
 import ContentSearch from '@/components/content/ContentSearch';
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default async function NotesPage() {
-  const notes = await getAllContent('note', {
+  const notes = await getAllContentMeta('note', {
     published: true,
     sortBy: 'date',
     sortOrder: 'desc'
