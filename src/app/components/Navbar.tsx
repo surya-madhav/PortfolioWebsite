@@ -55,7 +55,7 @@ export const Navbar = () => {
     return (
         <nav className='w-full fixed top-0 left-0 right-0 z-10 bg-gray-900/60 backdrop-blur-md border-b border-gray-800/30 container mx-auto'>
             <div className='flex flex-wrap items-center justify-between mx-auto p-4'>
-                <Link href={"/"} className='text-sm text-orange-400 opacity-80 font-medium shadow-sm font-mono'>rssmv.</Link>                
+                <Link href={"/"} className='text-lg text-orange-400 opacity-80 font-medium shadow-sm font-mono'>rssmv.</Link>                
                 <div className='mobile-menu block md:hidden'>
                     <button className='flex items-center px-3 py-2 border rounded border-slate-200' onClick={() => setNavbarOpen(!navbarOpen)}>
                         {navbarOpen ? <XMarkIcon className='h-5 w-5' /> : <Bars3Icon className='h-5 w-5' />}

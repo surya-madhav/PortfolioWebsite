@@ -157,12 +157,10 @@ div[data-component-id]:has(> :only-child:is(:text)) {
 /* General container */
 .prose-container {
   display: block;
-  padding: 1.5rem;
   width: 100%;
   max-width: none;
   border-radius: 0.5rem;
-  background-color: rgba(26, 32, 44, 0.2);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
 }
 
 /* Prose styling with proper dark mode support */
