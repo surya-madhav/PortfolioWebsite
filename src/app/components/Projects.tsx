@@ -27,9 +27,9 @@ const projectOrder = [
   'bikeSharing'
 ];
 
-const Projects = () => {
+const Projects = async () => {
   // Get projects data on the server
-  const allProjects = getAllProjects();
+  const allProjects = await getAllProjects();
   
   // Sort projects according to the specified order
   const projects = [...allProjects].sort((a, b) => {

@@ -1,71 +1,60 @@
 // Static data imports (safe for client and server components)
-import projectsData from '../../data/projects.json';
-import technologiesData from '../../data/technologies.json';
+import technologiesData from '../../content/data/technologies.json';
 import { Project } from '@/types/project';
-import { TechStack, TechStackItem } from '@/types/techstack';
-import { getRouteProjects } from '@/lib/route-projects';
+import { TechStackItem, TechStack } from '@/types/techstack';
+import { getAllContent } from '@/lib/content';
 
-// Import JSON directly - Next.js allows this
-export const projects: Project[] = projectsData;
-export const technologies: TechStack = technologiesData;
+// Correctly type and convert the technologies data
+const technologies: TechStack = technologiesData as TechStack;
+const allTechnologies: TechStackItem[] = Object.values(technologies);
 
 /**
- * Get all projects, combining JSON and route-based projects
+ * Get all projects using the new content system
  */
-export function getAllProjects(): Project[] {
-  const jsonProjects = projects;
-  const routeProjects = getRouteProjects();
-  
-  // Combine both sources of projects
-  const allProjects = [...jsonProjects, ...routeProjects];
-  
-  // Return only projects that should be shown
-  return allProjects.filter(project => project.show);
+export async function getAllProjects(): Promise<Project[]> {
+  const content = await getAllContent('project', { published: true });
+  // Return the full Content object with legacy fields added/overridden
+  return content.map((item, index) => ({
+    ...item,
+    id: index + 1,
+    image: item.thumbnail || '',
+    alt: item.hero?.alt || item.title,
+    href: `/projects/${item.slug}`,
+    show: item.published,
+    description: item.summary,
+    markdownContent: item.content,
+    categories: item.tags,
+    techStack: item.techStack || [],
+    githubUrl: item.githubUrl || '',
+    demoUrl: item.demoUrl,
+    videoUrl: item.videoUrl,
+  }));
 }
 
 /**
- * Get a single project by slug
+ * Enriches a project's tech stack (string[]) with full TechStackItem objects.
+ * @param project - A project-like object with a techStack array of strings.
+ * @returns The project with a fully populated techStack of TechStackItem objects.
  */
-export function getProjectBySlug(slug: string): Project | undefined {
-  const allProjects = getAllProjects();
-  return allProjects.find((project) => project.slug === slug);
-}
+export function enrichProjectWithTechStack<T extends { techStack?: (string | TechStackItem)[] }>(
+  project: T
+): Omit<T, 'techStack'> & { techStack: TechStackItem[] } {
+  const enrichedTechStack = project.techStack
+    ? project.techStack
+        .map(tech => {
+          if (typeof tech === 'string') {
+            return allTechnologies.find(t => t.name.toLowerCase() === tech.toLowerCase());
+          }
+          // It's already a TechStackItem object
+          return tech;
+        })
+        .filter((t): t is TechStackItem => !!t) // Filter out undefined or invalid items
+    : [];
 
-/**
- * Add tech stack details to project
- */
-export function enrichProjectWithTechStack(project: Project): Project {
-  const enrichedProject = { ...project };
-  
-  // If the project already has detailed tech stack, return as is
-  if (typeof enrichedProject.techStack[0] !== 'string') {
-    return enrichedProject;
-  }
-  
-  // Map string tech names to full tech objects
-  enrichedProject.techStack = enrichedProject.techStack.map((tech) => {
-    const techName = tech as string;
-    if (technologies[techName]) {
-      return technologies[techName];
-    }
-    // Return a placeholder if tech not found
-    console.warn(`Tech stack item not found: ${techName}`);
-    return {
-      name: techName,
-      icon: '/icons/placeholder.svg',
-      category: 'Unknown'
-    };
-  });
-  
-  return enrichedProject;
-}
-
-/**
- * Get all projects with tech stack details
- */
-export function getProjectsWithTechStack(): Project[] {
-  const allProjects = getAllProjects();
-  return allProjects.map(project => enrichProjectWithTechStack(project));
+  return {
+    ...project,
+    techStack: enrichedTechStack,
+  };
 }
 
 /**
