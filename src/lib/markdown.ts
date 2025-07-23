@@ -61,27 +61,43 @@ const remarkComponentCompiler: Plugin = () => {
         // For code blocks and similar components that need raw text content
         if (node.name === 'code' || node.name === 'codeblock' || node.name === 'mermaid') {
           if (node.type === 'containerDirective' && node.children) {
-            // Extract all text content from the children
-            const extractText = (nodes: any[]): string => {
-              return nodes.map((child: any) => {
-                if (child.type === 'text') {
-                  return child.value;
-                } else if (child.type === 'paragraph' && child.children) {
-                  return extractText(child.children);
-                } else if (child.type === 'code') {
-                  return child.value;
-                } else if (child.children) {
-                  return extractText(child.children);
-                }
-                return '';
-              }).join('\n');
-            };
-            
-            content = extractText(node.children).trim();
-            
-            // For code blocks, remove the children so they don't get rendered twice
             if (node.name === 'code' || node.name === 'codeblock') {
+              // Apply the new slicing logic for code blocks
+              const fileContent = String(file.value);
+              if (node.position) {
+                let extractedContent = fileContent.slice(
+                  node.position.start.offset!,
+                  node.position.end.offset!
+                );
+
+                // Remove the opening directive line (more robust to leading whitespace and newlines)
+                // Match from the start of the string, consume everything up to and including the first newline after the directive.
+                extractedContent = extractedContent.replace(/^[\s\r\n]*:::(code|codeblock)([.*?])?[^\n]*[\n\r]+/, '');
+
+                // Remove the closing directive line (more robust to trailing whitespace and newlines)
+                extractedContent = extractedContent.replace(/[\s\r\n]+:::[\s\r\n]*$/, '');
+
+                content = extractedContent;
+              }
+              // For code blocks, remove the children so they don't get rendered twice by HAST
               node.children = [];
+            } else if (node.name === 'mermaid') {
+              // Keep existing extractText logic for mermaid
+              const extractText = (nodes: any[]): string => {
+                return nodes.map((child: any) => {
+                  if (child.type === 'text') {
+                    return child.value;
+                  } else if (child.type === 'paragraph' && child.children) {
+                    return extractText(child.children);
+                  } else if (child.type === 'code') {
+                    return child.value;
+                  } else if (child.children) {
+                    return extractText(child.children);
+                  }
+                  return '';
+                }).join('\n');
+              };
+              content = extractText(node.children).trim();
             }
           }
         }

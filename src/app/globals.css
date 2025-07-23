@@ -283,6 +283,7 @@ div[data-component-id]:has(> :only-child:is(:text)) {
   border-radius: 4px;
   color: #fbd38d;
   font-size: 0.875em;
+  white-space: pre-wrap; /* Ensure inline code wraps */
 }
 
 .prose-invert pre {
@@ -292,12 +293,14 @@ div[data-component-id]:has(> :only-child:is(:text)) {
   overflow-x: auto;
   color: #fbd38d;
   margin: 1.5rem 0;
+  white-space: pre; /* Preserve whitespace and line breaks */
 }
 
 .prose-invert pre code {
   background-color: transparent;
   padding: 0;
   color: inherit;
+  white-space: pre; /* Inherit from pre, but explicitly set for safety */
 }
 
 /* Image styling */
