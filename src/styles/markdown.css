@@ -258,16 +258,17 @@
 }
 
 .toc-title {
-  @apply text-lg font-heading font-bold text-white mb-4;
+  @apply text-xl font-heading font-bold text-orange-400 mb-6;
+  @apply border-b border-gray-700 pb-3;
 }
 
 .toc-list {
-  @apply space-y-2;
+  @apply space-y-3;
 }
 
 .toc-list ul,
 .toc-list ol {
-  @apply ml-4 mt-2 space-y-1;
+  @apply ml-6 mt-3 space-y-2;
 }
 
 .toc-item {
@@ -275,29 +276,51 @@
 }
 
 .toc-link {
-  @apply text-sm text-gray-300 hover:text-orange-400;
-  @apply transition-colors duration-200;
-  @apply block py-1;
+  @apply transition-all duration-200;
+  @apply block py-1.5;
+  @apply rounded-md px-2;
+  @apply hover:bg-gray-700/30;
 }
 
 .toc-link.active {
-  @apply text-orange-400 font-medium;
+  @apply text-orange-400 font-semibold;
+  @apply bg-orange-900/20 border-l-2 border-orange-400;
+  @apply pl-3;
 }
 
+/* Level 1: Largest and most prominent */
 .toc-link.level-1 {
-  @apply font-medium;
+  @apply text-base font-semibold text-white;
+  @apply mb-1;
 }
 
+/* Level 2: Secondary emphasis */
 .toc-link.level-2 {
-  @apply pl-4;
+  @apply pl-4 text-sm font-medium text-gray-200;
 }
 
+/* Level 3: Tertiary */
 .toc-link.level-3 {
-  @apply pl-8 text-xs;
+  @apply pl-8 text-sm text-gray-300;
 }
 
+/* Level 4: Least prominent */
 .toc-link.level-4 {
-  @apply pl-12 text-xs;
+  @apply pl-12 text-xs text-gray-400;
+}
+
+/* Hover states with hierarchy */
+.toc-link.level-1:hover {
+  @apply text-orange-300;
+}
+
+.toc-link.level-2:hover {
+  @apply text-orange-400;
+}
+
+.toc-link.level-3:hover,
+.toc-link.level-4:hover {
+  @apply text-orange-400;
 }
 
 /* Sticky TOC scrollbar */
