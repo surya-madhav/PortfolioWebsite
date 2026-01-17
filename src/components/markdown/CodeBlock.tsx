@@ -121,7 +121,8 @@ export default function CodeBlock({
     : React.Children.toArray(children).join(''));
   
   // Split into lines for line numbers
-  const lines = codeContent.trim().split('\n');
+  // Ensure that blank lines and trailing newlines are preserved.
+  const lines = (codeContent.endsWith('\n') ? codeContent : codeContent + '\n').split('\n');
   
   return (
     <div className={`markdown-code-block ${className}`}>
